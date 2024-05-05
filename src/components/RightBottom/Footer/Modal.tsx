@@ -154,7 +154,6 @@ const Footer = ({ lang, setModalOpen, modalOpen, setHoverOnModal }: FooterType) 
             </ul>
             <SnsLinksForMeshmell lang={lang} />
             <div className="text-xs">
-              <div>{modalOpen.forSponsors ? "true" : "false"}</div>
               <div>© Meshmell 2023. All rights reserved</div>
             </div>
           </div>

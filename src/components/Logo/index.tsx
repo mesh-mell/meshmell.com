@@ -14,7 +14,7 @@ const Logo = ({ lang, isInFooter }: LogoType) => {
 
   const router = useRouter();
   const handleResetCamera = () => {
-    router.push(`/${lang}/`)
+    router.push(`/${lang}/exhibition`)
   };
 
   let baseClass = "font-bold text-black dark:text-white";

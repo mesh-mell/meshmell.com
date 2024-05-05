@@ -1,10 +1,5 @@
 import "@/styles/globals.css"
 
-import { UserProvider } from "@auth0/nextjs-auth0/client";
-import { dir } from "i18next";
-
-import { ThemeProviders } from "@/src/app/providers"
-import GoogleAnalytics from "@/src/components/Analytics/GoogleAnalytics"
 import { serverSideTranslation } from "@/src/i18n/index"
 import { LanguageType } from "@/src/types/language";
 
@@ -67,37 +62,13 @@ export const generateMetadata = async ({ params }: { params: { lang: LanguageTyp
 }
 
 const RootLayout = ({
-  children, params
+  children
 }: {
   children: React.ReactNode
-  params: { lang: LanguageType }
 }) => {
 
-  let htmlLang
-
-  switch (params.lang) {
-    case "en":
-      htmlLang = "en-US"
-      break
-    case "ja":
-      htmlLang = "ja-JP"
-      break
-    default:
-      htmlLang = "en-US"
-      break
-  }
-
   return (
-    <html lang={htmlLang} dir={dir(params.lang)}>
-      <head>
-        <GoogleAnalytics />
-      </head>
-      <UserProvider>
-        <body className='bg-sky-100 text-black dark:bg-sky-950 dark:text-white'>
-          <ThemeProviders>{children}</ThemeProviders>
-        </body>
-      </UserProvider>
-    </html >
+    <>{children}</>
   )
 }
 

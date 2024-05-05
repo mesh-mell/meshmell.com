@@ -4,7 +4,7 @@ import { DataItem } from "@/src/types/downloadCountData";
 
 export const fetchAndSetDownloads = (database: Database, focusedModelsSlug: string, setFocusedModelsDownloadData: (focusedModelsDownloadData: any) => void, setGetFirebaseDataLoading: (getFirebaseDataLoading: boolean) => void) => {
   setGetFirebaseDataLoading(true);
-  const downloadsRef = ref(database, `modelsDownload/${focusedModelsSlug}/downloads`);
+  const downloadsRef = ref(database, `exhibitions/modelsDownload/${focusedModelsSlug}/downloads`);
   let downloadsCountData: DataItem[] = [];
 
   get(downloadsRef).then((snapshot) => {
