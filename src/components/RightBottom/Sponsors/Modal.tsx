@@ -30,7 +30,7 @@ const Sponsors = ({
 
   useEffect(() => {
     let sponsorsData: SponsorInfoType[] = [defaultSponsorInfo];
-    const sponsorsRef = ref(database, "sponsors");
+    const sponsorsRef = ref(database, "exhibitions/sponsors");
     get(sponsorsRef)
       .then((snapshot) => {
         if (snapshot.exists()) {

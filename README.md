@@ -28,12 +28,16 @@ Interested in contributing? Fantastic! Here’s how you can get started:
 
 ### 1. Firebase's Realtime DataBase
 We are utilizing Firebase Realtime Database to store the following information:
-- Category
-- 3D Models
-- 3D Models download count with timestamp
-- 3D Models Creators
-- Sponsors of this project
-- Actions of 3D Models
+- Exhibition
+  - Category
+  - 3D Models
+  - 3D Models download count with timestamp
+  - 3D Models Creators
+  - Sponsors of this project
+  - Actions of 3D Models
+- Share
+  -  Users
+     - Models
 
 #### Use your own firebase cloud service
 If you want to use Firebase Realtime Database by creating your own app specifically for this project

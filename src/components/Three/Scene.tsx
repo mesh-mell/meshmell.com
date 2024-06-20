@@ -13,7 +13,7 @@ import { setCameraToOriginalPosition } from "@/src//utils/setCameraToOriginalPos
 import CameraControllerHorizontal from "@/src/components/Three/CameraController/CameraControllerHorizontal";
 import CameraControllerPerspective from "@/src/components/Three/CameraController/CameraControllerPerspective";
 import CameraControllerVertical from "@/src/components/Three/CameraController/CameraControllerVertical";
-import DirectionalLightForScene from "@/src/components/Three/DirectionalLightForScene";
+import DirectionalDirectionalLightForScene from "@/src/components/Three/DirectionalLightForScene";
 import GroundWide from "@/src/components/Three/GroundWide";
 import Model from "@/src/components/Three/Model/Model";
 import NoResultPlate from "@/src/components/Three/NoResultPlate";
@@ -317,7 +317,9 @@ const Scene = ({
       ))}
       {theNumberOfFilteredModel === 0 && <NoResultPlate lang={lang} />}
       {currentView === "perspective" && <GroundWide />}
-      <DirectionalLightForScene lightAndDarkTheme={lightAndDarkTheme} />
+      <DirectionalDirectionalLightForScene
+        lightAndDarkTheme={lightAndDarkTheme}
+      />
     </>
   );
 };

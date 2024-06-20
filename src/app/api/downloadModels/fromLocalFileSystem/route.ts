@@ -23,7 +23,7 @@ export const GET = (req: NextRequest) => {
     }
 
     const filePath = path.resolve(
-      `./gcs_dev/test_bucket/models/${focusedModelsSlug}/${resolution}/${filename}`,
+      `./gcs_dev/test_bucket/distribution/${focusedModelsSlug}/${resolution}/${filename}`,
     );
 
     if (!fs.existsSync(filePath)) {

@@ -33,7 +33,7 @@ export const GET = async (req: NextRequest) => {
         });
     const bucketName =
       (useGCSEmulator ? "test_bucket" : process.env.GCS_BUCKET_NAME) || "";
-    const filePath = `models/${focusedModelsSlug}/${resolution}/${filename}`;
+    const filePath = `models/distribution/${focusedModelsSlug}/${resolution}/${filename}`;
     const bucket = storage.bucket(bucketName, storage);
     const file = bucket.file(filePath);
 

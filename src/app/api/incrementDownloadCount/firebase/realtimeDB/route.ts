@@ -10,7 +10,10 @@ export const GET = async (req: NextRequest) => {
     const { searchParams } = new URL(req.url);
     const modelSlug = searchParams.get("modelSlug");
 
-    const modelsRef = ref(database, `modelsDownload/${modelSlug}/downloads`);
+    const modelsRef = ref(
+      database,
+      `exhibitions/modelsDownload/${modelSlug}/downloads`,
+    );
     await push(modelsRef, { timeStamp: Date.now() });
 
     return NextResponse.json(

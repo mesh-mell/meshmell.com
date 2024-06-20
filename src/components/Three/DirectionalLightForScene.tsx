@@ -7,7 +7,7 @@ type DirectionalLightType = {
   lightAndDarkTheme: LightAndDarkThemeType;
 };
 
-const DirectionalLightForScene = ({
+const DirectionalDirectionalLightForScene = ({
   lightAndDarkTheme,
 }: DirectionalLightType) => {
   const lightRef = useRef<THREE.DirectionalLight>(null);
@@ -82,4 +82,4 @@ const DirectionalLightForScene = ({
   );
 };
 
-export default DirectionalLightForScene;
+export default DirectionalDirectionalLightForScene;

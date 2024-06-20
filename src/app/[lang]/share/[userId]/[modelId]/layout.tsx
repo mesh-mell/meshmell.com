@@ -1,10 +1,5 @@
 import "@/styles/globals.css";
 
-import { UserProvider } from "@auth0/nextjs-auth0/client";
-import { dir } from "i18next";
-
-import { ThemeProviders } from "@/src/app/providers";
-import GoogleAnalytics from "@/src/components/Analytics/GoogleAnalytics";
 import { serverSideTranslation } from "@/src/i18n/index";
 import { LanguageType } from "@/src/types/language";
 
@@ -48,7 +43,7 @@ export const generateMetadata = async ({
       siteName: "Meshmell",
       images: [
         {
-          url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/general/home-img.webp`,
+          url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/general/home-img.webp`,
           width: 800,
           height: 600,
           alt: "Meshmell",
@@ -65,47 +60,15 @@ export const generateMetadata = async ({
       siteId: "",
       creator: "@Yurimell6174",
       images: {
-        url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/general/home-img.webp`,
+        url: `${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}/images/general/home-img.webp`,
         alt: "Meshmell",
       },
     },
   };
 };
 
-const RootLayout = ({
-  children,
-  params,
-}: {
-  children: React.ReactNode;
-  params: { lang: LanguageType };
-}) => {
-  let htmlLang;
-
-  switch (params.lang) {
-    case "en":
-      htmlLang = "en-US";
-      break;
-    case "ja":
-      htmlLang = "ja-JP";
-      break;
-    default:
-      htmlLang = "en-US";
-      break;
-  }
-
-  return (
-    // suppressHydrationWarning is used to suppress the warning that appears when using the hydrate function in the client side
-    <html lang={htmlLang} dir={dir(params.lang)} suppressHydrationWarning>
-      <head>
-        <GoogleAnalytics />
-      </head>
-      <body className='bg-sky-100 text-black dark:bg-sky-950 dark:text-white'>
-        <UserProvider>
-          <ThemeProviders>{children}</ThemeProviders>
-        </UserProvider>
-      </body>
-    </html>
-  );
+const RootLayout = ({ children }: { children: React.ReactNode }) => {
+  return <div className='bg-white'>{children}</div>;
 };
 
 export default RootLayout;

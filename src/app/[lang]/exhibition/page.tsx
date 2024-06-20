@@ -1,13 +1,12 @@
 import ConsoleMessage from "@/src/components/Console/Message";
+import ThreeApp from "@/src/components/ThreeApp";
 import { LanguageType } from "@/src/types/language";
-
-import Home from "./Home";
 
 const App = ({ params }: { params: { lang: LanguageType } }) => {
   return (
     <>
       <ConsoleMessage />
-      <Home lang={params.lang} />
+      <ThreeApp lang={params.lang} />
     </>
   );
 };

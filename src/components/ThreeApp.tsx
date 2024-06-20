@@ -118,10 +118,10 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const modelsRef = ref(database, "models");
-      const creatorsRef = ref(database, "creators");
-      const actionsRef = ref(database, "actions");
-      const categoriesRef = ref(database, "categories");
+      const modelsRef = ref(database, "exhibitions/models");
+      const creatorsRef = ref(database, "exhibitions/creators");
+      const actionsRef = ref(database, "exhibitions/actions");
+      const categoriesRef = ref(database, "exhibitions/categories");
 
       try {
         const modelsSnapshot = await get(modelsRef);

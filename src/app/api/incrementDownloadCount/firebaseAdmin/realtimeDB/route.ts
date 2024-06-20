@@ -12,7 +12,9 @@ export const GET = async (req: NextRequest) => {
     const { searchParams } = new URL(req.url);
     const modelSlug = searchParams.get("modelSlug");
     const db = admin.database();
-    const modelsRef = db.ref(`modelsDownload/${modelSlug}/downloads`);
+    const modelsRef = db.ref(
+      `exhibitions/modelsDownload/${modelSlug}/downloads`,
+    );
     await modelsRef.push({ timeStamp: Date.now() });
 
     return NextResponse.json(
