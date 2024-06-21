@@ -11,7 +11,7 @@ export const fetchAndSetDownloads = (
   setGetFirebaseDataLoading(true);
   const downloadsRef = ref(
     database,
-    `exhibitions/modelsDownload/${focusedModelsSlug}/downloads`,
+    `exhibition/modelsDownload/${focusedModelsSlug}/downloads`,
   );
   let downloadsCountData: DateItem[] = [];
 

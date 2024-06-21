@@ -69,7 +69,7 @@ const ShareModal = ({
             </button>
           </div>
         </div>
-        <h2 className='text-3xl font-bold'>{t("share.title")}</h2>
+        <h2 className='text-3xl font-bold'>{t("shareThisPage.title")}</h2>
         <SnsLinksForShareThisSite lang={lang} />
       </div>
     </>

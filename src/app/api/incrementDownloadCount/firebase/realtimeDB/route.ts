@@ -12,7 +12,7 @@ export const GET = async (req: NextRequest) => {
 
     const modelsRef = ref(
       database,
-      `exhibitions/modelsDownload/${modelSlug}/downloads`,
+      `exhibition/modelsDownload/${modelSlug}/downloads`,
     );
     await push(modelsRef, { timeStamp: Date.now() });
 

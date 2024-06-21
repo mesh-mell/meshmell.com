@@ -146,7 +146,7 @@
     "search": "Search",
     "reset": "Reset"
   },
-  "share": {
+  "shareThisPage": {
     "title": "Share this page"
   },
   "officialSNSAccounts": "Official SNS accounts",
@@ -183,5 +183,34 @@
     "footer": "Created by",
     "developers": "Developers",
     "contributorWanted": "At this point, this site is developed by one person. I am looking for a co-developer. If you are interested in working with me, please contact me."
+  },
+  "home": {
+    "title": "Welcome to Meshmell !!",
+    "meta": {
+      "about": "Meshmell",
+      "description": "Meshmell"
+    }
+  },
+  "share": {
+    "description": "Share your own 3D models with using URL",
+    "loginRequired": "Login required",
+    "myPage": "My Page",
+    "chooseFile": "Choose File",
+    "noFileChosen": "No file chosen",
+    "modelName": "Model Name",
+    "addModel": "Add Model",
+    "logOut": "Log out",
+    "meta": {
+      "about": "Share",
+      "description": "Share"
+    }
+  },
+  "exhibition": {
+    "description": "Download 3D models for free",
+    "noLoginRequired": "No login required",
+    "meta": {
+      "about": "Exhibition",
+      "description": "Exhibition"
+    }
   }
 }

@@ -19,7 +19,6 @@ import SearchModal from "@/src/components/Header/Search/Modal";
 import SwitchViewModal from "@/src/components/Header/ViewsSwitch/Switch";
 import ShareModalButtonWhenList from "@/src/components/LeftBottomWhenList/Share/Button";
 import ShareModalWhenList from "@/src/components/LeftBottomWhenList/Share/Modal";
-import LoadingForCanvas from "@/src/components/LoadingForCanvas";
 import Pagination from "@/src/components/Pagination";
 import RightBottomButtons from "@/src/components/RightBottom/Buttons";
 import About from "@/src/components/RightBottom/Footer/About";
@@ -118,10 +117,10 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const modelsRef = ref(database, "exhibitions/models");
-      const creatorsRef = ref(database, "exhibitions/creators");
-      const actionsRef = ref(database, "exhibitions/actions");
-      const categoriesRef = ref(database, "exhibitions/categories");
+      const modelsRef = ref(database, "exhibition/models");
+      const creatorsRef = ref(database, "exhibition/creators");
+      const actionsRef = ref(database, "exhibition/actions");
+      const categoriesRef = ref(database, "exhibition/categories");
 
       try {
         const modelsSnapshot = await get(modelsRef);
@@ -493,12 +492,6 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             creators={creators}
             models={models}
             isFocusedMode={isFocusedMode}
-          />
-
-          <LoadingForCanvas
-            lang={lang}
-            started={started}
-            setStarted={setStarted}
           />
 
           {!isFocusedMode && (

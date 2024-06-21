@@ -13,7 +13,7 @@ export const GET = async (req: NextRequest) => {
     const modelSlug = searchParams.get("modelSlug");
     const db = admin.database();
     const modelsRef = db.ref(
-      `exhibitions/modelsDownload/${modelSlug}/downloads`,
+      `exhibition/modelsDownload/${modelSlug}/downloads`,
     );
     await modelsRef.push({ timeStamp: Date.now() });
 

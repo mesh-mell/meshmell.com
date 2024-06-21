@@ -7,7 +7,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 import { LanguageType } from "@/src/types/language";
-import { ShareModelType, UserType } from "@/src/types/users";
+import { UserType } from "@/src/types/users";
 import { database } from "@/src/utils/firebase/firebase.config";
 
 interface ModalProps {
@@ -44,54 +44,69 @@ const UserPage = ({ lang, userId }: ModalProps) => {
   };
 
   return (
-    <div>
+    <div className='p-4'>
       {!isLoading && authUser && (
         <>
-          <h1>{lang === "en" ? "My page" : "マイページ"}</h1>
-          <Link href='/api/auth/logout'>
-            <button>Logout</button>
-          </Link>
-          <form onSubmit={handleAddModel}>
-            <input
-              type='text'
-              value={modelName}
-              onChange={(e) => setModelName(e.target.value)}
-              placeholder='Model Name'
-            />
-            <input type='file' />
-            <button type='submit'>Add Model</button>
+          <div className='flex justify-between items-center'>
+            <h1 className='text-2xl font-bold'>
+              {lang === "en" ? "My page" : "マイページ"}
+            </h1>
+            <Link href='/api/auth/logout'>
+              <button className='bg-red-500 text-white px-4 py-2 mt-2 rounded'>
+                Logout
+              </button>
+            </Link>
+          </div>
+          <form onSubmit={handleAddModel} className='mt-4 space-y-4'>
+            <input type='file' className='border p-2 w-full' />
+            <div className='flex items-center justify-between gap-4'>
+              <input
+                type='text'
+                value={modelName}
+                onChange={(e) => setModelName(e.target.value)}
+                placeholder='Model Name'
+                className='border p-2 w-[300px]'
+              />
+              <button
+                type='submit'
+                className='bg-blue-500 text-white px-4 py-2 rounded'
+              >
+                Add Model
+              </button>
+            </div>
           </form>
         </>
       )}
-      <div className=''>
+      <div>
         {authUser && user ? (
-          <div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
-            {user.models.map((model: ShareModelType, index: number) => (
+          <div className='grid grid-cols-2 md:grid-cols-3 gap-4 mt-4'>
+            {user.models.map((model, index) => (
               <div key={index} className='cursor-pointer border p-2'>
                 <Link href={`/${lang}/share/${userId}/${model.model_id}`}>
-                  <a>
-                    <Image
-                      src={`/images/users/${userId}/${model.model_id}/img.webp`}
-                      alt={model.model_name}
-                      width={100}
-                      height={100}
-                      objectFit='cover'
-                    />
-                    <div>{model.model_name}</div>
-                  </a>
+                  <Image
+                    src={`/images/users/${userId}/${model.model_id}/img.webp`}
+                    alt={model.model_name}
+                    width={100}
+                    height={100}
+                    className='w-full h-32'
+                    priority
+                  />
+                  <div className='mt-2 text-center'>{model.model_name}</div>
                 </Link>
               </div>
             ))}
           </div>
         ) : authUser && !user ? (
-          <p>No models found</p>
+          <p className='mt-4'>No models found</p>
         ) : (
-          <p>Please login</p>
+          <p className='mt-4'>Please login</p>
         )}
         {!isLoading && !authUser && (
-          <div className=''>
+          <div className='mt-4'>
             <Link href='/api/auth/login'>
-              <button>Login</button>
+              <button className='bg-green-500 text-white px-4 py-2 rounded'>
+                Login
+              </button>
             </Link>
           </div>
         )}

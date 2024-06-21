@@ -29,6 +29,6 @@ export const newRouterPush = (
     }
   });
 
-  const newPath = `/${lang}?${newSearchParams.toString()}`;
+  const newPath = `/${lang}/exhibition?${newSearchParams.toString()}`;
   router.push(newPath);
 };
