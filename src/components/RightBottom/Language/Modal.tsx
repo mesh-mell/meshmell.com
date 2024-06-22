@@ -4,21 +4,26 @@ import { ImCross } from "react-icons/im";
 import LanguageFlag from "@/src/components/RightBottom/Language/Flag";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import {
+  ModalOpenTypeForExhibition,
+  ModalOpenTypeForHome,
+} from "@/src/types/modals";
 
-type LanguageSwitchModalType = {
+type LanguageSwitchModalType<T> = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
-  setHoverOnModal: (hoverOnModal: boolean) => void;
-  modalOpen: ModalOpenType;
+  setHoverOnModal?: (hoverOnModal: boolean) => void;
+  modalOpen: T;
 };
 
-const LanguageSwitchModal = ({
+const LanguageSwitchModal = <
+  T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition,
+>({
   lang,
   setModalOpen,
   setHoverOnModal,
   modalOpen,
-}: LanguageSwitchModalType) => {
+}: LanguageSwitchModalType<T>) => {
   const { t } = useTranslation(lang, "main");
 
   const handleClickInside = (event: any) => {
@@ -26,24 +31,26 @@ const LanguageSwitchModal = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       language: false,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       language: false,
     }));
   };
 
   const handleMouseEnter = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(true);
   };
 
   const handleMouseLeave = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(false);
   };
 
@@ -60,8 +67,8 @@ const LanguageSwitchModal = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end mb-4'>
           <div

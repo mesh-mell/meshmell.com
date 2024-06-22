@@ -5,11 +5,11 @@ import { RiFilter3Fill } from "react-icons/ri";
 
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type CreatorFilterButtonType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   filteredCreatorsObj: CreatorDetailsType;
   lang: LanguageType;
 };
@@ -21,7 +21,7 @@ const CreatorFilterButton = ({
   lang,
 }: CreatorFilterButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorFilter: !prevState.creatorFilter,
       modelInfo: false,

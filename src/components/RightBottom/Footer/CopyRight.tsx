@@ -4,12 +4,12 @@ import { RiShareBoxFill } from "react-icons/ri";
 import ContactUsParagraph from "@/src/components/RightBottom/Footer/ContactUsParagraph";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type CopyRightType = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setHoverOnModal: (hoverOnModal: boolean) => void;
 };
 
@@ -26,31 +26,33 @@ const CopyRight = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       copyRight: false,
     }));
   };
 
   const handleGoToContact = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       contact: true,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       copyRight: false,
     }));
   };
 
   const handleMouseEnter = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(true);
   };
 
   const handleMouseLeave = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(false);
   };
 
@@ -72,8 +74,8 @@ const CopyRight = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end mb-4'>
           <div

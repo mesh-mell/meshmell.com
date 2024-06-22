@@ -4,14 +4,14 @@ import { ImCross } from "react-icons/im";
 import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 
 import Contents from "./Contents";
 
 type CreatorInfoModal = {
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setModalOpen: (prevState: any) => void;
   focusedModelsObj: ModelDetailsType;
   focusedModelsCreatorsObj: CreatorDetailsType;
@@ -29,7 +29,7 @@ const CreatorInfoModal = ({
   const { t } = useTranslation(lang, "main");
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorInfo: false,
     }));
@@ -46,7 +46,7 @@ const CreatorInfoModal = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorInfo: false,
     }));

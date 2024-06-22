@@ -3,11 +3,11 @@ import { RiShareBoxFill } from "react-icons/ri";
 
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type CreatorInfoButtonInNotFocusedType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   filteredCreatorsObj: CreatorDetailsType;
   lang: LanguageType;
 };
@@ -19,7 +19,7 @@ const CreatorInfoButtonInNotFocused = ({
   lang,
 }: CreatorInfoButtonInNotFocusedType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorInfoInNotFocused: !prevState.creatorInfoInNotFocused,
       modelInfo: false,

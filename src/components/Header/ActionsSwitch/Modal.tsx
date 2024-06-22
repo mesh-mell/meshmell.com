@@ -4,7 +4,7 @@ import { ImCross } from "react-icons/im";
 import { useTranslation } from "@/src/i18n/client";
 import { ActionDetailsType } from "@/src/types/actions";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { defaultActionsDetails } from "@/src/utils/defaultData/actions";
 import { newRouterPush } from "@/src/utils/newRouterPush";
@@ -12,7 +12,7 @@ import { newRouterPush } from "@/src/utils/newRouterPush";
 type ActionsSwitchModalType = {
   setModalOpen: (prevState: any) => void;
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   focusedModelsObj: ModelDetailsType;
   setHoverOnModal: (hoverOnModal: boolean) => void;
   currentAction: string;
@@ -42,7 +42,7 @@ const ActionsSwitchModal = ({
   );
 
   const handleClick = (paramValue: string) => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       actionsSwitch: false,
     }));
@@ -55,7 +55,7 @@ const ActionsSwitchModal = ({
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       actionsSwitch: false,
     }));
@@ -74,7 +74,7 @@ const ActionsSwitchModal = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       actionsSwitch: false,
     }));
@@ -93,8 +93,8 @@ const ActionsSwitchModal = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end mb-4'>
           <div

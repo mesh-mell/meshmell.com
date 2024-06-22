@@ -3,7 +3,7 @@ import { FaPeopleGroup } from "react-icons/fa6";
 
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type SponsorsButtonType = {
   lang: LanguageType;
@@ -14,7 +14,7 @@ const SponsorButton = ({ lang, setModalOpen }: SponsorsButtonType) => {
   const { t } = useTranslation(lang, "main");
 
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       sponsors: !prevState.sponsors,
     }));

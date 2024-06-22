@@ -1,15 +1,15 @@
 import { BsInfoLg } from "react-icons/bs";
 
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ModelInfoButtonType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
 };
 
 const ModelInfoButton = ({ setModalOpen, modalOpen }: ModelInfoButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       modelInfo: !prevState.modelInfo,
       download: false,

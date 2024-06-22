@@ -5,12 +5,12 @@ import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type SearchModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setModalOpen: (prevState: any) => void;
   searchWord: string;
   setSearchWord: (searchWord: string) => void;
@@ -47,14 +47,14 @@ const SearchModal = ({
     } else {
       newRouterPush(lang, [], searchParams, router);
     }
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       search: false,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       search: false,
     }));
@@ -65,7 +65,7 @@ const SearchModal = ({
 
     if (searchWord !== "") {
       setSearchWord("");
-      setModalOpen((prevState: ModalOpenType) => ({
+      setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
         ...prevState,
         search: false,
       }));
@@ -83,7 +83,7 @@ const SearchModal = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       search: false,
     }));

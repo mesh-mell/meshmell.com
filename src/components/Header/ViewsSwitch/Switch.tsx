@@ -7,14 +7,14 @@ import PerspectiveViewIcon from "@/src/components/Svg/Views/PerspectiveViewIcon"
 import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { viewTypes } from "@/src/types/views";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 import { views } from "@/src/utils/views";
 
 type ViewsSwitchModalType = {
   lang: string;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setModalOpen: (prevState: any) => void;
   setHoverOnModal: (hoverOnModal: boolean) => void;
   view: viewTypes;
@@ -35,7 +35,7 @@ const ViewsSwitchModal = ({
   const searchParams = useSearchParams();
   const handleClick = (paramValue: string) => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       viewsSwitch: false,
     }));
@@ -52,7 +52,7 @@ const ViewsSwitchModal = ({
 
   const handleClickClose = () => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       viewsSwitch: false,
     }));
@@ -71,7 +71,7 @@ const ViewsSwitchModal = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       viewsSwitch: false,
     }));
@@ -90,8 +90,8 @@ const ViewsSwitchModal = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end mb-4'>
           <div

@@ -4,12 +4,12 @@ import { ImCross } from "react-icons/im";
 import SnsLinksForShareThisSite from "@/src/components/ModalComponents/SnsLinksForShareThisSite";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ShareModalWhenListType = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   isFocusedMode: boolean;
 };
 
@@ -28,7 +28,7 @@ const ShareModalWhenList = ({
   }, [isFocusedMode]);
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       shareThisPageInList: false,
     }));
@@ -39,7 +39,7 @@ const ShareModalWhenList = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       shareThisPageInList: false,
     }));

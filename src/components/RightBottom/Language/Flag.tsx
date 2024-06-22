@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 import FlagComponent from "./FlagComponent";
 
@@ -19,7 +19,7 @@ const LanguageFlag = ({ lang, setModalOpen, text }: LanguagePopupType) => {
   const cleanedPathname = pathname.replace(/(\/ja|\/en)/g, "");
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       language: false,
     }));

@@ -8,13 +8,13 @@ import SourceUrl from "@/src/components/Focus/ModelInfo/ModelSourceUrl";
 import CC0 from "@/src/components/ModalComponents/CC0";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { dateFormat } from "@/src/utils/dateFormat";
 
 type ModelInfoModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setModalOpen: (prevState: any) => void;
   focusedModelsObj: ModelDetailsType;
   focusedModelsCreatorsObj: CreatorDetailsType;
@@ -36,14 +36,14 @@ const ModelInfoModal = ({
   }, [isFocusedMode]);
 
   const openCreatorModal = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorInfo: true,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       modelInfo: false,
     }));
@@ -54,7 +54,7 @@ const ModelInfoModal = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       modelInfo: false,
     }));

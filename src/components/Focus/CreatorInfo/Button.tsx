@@ -3,14 +3,14 @@ import { useEffect } from "react";
 
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 import { defaultModelDetails } from "@/src/utils/defaultData/models";
 
 type CreatorInfoButtonType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   focusedModelsSlug: string;
   lang: LanguageType;
   models: ModelDetailsType[];
@@ -40,7 +40,7 @@ const CreatorInfoButton = ({
   useEffect(() => {}, [focusedModelsSlug]);
 
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorInfo: !prevState.creatorInfo,
       modelInfo: false,

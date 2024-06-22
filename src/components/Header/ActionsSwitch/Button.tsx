@@ -1,11 +1,11 @@
 "use client";
 import { FaWalking } from "react-icons/fa";
 
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ActionsSwitchButtonType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
 };
 
 const ActionsSwitchButton = ({
@@ -13,7 +13,7 @@ const ActionsSwitchButton = ({
   modalOpen,
 }: ActionsSwitchButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       actionsSwitch: !prevState.actionsSwitch,
       modelInfo: false,

@@ -1,12 +1,20 @@
-export type ModalOpenType = {
-  footer: boolean;
+export type ModalOpenTypeForHome = {
+  language: boolean;
   terms: boolean;
   privacy: boolean;
   contact: boolean;
   about: boolean;
   who: boolean;
+  forDevelopers: boolean;
+  forSponsors: boolean;
+  lightAndDarkTheme: boolean;
+  sponsors: boolean;
+  footer: false;
+  shareThisPage: boolean;
+};
+
+export type ModalOpenTypeForExhibition = ModalOpenTypeForHome & {
   search: boolean;
-  language: boolean;
   modelInfo: boolean;
   categoryFilter: boolean;
   download: boolean;
@@ -16,14 +24,25 @@ export type ModalOpenType = {
   copyRight: boolean;
   actionsSwitch: boolean;
   downloadError: boolean;
-  sponsors: boolean;
   viewsSwitch: boolean;
   creatorInfoInNotFocused: boolean;
-  shareThisPage: boolean;
   shareThisPageInList: boolean;
-  forDevelopers: boolean;
-  forSponsors: boolean;
-  lightAndDarkTheme: boolean;
+};
+
+export type ModalOpenTypeForShare = ModalOpenTypeForExhibition & {
+  search: boolean;
+  modelInfo: boolean;
+  categoryFilter: boolean;
+  download: boolean;
+  creatorInfo: boolean;
+  downloadCredit: boolean;
+  creatorFilter: boolean;
+  copyRight: boolean;
+  actionsSwitch: boolean;
+  downloadError: boolean;
+  viewsSwitch: boolean;
+  creatorInfoInNotFocused: boolean;
+  shareThisPageInList: boolean;
 };
 
 export type ModalName =

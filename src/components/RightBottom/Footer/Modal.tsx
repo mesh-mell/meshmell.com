@@ -4,21 +4,24 @@ import Logo from "@/src/components/Logo";
 import SnsLinksForMeshmell from "@/src/components/ModalComponents/SnsLinksForMeshmell";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import {
+  ModalOpenTypeForExhibition,
+  ModalOpenTypeForHome,
+} from "@/src/types/modals";
 
-type FooterType = {
+type FooterType<T> = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
-  setHoverOnModal: (hoverOnModal: boolean) => void;
+  modalOpen: T;
+  setHoverOnModal?: (hoverOnModal: boolean) => void;
 };
 
-const Footer = ({
+const Footer = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
   lang,
   setModalOpen,
   modalOpen,
   setHoverOnModal,
-}: FooterType) => {
+}: FooterType<T>) => {
   const { t } = useTranslation(lang, "main");
 
   const handleClickInside = (event: any) => {
@@ -26,80 +29,82 @@ const Footer = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       footer: false,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       footer: false,
     }));
   };
 
   const setAboutModalOpen = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       about: true,
     }));
   };
 
   const setContactModalOpen = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       contact: true,
     }));
   };
 
   const setWhoModalOpen = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       who: true,
     }));
   };
 
   const setTermsModalOpen = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       terms: true,
     }));
   };
 
   const setPrivacyModalOpen = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       privacy: true,
     }));
   };
 
   const setCopyRightModalOpen = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       copyRight: true,
     }));
   };
 
   const setForDevelopersModalOpen = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       forDevelopers: true,
     }));
   };
 
   const setForSponsorsModalOpen = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       forSponsors: true,
     }));
   };
 
   const handleMouseEnter = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(true);
   };
 
   const handleMouseLeave = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(false);
   };
 
@@ -116,8 +121,8 @@ const Footer = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end mb-4'>
           <div

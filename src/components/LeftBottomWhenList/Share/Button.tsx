@@ -1,10 +1,10 @@
 import { FaShareSquare } from "react-icons/fa";
 
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ShareModalButtonWhenListType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
 };
 
 const ShareModalButtonWhenList = ({
@@ -12,7 +12,7 @@ const ShareModalButtonWhenList = ({
   modalOpen,
 }: ShareModalButtonWhenListType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       shareThisPageInList: !prevState.shareThisPageInList,
       download: false,

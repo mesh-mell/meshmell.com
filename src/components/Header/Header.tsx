@@ -10,7 +10,7 @@ import WireFrameSwitchButton from "@/src/components/Header/WireFrameSwitch/Butto
 import { CategoryDetailsType } from "@/src/types/categories";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { viewTypes } from "@/src/types/views";
 
@@ -20,7 +20,7 @@ type HeaderType = {
   filteredCreatorsObj: CreatorDetailsType;
   filteredCategorysObj: CategoryDetailsType;
   searchWord: string;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setSearchWord: (searchWord: string) => void;
   focusedModelsObj: ModelDetailsType;
   isWireFrame: boolean;

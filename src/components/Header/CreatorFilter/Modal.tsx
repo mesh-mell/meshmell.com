@@ -7,13 +7,13 @@ import { ImCross } from "react-icons/im";
 import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { languagesList } from "@/src/utils/language";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type CreatorFilterModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setModalOpen: (prevState: any) => void;
   creatorFiltersSlug: string;
   setHoverOnModal: (hoverOnModal: boolean) => void;
@@ -47,7 +47,7 @@ const CreatorFilterModal = ({
 
   const handleClick = (paramValue: string) => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorFilter: false,
     }));
@@ -72,7 +72,7 @@ const CreatorFilterModal = ({
 
   const handleClickClose = () => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorFilter: false,
     }));
@@ -93,7 +93,7 @@ const CreatorFilterModal = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorFilter: false,
     }));
@@ -127,8 +127,8 @@ const CreatorFilterModal = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end mb-4'>
           <div

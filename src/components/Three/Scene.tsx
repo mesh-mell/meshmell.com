@@ -22,7 +22,7 @@ import { CategoryDetailsType } from "@/src/types/categories";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
 import { LightAndDarkThemeType } from "@/src/types/lightAndDarkTheme";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { viewTypes, EachViewObjType, WindowType } from "@/src/types/views";
 import { focusOnMesh } from "@/src/utils/focusOnMesh";
@@ -33,7 +33,7 @@ import { views } from "@/src/utils/views";
 
 type SceneType = {
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   footerOpen: boolean;
   focusedModelsObj: ModelDetailsType;
   filteredCreatorsObj: CreatorDetailsType;

@@ -2,12 +2,12 @@ import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ForSponsorsType = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setHoverOnModal: (hoverOnModal: boolean) => void;
 };
 
@@ -24,24 +24,26 @@ const ForSponsors = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       forSponsors: false,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       forSponsors: false,
     }));
   };
 
   const handleMouseEnter = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(true);
   };
 
   const handleMouseLeave = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(false);
   };
 
@@ -58,8 +60,8 @@ const ForSponsors = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end mb-4'>
           <div

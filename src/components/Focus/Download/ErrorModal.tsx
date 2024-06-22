@@ -4,7 +4,7 @@ import { RiShareBoxFill } from "react-icons/ri";
 
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type DownloadErrorModalType = {
   lang: LanguageType;
@@ -26,14 +26,14 @@ const DownloadErrorModal = ({
   }, [isFocusedMode]);
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       downloadError: false,
     }));
   };
 
   const handleGoToContact = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       downloadError: false,
       contact: true,

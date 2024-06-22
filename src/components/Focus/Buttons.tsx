@@ -6,14 +6,14 @@ import ShareModalButton from "@/src/components/Focus/Share/Button";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 
 type InfoButtonType = {
   lang: LanguageType;
   setModalOpen: (modal: any) => void;
   focusedModelsObj: ModelDetailsType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   focusedModelsDownloadData: Record<string, DateItem>;
   getFirebaseDataLoading: boolean;
   models: ModelDetailsType[];

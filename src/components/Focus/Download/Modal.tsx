@@ -6,7 +6,7 @@ import LoadingForButton from "@/src/components/ModalComponents/LoadingForButton"
 import { useTranslation } from "@/src/i18n/client";
 import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { WindowType } from "@/src/types/views";
 import { handleDownloadFileFromGCS } from "@/src/utils/downloadFileFromGCS";
@@ -17,7 +17,7 @@ import DownloadGraph from "./Graph";
 
 type DownloadModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setModalOpen: (modal: any) => void;
   focusedModelsObj: ModelDetailsType;
   setFocusedModelsDownloadData: (
@@ -77,7 +77,7 @@ const DownloadModal = ({
 
     handleDownloadFileFromGCS(focusedModelsObj, resolution, isZipped)
       .then(() => {
-        setModalOpen((prevState: ModalOpenType) => ({
+        setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
           ...prevState,
           downloadCredit: true,
         }));
@@ -90,7 +90,7 @@ const DownloadModal = ({
       })
       .catch((error) => {
         setIsDownloading(false);
-        setModalOpen((prevState: ModalOpenType) => ({
+        setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
           ...prevState,
           downloadError: true,
         }));
@@ -99,7 +99,7 @@ const DownloadModal = ({
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       download: false,
     }));
@@ -110,7 +110,7 @@ const DownloadModal = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       download: false,
     }));

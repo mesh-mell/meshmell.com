@@ -36,7 +36,7 @@ import { CreatorDetailsType } from "@/src/types/creators";
 import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
 import { LightAndDarkThemeType } from "@/src/types/lightAndDarkTheme";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { viewTypes, WindowType } from "@/src/types/views";
 import { defaultCategoryDetails } from "@/src/utils/defaultData/categories";
@@ -48,11 +48,12 @@ import { ActionDetailsType } from "../types/actions";
 import { fetchAndSetDownloads } from "../utils/fetchAndSetDownloads";
 
 import ActionsSwitchModal from "./Header/ActionsSwitch/Modal";
+import LoadingForCanvas from "./LoadingForCanvas";
 import ForSponsors from "./RightBottom/Footer/ForSponsors";
 import Sponsors from "./RightBottom/Sponsors/Modal";
 
 const ThreeApp = ({ lang }: { lang: LanguageType }) => {
-  const [modalOpen, setModalOpen] = useState<ModalOpenType>({
+  const [modalOpen, setModalOpen] = useState<ModalOpenTypeForExhibition>({
     terms: false,
     privacy: false,
     contact: false,
@@ -99,7 +100,6 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   >({});
   const [view, setView] = useState<viewTypes>("perspective");
   const [windowType, setWindowType] = useState<WindowType>("windowWidth_pc");
-  const [started, setStarted] = useState(false);
   const [focusedModelsObj, setFocusedModelsObj] =
     useState<ModelDetailsType>(defaultModelDetails);
   const [focusedModelsCreatorsObj, setFocusedModelsCreatorsObj] =
@@ -114,6 +114,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   const [actions, setActions] = useState<ActionDetailsType[]>([]);
   const [categories, setCategories] = useState<CategoryDetailsType[]>([]);
   const [isFocusedMode, setIsFocusedMode] = useState<boolean>(false);
+  const [started, setStarted] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -504,6 +505,12 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
               models={models}
             />
           )}
+
+          <LoadingForCanvas
+            lang={lang}
+            started={started}
+            setStarted={setStarted}
+          />
 
           <Canvas shadows>
             <Suspense fallback={null}>

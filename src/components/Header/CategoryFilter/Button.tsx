@@ -2,12 +2,12 @@
 import { RiFilter3Fill } from "react-icons/ri";
 
 import { CategoryDetailsType } from "@/src/types/categories";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type CategoryFilterButtonType = {
   setModalOpen: (prevState: any) => void;
   filteredCategorysObj: CategoryDetailsType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
 };
 
 const CategoryFilterButton = ({
@@ -16,7 +16,7 @@ const CategoryFilterButton = ({
   modalOpen,
 }: CategoryFilterButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       categoryFilter: !prevState.categoryFilter,
       modelInfo: false,

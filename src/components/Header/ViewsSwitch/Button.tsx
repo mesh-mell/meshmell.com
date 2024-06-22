@@ -3,12 +3,12 @@
 import HorizontalViewIcon from "@/src/components/Svg/Views/HorizontalViewIcon";
 import PerspectiveViewIcon from "@/src/components/Svg/Views/PerspectiveViewIcon";
 import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { viewTypes } from "@/src/types/views";
 
 type ViewsSwitchButtonType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   view: viewTypes;
 };
 
@@ -18,7 +18,7 @@ const ViewsSwitchButton = ({
   modalOpen,
 }: ViewsSwitchButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       viewsSwitch: !prevState.viewsSwitch,
       modelInfo: false,

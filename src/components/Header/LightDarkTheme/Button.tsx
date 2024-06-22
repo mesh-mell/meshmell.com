@@ -4,12 +4,12 @@ import { useTheme } from "next-themes";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type LightDarkThemeSwitchButtonType = {
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
 };
 
 const LightDarkThemeSwitchButton = ({

@@ -4,11 +4,11 @@ import { ImCross } from "react-icons/im";
 import CreatorInfo from "@/src/components/Focus/CreatorInfo/Contents";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type CreatorInfoModalInNotFocusedType = {
   lang: LanguageType;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setModalOpen: (prevState: any) => void;
   setHoverOnModal: (hoverOnModal: boolean) => void;
   filteredCreatorsObj: CreatorDetailsType;
@@ -24,7 +24,7 @@ const CreatorInfoModalInNotFocused = ({
   isFocusedMode,
 }: CreatorInfoModalInNotFocusedType) => {
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorInfoInNotFocused: false,
     }));
@@ -49,7 +49,7 @@ const CreatorInfoModalInNotFocused = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       creatorInfoInNotFocused: false,
     }));
@@ -68,8 +68,8 @@ const CreatorInfoModalInNotFocused = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end'>
           <div

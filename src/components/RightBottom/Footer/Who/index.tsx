@@ -4,12 +4,12 @@ import SNSLinksForYuri from "@/src/components/RightBottom/Footer/Who/SnsLinks/Yu
 import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type WhoType = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   setHoverOnModal: (hoverOnModal: boolean) => void;
   creators: CreatorDetailsType[];
 };
@@ -28,24 +28,26 @@ const Who = ({
   };
 
   const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       who: false,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       who: false,
     }));
   };
 
   const handleMouseEnter = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(true);
   };
 
   const handleMouseLeave = () => {
+    if (!setHoverOnModal) return;
     setHoverOnModal(false);
   };
 
@@ -66,8 +68,8 @@ const Who = ({
         onClick={handleClickInside}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
-        onTouchStart={() => setHoverOnModal(true)}
-        onTouchEnd={() => setHoverOnModal(false)}
+        onTouchStart={handleMouseEnter}
+        onTouchEnd={handleMouseLeave}
       >
         <div className='flex justify-end mb-4'>
           <div

@@ -1,6 +1,6 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type FooterButtonType = {
   setModalOpen: (prevState: any) => void;
@@ -8,7 +8,7 @@ type FooterButtonType = {
 
 const FooterButton = ({ setModalOpen }: FooterButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       footer: !prevState.footer,
     }));

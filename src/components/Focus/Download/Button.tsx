@@ -2,12 +2,12 @@ import { BiSolidDownload } from "react-icons/bi";
 
 import LoadingForButton from "@/src/components/ModalComponents/LoadingForButton";
 import { DateItem } from "@/src/types/downloadCountData";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { getDownloadSum } from "@/src/utils/getDownloadSum";
 
 type DownloadButtonType = {
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenType;
+  modalOpen: ModalOpenTypeForExhibition;
   getFirebaseDataLoading: boolean;
   focusedModelsDownloadData: Record<string, DateItem>;
 };
@@ -19,7 +19,7 @@ const DownloadButton = ({
   focusedModelsDownloadData,
 }: DownloadButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       download: !prevState.download,
       modelInfo: false,

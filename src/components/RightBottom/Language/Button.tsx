@@ -1,6 +1,6 @@
 "use client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenType } from "@/src/types/modals";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 import FlagComponent from "./FlagComponent";
 
@@ -11,7 +11,7 @@ type ChangeLanguageType = {
 
 const ChangeLanguage = ({ lang, setModalOpen }: ChangeLanguageType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenType) => ({
+    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       language: !prevState.language,
       footer: false,
