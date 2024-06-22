@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --dir src",
-    "format": "prettier --write --ignore-path .gitignore --ignore-path .prettierignore './**/*.{js,jsx,ts,tsx,json}'"
+    "format": "prettier --write --ignore-path .gitignore --ignore-path .prettierignore './**/*.{js,jsx,ts,tsx,json}'",
+    "migrate": "npx prisma migrate dev --name init",
+    "seed": "node prisma/seed.ts"
   },
   "dependencies": {
     "@auth0/nextjs-auth0": "^3.5.0",

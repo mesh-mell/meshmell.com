@@ -109,7 +109,7 @@ For development purposes, the application runs on your local machine (accessible
 
 #### Use Docker for the Web (Next.js) App 
 
-If you wish to run the Next.js web app inside a Docker container, command `docker compose -f docker-compose.dev.web.yaml up` in the root directory.
+If you wish to run the Next.js web app inside a Docker container, command `docker compose -f docker-compose.dev.yaml up web -d` in the root directory.
 
 ## Tips
 
@@ -159,3 +159,9 @@ The 3D models used on this website sourced from the following sites and express 
 - [Round Wooden Table 01](https://polyhaven.com/a/round_wooden_table_01) by [Ulan Cabanilla](https://www.polyhaven.com/a/round_wooden_table_01) from [Poly Heaven](https://polyhaven.com/). _CC0 license_
 - [Cardboard Box 01](https://polyhaven.com/a/cardboard_box_01) by [Rahul Chaudhary](https://www.artstation.com/rc12) from [Poly Heaven](https://polyhaven.com/). _CC0 license_
 - [Dining Chair 02](https://polyhaven.com/a/dining_chair_02) by [James Ray Cock](https://www.artstation.com/jamesray) from [Poly Heaven](https://polyhaven.com/). _CC0 license_
+
+
+## Database For Share
+
+`docker compose -f docker-compose.dev.yaml up db -d --build` to up postgres docker container for development environment
+`npx prisma migrate dev --name init` to up initiate prisma and migrate
