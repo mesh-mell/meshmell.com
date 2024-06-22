@@ -5,6 +5,7 @@ import { onValue, ref } from "firebase/database";
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useForm } from "react-hook-form";
 
 import { LanguageType } from "@/src/types/language";
 import { UserType } from "@/src/types/users";
@@ -15,10 +16,15 @@ interface ModalProps {
   userId: string;
 }
 
+type FormData = {
+  modelName: string;
+  file: FileList;
+};
+
 const UserPage = ({ lang, userId }: ModalProps) => {
   const { user: authUser, isLoading } = useUser();
   const [user, setUser] = useState<UserType | null>(null);
-  const [modelName, setModelName] = useState("");
+  const { register, handleSubmit, setValue } = useForm<FormData>();
 
   useEffect(() => {
     const usersRef = ref(database, "share/users");
@@ -38,10 +44,15 @@ const UserPage = ({ lang, userId }: ModalProps) => {
     fetchUserById(userId);
   }, [userId]);
 
-  const handleAddModel = async (e: any) => {
-    e.preventDefault();
-    // Add model upload logic here
+  const onSubmit = (data: FormData) => {
+    // Handle form submission
+    console.log(data);
   };
+
+  useEffect(() => {
+    // Reset the form or set default values if needed
+    setValue("modelName", "");
+  }, [setValue]);
 
   return (
     <div className='p-4'>
@@ -57,15 +68,18 @@ const UserPage = ({ lang, userId }: ModalProps) => {
               </button>
             </Link>
           </div>
-          <form onSubmit={handleAddModel} className='mt-4 space-y-4'>
-            <input type='file' className='border p-2 w-full' />
+          <form onSubmit={handleSubmit(onSubmit)} className='mt-4 space-y-4'>
+            <input
+              type='file'
+              className='border p-2 w-full'
+              {...register("file")}
+            />
             <div className='flex items-center justify-between gap-4'>
               <input
                 type='text'
-                value={modelName}
-                onChange={(e) => setModelName(e.target.value)}
                 placeholder='Model Name'
                 className='border p-2 w-[300px]'
+                {...register("modelName", { required: true })}
               />
               <button
                 type='submit'

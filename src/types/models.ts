@@ -33,3 +33,37 @@ export type ModelDetailsType = {
     sourceVideo: string;
   };
 };
+
+export type ModelCreateAndUpdateFormType = {
+  id: number;
+  name: {
+    en: string;
+    ja: string;
+  };
+  description: {
+    en: string;
+    ja: string;
+  };
+  creator: string;
+  categoryTags: string[];
+  price: number;
+  resolutions: string[] | null;
+  credit: string;
+  license: string;
+  scale: number;
+  rotationDegree: {
+    x: number;
+    y: number;
+    z: number;
+  };
+  formats: string[];
+  usedFormat: string;
+  actions?: string[];
+  isDownloadable: boolean;
+  source?: {
+    creator: string;
+    sourceSite: string;
+    downloadSite: string;
+    sourceVideo: string;
+  };
+};

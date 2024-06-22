@@ -1,0 +1,92 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Action {
+  id        Int     @id @default(autoincrement())
+  slug      String  @unique
+  nameEn    String
+  nameJa    String
+  icon      String
+  ModelAction ModelAction[]
+}
+
+model Creator {
+  id           Int      @id @default(autoincrement())
+  slug         String   @unique
+  nameEn       String
+  nameJa       String
+  descriptionEn String
+  descriptionJa String
+  twitter      String?
+  website      String?
+  youtube      String?
+  roles        String[]
+  models       Model[]
+}
+
+model Category {
+  id       Int    @id @default(autoincrement())
+  slug     String @unique
+  nameEn   String
+  nameJa   String
+  icon     String
+  color    String
+  models   Model[]
+}
+
+model Model {
+  id               Int        @id @default(autoincrement())
+  slug             String     @unique
+  resolutions      String[]
+  formats          String[]
+  usedFormat       String
+  scale            Float
+  rotationDegreesX Int
+  rotationDegreesY Int
+  rotationDegreesZ Int
+  nameEn           String
+  nameJa           String
+  descriptionEn    String
+  descriptionJa    String
+  creatorId        Int
+  creator          Creator    @relation(fields: [creatorId], references: [id])
+  categoryId       Int
+  category         Category   @relation(fields: [categoryId], references: [id])
+  published        DateTime
+  updated          DateTime
+  categoryTags     String[]
+  price            Float
+  license          String
+  credit           String?
+  isDownloadable   Boolean
+  ModelAction      ModelAction[]
+  ModelDownload    ModelDownload[]
+}
+
+model ModelDownload {
+  id        Int       @id @default(autoincrement())
+  modelId   Int
+  downloadId String   @unique
+  timeStamp DateTime
+  model     Model     @relation(fields: [modelId], references: [id])
+}
+
+model ModelAction {
+  id       Int    @id @default(autoincrement())
+  modelId  Int
+  actionId Int
+  model    Model  @relation(fields: [modelId], references: [id])
+  action   Action @relation(fields: [actionId], references: [id])
+}

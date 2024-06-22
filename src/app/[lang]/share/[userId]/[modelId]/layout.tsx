@@ -66,7 +66,7 @@ export const generateMetadata = async ({
 };
 
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
-  return <div className='bg-white'>{children}</div>;
+  return <div>{children}</div>;
 };
 
 export default RootLayout;
