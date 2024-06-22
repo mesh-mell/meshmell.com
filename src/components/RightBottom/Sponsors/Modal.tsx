@@ -5,26 +5,29 @@ import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import {
+  ModalOpenTypeForExhibition,
+  ModalOpenTypeForHome,
+} from "@/src/types/modals";
 import { SponsorInfoType } from "@/src/types/sponsors";
 import { defaultSponsorInfo } from "@/src/utils/defaultData/sponsors";
 import { database } from "@/src/utils/firebase/firebase.config";
 
 import EachSponsor from "./EachSponsor";
 
-type SponsorsType = {
+type SponsorsType<T> = {
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
+  modalOpen: T;
   setModalOpen: (prevState: any) => void;
-  setHoverOnModal: (hoverOnModal: boolean) => void;
+  setHoverOnModal?: (hoverOnModal: boolean) => void;
 };
 
-const Sponsors = ({
+const Sponsors = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
   lang,
   setModalOpen,
   setHoverOnModal,
   modalOpen,
-}: SponsorsType) => {
+}: SponsorsType<T>) => {
   const { t } = useTranslation(lang, "main");
   const [sponsors, setSponsors] = useState([defaultSponsorInfo]);
 
@@ -46,7 +49,6 @@ const Sponsors = ({
   }, []);
 
   const handleClickClose = () => {
-    setHoverOnModal(false);
     setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
       sponsors: false,
@@ -64,16 +66,6 @@ const Sponsors = ({
     }));
   };
 
-  const handleMouseEnter = () => {
-    if (!setHoverOnModal) return;
-    setHoverOnModal(true);
-  };
-
-  const handleMouseLeave = () => {
-    if (!setHoverOnModal) return;
-    setHoverOnModal(false);
-  };
-
   return (
     <>
       {modalOpen.sponsors && (
@@ -85,10 +77,12 @@ const Sponsors = ({
       <div
         className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[600px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.sponsors ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
         onClick={handleClickInside}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleMouseEnter}
-        onTouchEnd={handleMouseLeave}
+        onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
+        onMouseLeave={
+          setHoverOnModal ? () => setHoverOnModal(false) : undefined
+        }
+        onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
+        onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
         <div className='flex justify-end mb-4'>
           <div

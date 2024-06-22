@@ -11,6 +11,7 @@ export type ModalOpenTypeForHome = {
   sponsors: boolean;
   footer: false;
   shareThisPage: boolean;
+  copyRight: boolean;
 };
 
 export type ModalOpenTypeForExhibition = ModalOpenTypeForHome & {
@@ -21,7 +22,6 @@ export type ModalOpenTypeForExhibition = ModalOpenTypeForHome & {
   creatorInfo: boolean;
   downloadCredit: boolean;
   creatorFilter: boolean;
-  copyRight: boolean;
   actionsSwitch: boolean;
   downloadError: boolean;
   viewsSwitch: boolean;

@@ -2,21 +2,26 @@ import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import {
+  ModalOpenTypeForExhibition,
+  ModalOpenTypeForHome,
+} from "@/src/types/modals";
 
-type ForDevelopersType = {
+type ForDevelopersType<T> = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenTypeForExhibition;
-  setHoverOnModal: (hoverOnModal: boolean) => void;
+  modalOpen: T;
+  setHoverOnModal?: (hoverOnModal: boolean) => void;
 };
 
-const ForDevelopers = ({
+const ForDevelopers = <
+  T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition,
+>({
   lang,
   setModalOpen,
   modalOpen,
   setHoverOnModal,
-}: ForDevelopersType) => {
+}: ForDevelopersType<T>) => {
   const { t } = useTranslation(lang, "main");
 
   const handleClickInside = (event: any) => {
@@ -37,16 +42,6 @@ const ForDevelopers = ({
     }));
   };
 
-  const handleMouseEnter = () => {
-    if (!setHoverOnModal) return;
-    setHoverOnModal(true);
-  };
-
-  const handleMouseLeave = () => {
-    if (!setHoverOnModal) return;
-    setHoverOnModal(false);
-  };
-
   return (
     <>
       {modalOpen.forDevelopers && (
@@ -58,10 +53,12 @@ const ForDevelopers = ({
       <div
         className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[450px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.forDevelopers ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
         onClick={handleClickInside}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleMouseEnter}
-        onTouchEnd={handleMouseLeave}
+        onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
+        onMouseLeave={
+          setHoverOnModal ? () => setHoverOnModal(false) : undefined
+        }
+        onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
+        onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
         <div className='flex justify-end mb-4'>
           <div

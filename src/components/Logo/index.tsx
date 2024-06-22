@@ -6,9 +6,10 @@ import { LanguageType } from "@/src/types/language";
 type LogoType = {
   lang: LanguageType;
   isInFooter?: boolean;
+  canBeClicked?: boolean;
 };
 
-const Logo = ({ lang, isInFooter }: LogoType) => {
+const Logo = ({ lang, isInFooter, canBeClicked }: LogoType) => {
   const { t } = useTranslation(lang, "main");
 
   const router = useRouter();
@@ -59,7 +60,10 @@ const Logo = ({ lang, isInFooter }: LogoType) => {
   }
 
   return (
-    <div className={"cursor-pointer mb-1 sm:mb-0"} onClick={handleResetCamera}>
+    <div
+      className={`${canBeClicked ? "cursor-pointer" : ""} mb-1 sm:mb-0`}
+      onClick={canBeClicked ? handleResetCamera : undefined}
+    >
       <div
         className={`${logoClass} bg-clip-text text-transparent bg-gradient-to-l from-[#ffaa00] to-[#b300ff] font-bold mt-[-10px] ${!isInFooter && "select-none"} text-[3rem]`}
       >

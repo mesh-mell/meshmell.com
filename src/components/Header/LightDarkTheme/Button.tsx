@@ -10,11 +10,13 @@ import { newRouterPush } from "@/src/utils/newRouterPush";
 type LightDarkThemeSwitchButtonType = {
   lang: LanguageType;
   modalOpen: ModalOpenTypeForExhibition;
+  isIn3D?: boolean;
 };
 
 const LightDarkThemeSwitchButton = ({
   lang,
   modalOpen,
+  isIn3D,
 }: LightDarkThemeSwitchButtonType) => {
   const { setTheme, resolvedTheme } = useTheme();
   const router = useRouter();
@@ -24,6 +26,9 @@ const LightDarkThemeSwitchButton = ({
 
   const handleClick = () => {
     setTheme(isLight ? "dark" : "light");
+
+    if (!isIn3D) return;
+
     newRouterPush(
       lang,
       [

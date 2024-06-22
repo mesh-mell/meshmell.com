@@ -304,7 +304,11 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             />
           )}
 
-          <RightBottomButtons lang={lang} setModalOpen={setModalOpen} />
+          <RightBottomButtons
+            lang={lang}
+            setModalOpen={setModalOpen}
+            isIn3D={true}
+          />
 
           <InfoModal
             lang={lang}

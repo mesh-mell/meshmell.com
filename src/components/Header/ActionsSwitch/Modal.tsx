@@ -61,14 +61,6 @@ const ActionsSwitchModal = ({
     }));
   };
 
-  const handleMouseEnter = () => {
-    setHoverOnModal(true);
-  };
-
-  const handleMouseLeave = () => {
-    setHoverOnModal(false);
-  };
-
   const handleClickInside = (event: any) => {
     event.stopPropagation();
   };
@@ -91,10 +83,12 @@ const ActionsSwitchModal = ({
       <div
         className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.actionsSwitch ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
         onClick={handleClickInside}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onTouchStart={handleMouseEnter}
-        onTouchEnd={handleMouseLeave}
+        onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
+        onMouseLeave={
+          setHoverOnModal ? () => setHoverOnModal(false) : undefined
+        }
+        onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
+        onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
         <div className='flex justify-end mb-4'>
           <div

@@ -84,7 +84,11 @@ const Header = ({
             setModalOpen={setModalOpen}
             modalOpen={modalOpen}
           />
-          <LightDarkThemeSwitchButton lang={lang} modalOpen={modalOpen} />
+          <LightDarkThemeSwitchButton
+            lang={lang}
+            modalOpen={modalOpen}
+            isIn3D={true}
+          />
         </div>
       </div>
       <SearchButton

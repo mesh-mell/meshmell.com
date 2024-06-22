@@ -8,14 +8,21 @@ import Logo from "../Logo";
 type RightBottomButtonsType = {
   lang: LanguageType;
   setModalOpen: (prevState: any) => void;
+  isIn3D?: boolean;
 };
 
-const RightBottomButtons = ({ lang, setModalOpen }: RightBottomButtonsType) => {
+const RightBottomButtons = ({
+  lang,
+  setModalOpen,
+  isIn3D,
+}: RightBottomButtonsType) => {
   return (
     <>
-      <div className='fixed bottom-[10px] right-32 cursor-pointer z-[70] hidden xl:block'>
-        <Logo lang={lang} />
-      </div>
+      {isIn3D && (
+        <div className='fixed bottom-[10px] right-32 cursor-pointer z-[70] hidden xl:block'>
+          <Logo lang={lang} />
+        </div>
+      )}
       <div className='fixed bottom-[18px] right-5 cursor-pointer z-[70]'>
         <div className='flex flex-col gap-2 items-end'>
           <LanguageSwitchButton lang={lang} setModalOpen={setModalOpen} />
