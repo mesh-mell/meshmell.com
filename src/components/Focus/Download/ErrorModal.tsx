@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { ImCross } from "react-icons/im";
 import { RiShareBoxFill } from "react-icons/ri";
 
@@ -8,7 +8,7 @@ import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type DownloadErrorModalType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   isFocusedMode: boolean;
 };
 

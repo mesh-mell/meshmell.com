@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { RiShareBoxFill } from "react-icons/ri";
 
 import { useTranslation } from "@/src/i18n/client";
@@ -6,7 +7,7 @@ import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type AboutCopyrightType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
 };
 
 const AboutCopyright = ({ lang, setModalOpen }: AboutCopyrightType) => {

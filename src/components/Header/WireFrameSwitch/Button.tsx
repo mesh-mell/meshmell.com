@@ -1,5 +1,6 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 import { GiWireframeGlobe, GiStoneSphere } from "react-icons/gi";
 
 import { LanguageType } from "@/src/types/language";
@@ -7,7 +8,7 @@ import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type WireFrameSwitchButtonType = {
   lang: LanguageType;
-  setIsWireFrame: (prevState: boolean) => void;
+  setIsWireFrame: Dispatch<SetStateAction<boolean>>;
   isWireFrame: boolean;
 };
 

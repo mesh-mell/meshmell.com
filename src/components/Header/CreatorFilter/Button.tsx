@@ -8,7 +8,7 @@ import { LanguageType } from "@/src/types/language";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type CreatorFilterButtonType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
   filteredCreatorsObj: CreatorDetailsType;
   lang: LanguageType;

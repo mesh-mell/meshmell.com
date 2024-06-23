@@ -1,11 +1,12 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
 import { RiFilter3Fill } from "react-icons/ri";
 
 import { CategoryDetailsType } from "@/src/types/categories";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type CategoryFilterButtonType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   filteredCategorysObj: CategoryDetailsType;
   modalOpen: ModalOpenTypeForExhibition;
 };

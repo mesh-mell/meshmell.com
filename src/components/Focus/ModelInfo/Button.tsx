@@ -1,9 +1,10 @@
+import { Dispatch, SetStateAction } from "react";
 import { BsInfoLg } from "react-icons/bs";
 
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ModelInfoButtonType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
 };
 

@@ -1,4 +1,6 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
+
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
@@ -6,7 +8,7 @@ import FlagComponent from "./FlagComponent";
 
 type ChangeLanguageType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
 };
 
 const ChangeLanguage = ({ lang, setModalOpen }: ChangeLanguageType) => {

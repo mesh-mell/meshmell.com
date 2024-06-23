@@ -1,4 +1,5 @@
 "use client";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { ImCross } from "react-icons/im";
 
 import LanguageFlag from "@/src/components/RightBottom/Language/Flag";
@@ -7,17 +8,21 @@ import { LanguageType } from "@/src/types/language";
 import {
   ModalOpenTypeForExhibition,
   ModalOpenTypeForHome,
+  ModalOpenTypeForShare,
 } from "@/src/types/modals";
 
 type LanguageSwitchModalType<T> = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
-  setHoverOnModal?: (hoverOnModal: boolean) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
   modalOpen: T;
 };
 
 const LanguageSwitchModal = <
-  T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition,
+  T extends
+    | ModalOpenTypeForHome
+    | ModalOpenTypeForShare
+    | ModalOpenTypeForExhibition,
 >({
   lang,
   setModalOpen,
@@ -26,7 +31,7 @@ const LanguageSwitchModal = <
 }: LanguageSwitchModalType<T>) => {
   const { t } = useTranslation(lang, "main");
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

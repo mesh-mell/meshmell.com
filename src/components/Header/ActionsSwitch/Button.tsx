@@ -1,10 +1,11 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
 import { FaWalking } from "react-icons/fa";
 
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ActionsSwitchButtonType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
 };
 

@@ -1,5 +1,6 @@
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { ImCross } from "react-icons/im";
 
 import HorizontalViewIcon from "@/src/components/Svg/Views/HorizontalViewIcon";
@@ -15,8 +16,8 @@ import { views } from "@/src/utils/views";
 type ViewsSwitchModalType = {
   lang: string;
   modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: (prevState: any) => void;
-  setHoverOnModal: (hoverOnModal: boolean) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   view: viewTypes;
 };
 
@@ -58,7 +59,7 @@ const ViewsSwitchModal = ({
     }));
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

@@ -1,6 +1,6 @@
 import { useThree } from "@react-three/fiber";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import {
   Mesh,
   Object3DEventMap,
@@ -45,7 +45,7 @@ type SceneType = {
   windowType: WindowType;
   isWireFrame: boolean;
   action: string;
-  setAction: (currentAction: string) => void;
+  setAction: Dispatch<SetStateAction<string>>;
   currentPage: number;
   models: ModelDetailsType[];
   creators: CreatorDetailsType[];

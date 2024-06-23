@@ -1,5 +1,6 @@
 "use client";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { FaSearch } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
@@ -11,9 +12,9 @@ import { newRouterPush } from "@/src/utils/newRouterPush";
 type SearchModalType = {
   lang: LanguageType;
   modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   searchWord: string;
-  setSearchWord: (searchWord: string) => void;
+  setSearchWord: Dispatch<SetStateAction<string>>;
 };
 
 const SearchModal = ({
@@ -78,7 +79,7 @@ const SearchModal = ({
     }
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

@@ -1,8 +1,14 @@
 "use client";
 
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Suspense, useEffect, useState } from "react";
 
+import CreatorInfoButton from "@/src/components/Focus/CreatorInfo/Button";
+import CreatorInfoModal from "@/src/components/Focus/CreatorInfo/Modal";
+import ModelInfoButton from "@/src/components/Focus/ModelInfo/Button";
+import ModelInfoModal from "@/src/components/Focus/ModelInfo/Modal";
+import ShareModalButton from "@/src/components/Focus/Share/Button";
 import RightBottomButtons from "@/src/components/RightBottom/Buttons";
 import About from "@/src/components/RightBottom/Footer/About";
 import Contact from "@/src/components/RightBottom/Footer/Contact";
@@ -16,7 +22,7 @@ import Who from "@/src/components/RightBottom/Footer/Who";
 import LanguageSwitchModal from "@/src/components/RightBottom/Language/Modal";
 import Sponsors from "@/src/components/RightBottom/Sponsors/Modal";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForHome } from "@/src/types/modals";
+import { ModalOpenTypeForShare } from "@/src/types/modals";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 
 import HomeHeader from "../../../HomeHeader";
@@ -30,7 +36,7 @@ interface ModalProps {
 }
 
 const SingleModelScene = ({ lang, userId, modelId }: ModalProps) => {
-  const [modalOpen, setModalOpen] = useState<ModalOpenTypeForHome>({
+  const [modalOpen, setModalOpen] = useState<ModalOpenTypeForShare>({
     terms: false,
     privacy: false,
     contact: false,
@@ -44,13 +50,41 @@ const SingleModelScene = ({ lang, userId, modelId }: ModalProps) => {
     sponsors: false,
     shareThisPage: false,
     copyRight: false,
+    modelInfo: false,
+    creatorInfo: false,
+    actionsSwitch: false,
   });
 
   const creators = [defaultCreatorDetails];
 
+  const [isWireFrame, setIsWireFrame] = useState<boolean>(false);
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    setIsWireFrame(searchParams.get("wireFrame") === "on" ? true : false);
+  }, [searchParams.get("wireFrame")]);
+
   return (
     <div className={"w-[100vw] h-[100vh]"}>
       <HomeHeader lang={lang} modalOpen={modalOpen} />
+
+      <div className='z-[70] fixed p-1 bottom-[10px] left-[10px] rounded-xl'>
+        <ShareModalButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
+        <ModelInfoButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
+        <CreatorInfoButton
+          lang={lang}
+          setModalOpen={setModalOpen}
+          modalOpen={modalOpen}
+          focusedModelsSlug={focusedModelsObj.slug}
+          models={models}
+          creators={creators}
+        />
+      </div>
+
+      <ModelInfoModal lang={lang} setModalOpen={setModalOpen} />
+
+      <CreatorInfoModal lang={lang} setModalOpen={setModalOpen} />
 
       <RightBottomButtons
         lang={lang}

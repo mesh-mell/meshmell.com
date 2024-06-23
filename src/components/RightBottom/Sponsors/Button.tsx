@@ -1,4 +1,5 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
 import { FaPeopleGroup } from "react-icons/fa6";
 
 import { useTranslation } from "@/src/i18n/client";
@@ -7,7 +8,7 @@ import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type SponsorsButtonType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
 };
 
 const SponsorButton = ({ lang, setModalOpen }: SponsorsButtonType) => {

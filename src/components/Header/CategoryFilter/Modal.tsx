@@ -1,5 +1,5 @@
 import { useRouter, useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { Dispatch, MouseEvent, SetStateAction, useState } from "react";
 import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
@@ -13,9 +13,9 @@ import { newRouterPush } from "@/src/utils/newRouterPush";
 type CategoryFilterModalType = {
   lang: LanguageType;
   modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   categoryFiltersSlug: string;
-  setHoverOnModal: (hoverOnModal: boolean) => void;
+  setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   categories: CategoryDetailsType[];
 };
 
@@ -88,7 +88,7 @@ const CategoryFilterModal = ({
     }
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

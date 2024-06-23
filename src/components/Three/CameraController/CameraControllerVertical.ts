@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { Camera } from "three";
 
 import { CameraStatusType } from "@/src/types/camera";
@@ -10,7 +10,7 @@ type CameraControllerType = {
   camera: Camera;
   enabled: boolean;
   theNumberOfModel: number;
-  setSavedCameraStatus: (cameraStatus: CameraStatusType) => void;
+  setSavedCameraStatus: Dispatch<SetStateAction<CameraStatusType>>;
   windowType: WindowType;
   isFocusedMode: boolean;
 };

@@ -1,9 +1,10 @@
+import { Dispatch, SetStateAction } from "react";
 import { FaShareSquare } from "react-icons/fa";
 
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ShareModalButtonWhenListType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
 };
 

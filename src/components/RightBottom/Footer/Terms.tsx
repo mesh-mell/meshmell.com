@@ -1,3 +1,4 @@
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { ImCross } from "react-icons/im";
 
 import ContactUsParagraph from "@/src/components/RightBottom/Footer/ContactUsParagraph";
@@ -6,16 +7,22 @@ import { LanguageType } from "@/src/types/language";
 import {
   ModalOpenTypeForExhibition,
   ModalOpenTypeForHome,
+  ModalOpenTypeForShare,
 } from "@/src/types/modals";
 
 type TermsType<T> = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: T;
-  setHoverOnModal?: (hoverOnModal: boolean) => void;
+  setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
-const Terms = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
+const Terms = <
+  T extends
+    | ModalOpenTypeForHome
+    | ModalOpenTypeForShare
+    | ModalOpenTypeForExhibition,
+>({
   lang,
   setModalOpen,
   modalOpen,
@@ -42,7 +49,7 @@ const Terms = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
     ja: "利用規約",
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

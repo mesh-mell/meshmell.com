@@ -1,6 +1,12 @@
 "use client";
 import { get, ref } from "firebase/database";
-import { useEffect, useState } from "react";
+import {
+  Dispatch,
+  MouseEvent,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
@@ -8,6 +14,7 @@ import { LanguageType } from "@/src/types/language";
 import {
   ModalOpenTypeForExhibition,
   ModalOpenTypeForHome,
+  ModalOpenTypeForShare,
 } from "@/src/types/modals";
 import { SponsorInfoType } from "@/src/types/sponsors";
 import { defaultSponsorInfo } from "@/src/utils/defaultData/sponsors";
@@ -18,11 +25,16 @@ import EachSponsor from "./EachSponsor";
 type SponsorsType<T> = {
   lang: LanguageType;
   modalOpen: T;
-  setModalOpen: (prevState: any) => void;
-  setHoverOnModal?: (hoverOnModal: boolean) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
-const Sponsors = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
+const Sponsors = <
+  T extends
+    | ModalOpenTypeForHome
+    | ModalOpenTypeForShare
+    | ModalOpenTypeForExhibition,
+>({
   lang,
   setModalOpen,
   setHoverOnModal,
@@ -55,7 +67,7 @@ const Sponsors = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
     }));
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

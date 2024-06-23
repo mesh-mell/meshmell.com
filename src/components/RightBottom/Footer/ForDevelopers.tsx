@@ -1,3 +1,4 @@
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
@@ -5,17 +6,21 @@ import { LanguageType } from "@/src/types/language";
 import {
   ModalOpenTypeForExhibition,
   ModalOpenTypeForHome,
+  ModalOpenTypeForShare,
 } from "@/src/types/modals";
 
 type ForDevelopersType<T> = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: T;
-  setHoverOnModal?: (hoverOnModal: boolean) => void;
+  setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
 const ForDevelopers = <
-  T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition,
+  T extends
+    | ModalOpenTypeForHome
+    | ModalOpenTypeForShare
+    | ModalOpenTypeForExhibition,
 >({
   lang,
   setModalOpen,
@@ -24,7 +29,7 @@ const ForDevelopers = <
 }: ForDevelopersType<T>) => {
   const { t } = useTranslation(lang, "main");
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

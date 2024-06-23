@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { Dispatch, SetStateAction } from "react";
 import { RiShareBoxFill } from "react-icons/ri";
 
 import { CreatorDetailsType } from "@/src/types/creators";
@@ -6,7 +7,7 @@ import { LanguageType } from "@/src/types/language";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type CreatorInfoButtonInNotFocusedType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
   filteredCreatorsObj: CreatorDetailsType;
   lang: LanguageType;

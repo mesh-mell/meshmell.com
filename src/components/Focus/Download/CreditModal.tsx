@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { ImCross } from "react-icons/im";
 
 import CreatorInfo from "@/src/components/Focus/CreatorInfo/Contents";
@@ -9,7 +9,7 @@ import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type DownloadCreditModalType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   focusedModelsCreatorsObj: CreatorDetailsType;
   isFocusedMode: boolean;
 };

@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { BiSolidDownload } from "react-icons/bi";
 
 import LoadingForButton from "@/src/components/ModalComponents/LoadingForButton";
@@ -6,7 +7,7 @@ import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { getDownloadSum } from "@/src/utils/getDownloadSum";
 
 type DownloadButtonType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
   getFirebaseDataLoading: boolean;
   focusedModelsDownloadData: Record<string, DateItem>;

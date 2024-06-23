@@ -1,5 +1,5 @@
 import { useProgress } from "@react-three/drei";
-import { useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Puff } from "react-loader-spinner";
 
 import { useTranslation } from "@/src/i18n/client";
@@ -8,7 +8,7 @@ import { LanguageType } from "@/src/types/language";
 type LoadingForCanvasType = {
   lang: LanguageType;
   started: boolean;
-  setStarted: (started: boolean) => void;
+  setStarted: Dispatch<SetStateAction<boolean>>;
 };
 
 const LoadingForCanvas = ({

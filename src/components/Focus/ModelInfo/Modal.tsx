@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect } from "react";
+import { Dispatch, MouseEvent, SetStateAction, useEffect } from "react";
 import { ImCross } from "react-icons/im";
 import { MdUpdate } from "react-icons/md";
 import { RiShareBoxFill } from "react-icons/ri";
@@ -15,7 +15,7 @@ import { dateFormat } from "@/src/utils/dateFormat";
 type ModelInfoModalType = {
   lang: LanguageType;
   modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   focusedModelsObj: ModelDetailsType;
   focusedModelsCreatorsObj: CreatorDetailsType;
   isFocusedMode: boolean;
@@ -49,7 +49,7 @@ const ModelInfoModal = ({
     }));
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

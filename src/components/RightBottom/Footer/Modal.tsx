@@ -1,3 +1,4 @@
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { ImCross } from "react-icons/im";
 
 import Logo from "@/src/components/Logo";
@@ -7,16 +8,22 @@ import { LanguageType } from "@/src/types/language";
 import {
   ModalOpenTypeForExhibition,
   ModalOpenTypeForHome,
+  ModalOpenTypeForShare,
 } from "@/src/types/modals";
 
 type FooterType<T> = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: T;
-  setHoverOnModal?: (hoverOnModal: boolean) => void;
+  setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
-const Footer = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
+const Footer = <
+  T extends
+    | ModalOpenTypeForHome
+    | ModalOpenTypeForShare
+    | ModalOpenTypeForExhibition,
+>({
   lang,
   setModalOpen,
   modalOpen,
@@ -24,7 +31,7 @@ const Footer = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
 }: FooterType<T>) => {
   const { t } = useTranslation(lang, "main");
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

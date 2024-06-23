@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState } from "react";
+import { Dispatch, MouseEvent, SetStateAction, useState } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { ImCross } from "react-icons/im";
 
@@ -14,9 +14,9 @@ import { newRouterPush } from "@/src/utils/newRouterPush";
 type CreatorFilterModalType = {
   lang: LanguageType;
   modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   creatorFiltersSlug: string;
-  setHoverOnModal: (hoverOnModal: boolean) => void;
+  setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   creators: CreatorDetailsType[];
 };
 
@@ -80,7 +80,7 @@ const CreatorFilterModal = ({
     }
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

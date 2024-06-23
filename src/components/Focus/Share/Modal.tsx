@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Dispatch, MouseEvent, SetStateAction, useEffect } from "react";
 import { ImCross } from "react-icons/im";
 
 import SnsLinksForShareThisSite from "@/src/components/ModalComponents/SnsLinksForShareThisSite";
@@ -8,7 +8,7 @@ import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type ShareModalType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
   isFocusedMode: boolean;
 };
@@ -34,7 +34,7 @@ const ShareModal = ({
     }));
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

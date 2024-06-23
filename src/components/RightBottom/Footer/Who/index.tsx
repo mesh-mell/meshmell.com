@@ -1,3 +1,4 @@
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { ImCross } from "react-icons/im";
 
 import SNSLinksForYuri from "@/src/components/RightBottom/Footer/Who/SnsLinks/YuriNakansihi";
@@ -7,17 +8,23 @@ import { LanguageType } from "@/src/types/language";
 import {
   ModalOpenTypeForExhibition,
   ModalOpenTypeForHome,
+  ModalOpenTypeForShare,
 } from "@/src/types/modals";
 
 type WhoType<T> = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: T;
-  setHoverOnModal?: (hoverOnModal: boolean) => void;
+  setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
   creators: CreatorDetailsType[];
 };
 
-const Who = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
+const Who = <
+  T extends
+    | ModalOpenTypeForHome
+    | ModalOpenTypeForShare
+    | ModalOpenTypeForExhibition,
+>({
   lang,
   setModalOpen,
   modalOpen,
@@ -26,7 +33,7 @@ const Who = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
 }: WhoType<T>) => {
   const { t } = useTranslation(lang, "main");
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

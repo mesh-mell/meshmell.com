@@ -1,5 +1,7 @@
 "use client";
 
+import { Dispatch, SetStateAction } from "react";
+
 import HorizontalViewIcon from "@/src/components/Svg/Views/HorizontalViewIcon";
 import PerspectiveViewIcon from "@/src/components/Svg/Views/PerspectiveViewIcon";
 import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
@@ -7,7 +9,7 @@ import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { viewTypes } from "@/src/types/views";
 
 type ViewsSwitchButtonType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
   view: viewTypes;
 };

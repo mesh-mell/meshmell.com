@@ -1,4 +1,5 @@
 import { useRouter, useSearchParams } from "next/navigation";
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
@@ -10,11 +11,11 @@ import { defaultActionsDetails } from "@/src/utils/defaultData/actions";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type ActionsSwitchModalType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   lang: LanguageType;
   modalOpen: ModalOpenTypeForExhibition;
   focusedModelsObj: ModelDetailsType;
-  setHoverOnModal: (hoverOnModal: boolean) => void;
+  setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   currentAction: string;
   actions: ActionDetailsType[];
 };
@@ -61,7 +62,7 @@ const ActionsSwitchModal = ({
     }));
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

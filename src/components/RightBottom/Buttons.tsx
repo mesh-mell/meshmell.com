@@ -1,13 +1,16 @@
+import { Dispatch, SetStateAction } from "react";
+
 import FooterButton from "@/src/components/RightBottom/Footer/Button";
 import LanguageSwitchButton from "@/src/components/RightBottom/Language/Button";
 import SponsorButton from "@/src/components/RightBottom/Sponsors/Button";
 import { LanguageType } from "@/src/types/language";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 import Logo from "../Logo";
 
 type RightBottomButtonsType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   isIn3D?: boolean;
 };
 

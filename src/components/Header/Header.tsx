@@ -1,4 +1,6 @@
 "use client";
+import { Dispatch, SetStateAction } from "react";
+
 import ActionsSwitchButton from "@/src/components/Header/ActionsSwitch/Button";
 import CategoryFilterButton from "@/src/components/Header/CategoryFilter/Button";
 import CreatorFilterButton from "@/src/components/Header/CreatorFilter/Button";
@@ -16,15 +18,15 @@ import { viewTypes } from "@/src/types/views";
 
 type HeaderType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   filteredCreatorsObj: CreatorDetailsType;
   filteredCategorysObj: CategoryDetailsType;
   searchWord: string;
   modalOpen: ModalOpenTypeForExhibition;
-  setSearchWord: (searchWord: string) => void;
+  setSearchWord: Dispatch<SetStateAction<string>>;
   focusedModelsObj: ModelDetailsType;
   isWireFrame: boolean;
-  setIsWireFrame: (isWireFrame: boolean) => void;
+  setIsWireFrame: Dispatch<SetStateAction<boolean>>;
   isFocusedMode: boolean;
   view: viewTypes;
 };

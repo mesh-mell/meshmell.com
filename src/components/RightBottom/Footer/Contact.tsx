@@ -1,3 +1,4 @@
+import { Dispatch, MouseEvent, SetStateAction } from "react";
 import { ImCross } from "react-icons/im";
 
 import CopyEmail from "@/src/components/ModalComponents/CopyEmail";
@@ -6,16 +7,22 @@ import { LanguageType } from "@/src/types/language";
 import {
   ModalOpenTypeForExhibition,
   ModalOpenTypeForHome,
+  ModalOpenTypeForShare,
 } from "@/src/types/modals";
 
 type ContactType<T> = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: T;
-  setHoverOnModal?: (hoverOnModal: boolean) => void;
+  setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
-const Contact = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
+const Contact = <
+  T extends
+    | ModalOpenTypeForHome
+    | ModalOpenTypeForShare
+    | ModalOpenTypeForExhibition,
+>({
   lang,
   setModalOpen,
   modalOpen,
@@ -23,7 +30,7 @@ const Contact = <T extends ModalOpenTypeForHome | ModalOpenTypeForExhibition>({
 }: ContactType<T>) => {
   const { t } = useTranslation(lang, "main");
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

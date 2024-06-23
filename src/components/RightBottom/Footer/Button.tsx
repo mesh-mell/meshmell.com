@@ -1,9 +1,10 @@
+import { Dispatch, SetStateAction } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 type FooterButtonType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
 };
 
 const FooterButton = ({ setModalOpen }: FooterButtonType) => {

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { Dispatch, MouseEvent, SetStateAction, useEffect } from "react";
 import { ImCross } from "react-icons/im";
 
 import { useTranslation } from "@/src/i18n/client";
@@ -12,7 +12,7 @@ import Contents from "./Contents";
 type CreatorInfoModal = {
   lang: LanguageType;
   modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   focusedModelsObj: ModelDetailsType;
   focusedModelsCreatorsObj: CreatorDetailsType;
   isFocusedMode: boolean;
@@ -41,7 +41,7 @@ const CreatorInfoModal = ({
     }
   }, [isFocusedMode]);
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

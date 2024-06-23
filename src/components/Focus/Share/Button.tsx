@@ -1,16 +1,26 @@
+import { Dispatch, SetStateAction } from "react";
 import { FaShareSquare } from "react-icons/fa";
 
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import {
+  ModalOpenTypeForExhibition,
+  ModalOpenTypeForHome,
+  ModalOpenTypeForShare,
+} from "@/src/types/modals";
 
-type ShareModalButtonType = {
-  setModalOpen: (prevState: any) => void;
-  modalOpen: ModalOpenTypeForExhibition;
+type ShareModalButtonType<T> = {
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: T;
 };
 
-const ShareModalButton = ({
+const ShareModalButton = <
+  T extends
+    | ModalOpenTypeForHome
+    | ModalOpenTypeForShare
+    | ModalOpenTypeForExhibition,
+>({
   setModalOpen,
   modalOpen,
-}: ShareModalButtonType) => {
+}: ShareModalButtonType<T>) => {
   const handleClick = () => {
     setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,

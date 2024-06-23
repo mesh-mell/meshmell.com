@@ -1,6 +1,6 @@
 import { LanguageType } from "@/src/types/language";
 
-import SingleModelScene from "./SingleModelScene";
+import SingleModelScene from "./SingleModelThreeApp";
 
 const App = ({
   params,

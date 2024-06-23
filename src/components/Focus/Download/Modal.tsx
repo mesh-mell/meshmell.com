@@ -1,4 +1,10 @@
-import { useEffect, useState } from "react";
+import {
+  Dispatch,
+  MouseEvent,
+  SetStateAction,
+  useEffect,
+  useState,
+} from "react";
 import { BiSolidDownload } from "react-icons/bi";
 import { ImCross } from "react-icons/im";
 
@@ -18,14 +24,14 @@ import DownloadGraph from "./Graph";
 type DownloadModalType = {
   lang: LanguageType;
   modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: (modal: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   focusedModelsObj: ModelDetailsType;
-  setFocusedModelsDownloadData: (
-    focusedModelsDownloadData: Record<string, DateItem>,
-  ) => void;
+  setFocusedModelsDownloadData: Dispatch<
+    SetStateAction<Record<string, DateItem>>
+  >;
   focusedModelsDownloadData: Record<string, DateItem>;
   windowType: WindowType;
-  setGetFirebaseDataLoading: (getFirebaseDataLoading: boolean) => void;
+  setGetFirebaseDataLoading: Dispatch<SetStateAction<boolean>>;
   isFocusedMode: boolean;
 };
 
@@ -105,7 +111,7 @@ const DownloadModal = ({
     }));
   };
 
-  const handleClickInside = (event: any) => {
+  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
     event.stopPropagation();
   };
 

@@ -1,6 +1,13 @@
 import { useGLTF, OrbitControls, useAnimations } from "@react-three/drei";
 import { useTheme } from "next-themes";
-import { useRef, useEffect, useState } from "react";
+import {
+  useRef,
+  useEffect,
+  useState,
+  RefObject,
+  SetStateAction,
+  Dispatch,
+} from "react";
 import * as THREE from "three";
 import { MeshBasicMaterial } from "three";
 
@@ -23,13 +30,13 @@ type ModelType = {
   activeMesh: THREE.Mesh | null;
   camera: THREE.Camera;
   modelSlug: string;
-  handleMeshFocus: (e: any, meshRef: React.RefObject<THREE.Mesh>) => void;
-  setActiveMesh: (mesh: any) => void;
+  handleMeshFocus: (e: any, meshRef: RefObject<THREE.Mesh>) => void;
+  setActiveMesh: Dispatch<SetStateAction<RefObject<THREE.Mesh>>>;
   currentView: viewTypes;
   windowType: WindowType;
   isWireFrame: boolean;
   currentAction: string;
-  setAction: (currentAction: string) => void;
+  setAction: Dispatch<SetStateAction<string>>;
   models: ModelDetailsType[];
   creators: CreatorDetailsType[];
   isFocusedMode: boolean;

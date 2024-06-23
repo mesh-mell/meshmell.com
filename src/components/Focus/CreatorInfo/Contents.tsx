@@ -8,7 +8,7 @@ import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
-import CreatorSNS from "./SNS";
+import CreatorInfoSNS from "./SNS";
 
 type CreatorInfoType = {
   creatorsObj: CreatorDetailsType;
@@ -56,7 +56,7 @@ const CreatorInfo = ({ creatorsObj, lang, isFocusedMode }: CreatorInfoType) => {
       <div className='text-xl'>
         {creatorsObj.description[lang as LanguageType]}
       </div>
-      <CreatorSNS creatorsObj={creatorsObj} />
+      <CreatorInfoSNS creatorsObj={creatorsObj} />
       {isFocusedMode && (
         <div
           className='flex items-center gap-2 select-none mt-4 sm:mt-8'

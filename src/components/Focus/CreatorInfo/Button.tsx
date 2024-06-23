@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useEffect } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
@@ -9,7 +9,7 @@ import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 import { defaultModelDetails } from "@/src/utils/defaultData/models";
 
 type CreatorInfoButtonType = {
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
   focusedModelsSlug: string;
   lang: LanguageType;

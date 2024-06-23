@@ -14,31 +14,18 @@ export type ModalOpenTypeForHome = {
   copyRight: boolean;
 };
 
-export type ModalOpenTypeForExhibition = ModalOpenTypeForHome & {
-  search: boolean;
+export type ModalOpenTypeForShare = ModalOpenTypeForHome & {
   modelInfo: boolean;
-  categoryFilter: boolean;
-  download: boolean;
   creatorInfo: boolean;
-  downloadCredit: boolean;
-  creatorFilter: boolean;
   actionsSwitch: boolean;
-  downloadError: boolean;
-  viewsSwitch: boolean;
-  creatorInfoInNotFocused: boolean;
-  shareThisPageInList: boolean;
 };
 
-export type ModalOpenTypeForShare = ModalOpenTypeForExhibition & {
+export type ModalOpenTypeForExhibition = ModalOpenTypeForShare & {
   search: boolean;
-  modelInfo: boolean;
   categoryFilter: boolean;
   download: boolean;
-  creatorInfo: boolean;
   downloadCredit: boolean;
   creatorFilter: boolean;
-  copyRight: boolean;
-  actionsSwitch: boolean;
   downloadError: boolean;
   viewsSwitch: boolean;
   creatorInfoInNotFocused: boolean;

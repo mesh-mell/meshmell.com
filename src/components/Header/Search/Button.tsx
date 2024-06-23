@@ -1,4 +1,5 @@
 import { useRouter, useSearchParams } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 import { FaSearch } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
 
@@ -8,10 +9,10 @@ import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type SearchButtonType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   searchWord: string;
   modalOpen: ModalOpenTypeForExhibition;
-  setSearchWord: (searchWord: string) => void;
+  setSearchWord: Dispatch<SetStateAction<string>>;
 };
 
 const SearchButton = ({

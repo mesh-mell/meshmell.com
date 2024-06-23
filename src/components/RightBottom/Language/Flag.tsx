@@ -9,7 +9,7 @@ import FlagComponent from "./FlagComponent";
 
 type LanguagePopupType = {
   lang: LanguageType;
-  setModalOpen: (prevState: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   text: string;
 };
 

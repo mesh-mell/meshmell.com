@@ -1,7 +1,9 @@
+import { Dispatch, SetStateAction } from "react";
+
 import CancelButton from "@/src/components/Focus/CancelButton";
-import CreatorButton from "@/src/components/Focus/CreatorInfo/Button";
+import CreatorInfoButton from "@/src/components/Focus/CreatorInfo/Button";
 import DownloadButton from "@/src/components/Focus/Download/Button";
-import InfoButton from "@/src/components/Focus/ModelInfo/Button";
+import ModelInfoButton from "@/src/components/Focus/ModelInfo/Button";
 import ShareModalButton from "@/src/components/Focus/Share/Button";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { DateItem } from "@/src/types/downloadCountData";
@@ -11,7 +13,7 @@ import { ModelDetailsType } from "@/src/types/models";
 
 type InfoButtonType = {
   lang: LanguageType;
-  setModalOpen: (modal: any) => void;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   focusedModelsObj: ModelDetailsType;
   modalOpen: ModalOpenTypeForExhibition;
   focusedModelsDownloadData: Record<string, DateItem>;
@@ -37,8 +39,8 @@ const Focus = ({
       className={`z-[70] fixed p-1 bottom-[10px] left-[10px] rounded-xl ${isFocusedMode ? "block" : "hidden"}`}
     >
       <ShareModalButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
-      <InfoButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
-      <CreatorButton
+      <ModelInfoButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
+      <CreatorInfoButton
         lang={lang}
         setModalOpen={setModalOpen}
         modalOpen={modalOpen}
