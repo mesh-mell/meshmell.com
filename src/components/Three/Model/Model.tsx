@@ -262,7 +262,7 @@ const Model = ({
             ]}
           />
           {/* <meshBasicMaterial color="skyblue" /> */}
-          <meshBasicMaterial color='skyblue' transparent opacity={0} />
+          <meshBasicMaterial color="skyblue" transparent opacity={0} />
         </mesh>
 
         {/* Model */}

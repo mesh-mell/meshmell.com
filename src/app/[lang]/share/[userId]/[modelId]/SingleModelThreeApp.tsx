@@ -69,7 +69,7 @@ const SingleModelScene = ({ lang, userId, modelId }: ModalProps) => {
     <div className={"w-[100vw] h-[100vh]"}>
       <HomeHeader lang={lang} modalOpen={modalOpen} />
 
-      <div className='z-[70] fixed p-1 bottom-[10px] left-[10px] rounded-xl'>
+      <div className="z-[70] fixed p-1 bottom-[10px] left-[10px] rounded-xl">
         <ShareModalButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
         <ModelInfoButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
         <CreatorInfoButton

@@ -1,8 +1,11 @@
 "use client";
+
 import { Dispatch, SetStateAction } from "react";
 
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+
+import Button from "../../Button";
 
 import FlagComponent from "./FlagComponent";
 
@@ -21,16 +24,13 @@ const ChangeLanguage = ({ lang, setModalOpen }: ChangeLanguageType) => {
   };
 
   return (
-    <div
-      className='cursor-pointer flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-neutral-100 dark:bg-neutral-950 border-[1.5px] sm:border-[3px] border-black dark:border-white rounded-full z-[70]'
-      onClick={handleClick}
-    >
-      <div className='h-[28px] w-[28px] sm:h-8 sm:w-8 flex justify-center items-center'>
-        <div className='shadow-md w-[28px] sm:w-8'>
+    <Button handleClick={handleClick}>
+      <div className="h-[28px] w-[28px] sm:h-8 sm:w-8 flex justify-center items-center">
+        <div className="shadow-md w-[28px] sm:w-8">
           <FlagComponent lang={lang} />
         </div>
       </div>
-    </div>
+    </Button>
   );
 };
 

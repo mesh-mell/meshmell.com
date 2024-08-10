@@ -3,6 +3,8 @@ import { BsInfoLg } from "react-icons/bs";
 
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
+import Button from "../../Button";
+
 type ModelInfoButtonType = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
@@ -40,13 +42,11 @@ const ModelInfoButton = ({ setModalOpen, modalOpen }: ModelInfoButtonType) => {
   };
 
   return (
-    <div className='cursor-pointer' onClick={handleClick}>
-      <div
-        className={`${modalOpen.modelInfo ? "bg-blue-500 border-blue-500 dark:border-blue-500 text-white" : "bg-neutral-100 dark:bg-neutral-950 text-black dark:text-white border-black dark:border-white"} shadow-lg mt-2 mb-2 flex justify-center items-center rounded-full w-12 h-12 sm:w-14 sm:h-14 text-3xl sm:text-4xl border-[1.5px] sm:border-[3px]`}
-      >
+    <Button handleClick={handleClick} isActive={modalOpen.shareThisPage}>
+      <div className="text-3xl sm:text-4xl">
         <BsInfoLg />
       </div>
-    </div>
+    </Button>
   );
 };
 

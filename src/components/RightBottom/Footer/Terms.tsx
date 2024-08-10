@@ -64,7 +64,7 @@ const Terms = <
     <>
       {modalOpen.terms && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -78,45 +78,45 @@ const Terms = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-2 sm:border-4 border-black dark:border-white  rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='max-h-[90%] overflow-y-auto'>
-          <div className='mx-4'>
-            <h1 className='text-2xl font-bold mb-6'>{t("terms.h1")}</h1>
-            <p className='mb-4'>{t("terms.lastUpdated")}</p>
+        <div className="max-h-[90%] overflow-y-auto">
+          <div className="mx-4">
+            <h1 className="text-2xl font-bold mb-6">{t("terms.h1")}</h1>
+            <p className="mb-4">{t("terms.lastUpdated")}</p>
 
-            <section className='mb-6'>
-              <h2 className='text-xl font-semibold mb-2'>
+            <section className="mb-6">
+              <h2 className="text-xl font-semibold mb-2">
                 1. {t("terms.acceptanceOfTerms.h2")}
               </h2>
               <p>{t("terms.acceptanceOfTerms.p-1")}</p>
             </section>
 
-            <section className='mb-6'>
-              <h2 className='text-xl font-semibold mb-2'>
+            <section className="mb-6">
+              <h2 className="text-xl font-semibold mb-2">
                 2. {t("terms.changesToTerms.h2")}
               </h2>
               <p>{t("terms.changesToTerms.p-1")}</p>
             </section>
 
-            <section className='mb-6'>
-              <h2 className='text-xl font-semibold mb-2'>
+            <section className="mb-6">
+              <h2 className="text-xl font-semibold mb-2">
                 3. {t("terms.limitationsOfLiability.h2")}
               </h2>
               <p>{t("terms.limitationsOfLiability.p-1")}</p>
             </section>
-            <section className='mb-6'>
-              <h2 className='text-xl font-semibold mb-2'>
+            <section className="mb-6">
+              <h2 className="text-xl font-semibold mb-2">
                 4. {t("terms.governingLaw.h2")}
               </h2>
               <p>{t("terms.governingLaw.p-1")}</p>

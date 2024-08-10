@@ -1,8 +1,11 @@
 "use client";
+
 import { Dispatch, SetStateAction } from "react";
 import { FaWalking } from "react-icons/fa";
 
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+
+import Button from "../../Button";
 
 type ActionsSwitchButtonType = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
@@ -39,22 +42,9 @@ const ActionsSwitchButton = ({
   };
 
   return (
-    <>
-      <button
-        onClick={handleClick}
-        className={
-          "mt-[6px] sm:mt-[10px] relative rounded-full flex justify-center"
-        }
-      >
-        <div
-          className={`${modalOpen.actionsSwitch ? "bg-blue-500 border-blue-500" : "bg-neutral-100 dark:bg-neutral-950 border-black dark:border-white"} flex justify-center items-center h-12 sm:h-14 w-12 sm:w-14 border-[1.5px] sm:border-[3px]  rounded-full`}
-        >
-          <FaWalking
-            className={`${modalOpen.actionsSwitch ? "text-white" : "text-black dark:text-white"} text-3xl sm:text-4xl`}
-          />
-        </div>
-      </button>
-    </>
+    <Button handleClick={handleClick} isActive={modalOpen.actionsSwitch}>
+      <FaWalking />
+    </Button>
   );
 };
 

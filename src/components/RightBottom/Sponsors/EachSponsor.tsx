@@ -1,4 +1,5 @@
 "use client";
+
 import { useState, useEffect } from "react";
 
 import { LanguageType } from "@/src/types/language";
@@ -25,7 +26,7 @@ const EachSponsor = ({ sponsor, lang }: EachSponsorType) => {
   }, []);
 
   return (
-    <div key={sponsor.id} className='flex gap-2'>
+    <div key={sponsor.id} className="flex gap-2">
       <a href={sponsor.url}>
         <div
           className={`

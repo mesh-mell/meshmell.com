@@ -25,11 +25,11 @@ const SnsLinksForShareThisSite = ({ lang }: SnsLinksForShareThisSiteType) => {
 
   return (
     <>
-      <div className='flex justify-start gap-4 sm:gap-4 my-2 sm:my-6'>
-        <div className='-mt-[22px]'>
+      <div className="flex justify-start gap-4 sm:gap-4 my-2 sm:my-6">
+        <div className="-mt-[22px]">
           <CopyToClipboard text={currentUrl}>
             <span
-              className='text-blue-600 dark:text-blue-400 ml-1'
+              className="text-blue-600 dark:text-blue-400 ml-1"
               onClick={notify}
             >
               <FiCopy size={28} />
@@ -39,25 +39,25 @@ const SnsLinksForShareThisSite = ({ lang }: SnsLinksForShareThisSiteType) => {
         </div>
         <a
           href={` https://twitter.com/intent/tweet?text=${currentUrl}`}
-          aria-label='Share on X'
+          aria-label="Share on X"
         >
-          <div className='mt-1'>
+          <div className="mt-1">
             <RiTwitterXFill size={22} />
           </div>
         </a>
         <a
           href={`https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`}
-          aria-label='Share on Facebook'
+          aria-label="Share on Facebook"
         >
-          <div className='text-blue-500'>
+          <div className="text-blue-500">
             <AiFillFacebook size={28} />
           </div>
         </a>
         <a
           href={`https://www.instagram.com/?url=${currentUrl}`}
-          aria-label='Share on Instagram'
+          aria-label="Share on Instagram"
         >
-          <div className='text-pink-500'>
+          <div className="text-pink-500">
             <FaSquareInstagram size={28} />
           </div>
         </a>

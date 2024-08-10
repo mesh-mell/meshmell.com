@@ -6,6 +6,8 @@ import { DateItem } from "@/src/types/downloadCountData";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { getDownloadSum } from "@/src/utils/getDownloadSum";
 
+import Button from "../../Button";
+
 type DownloadButtonType = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
@@ -50,21 +52,18 @@ const DownloadButton = ({
   };
 
   return (
-    <div
-      className={`${modalOpen.download ? "bg-blue-500 border-blue-500 dark:border-blue-500 text-white" : "bg-neutral-100 dark:bg-neutral-950 text-black dark:text-white border-black dark:border-white"} cursor-pointer shadow-lg mt-2 mb-2 flex flex-col justify-center items-center rounded-full w-12 h-16 sm:w-14 sm:h-20 border-[1.5px] sm:border-[3px]`}
-      onClick={handleClick}
-    >
-      <div className='mx-auto text-3xl sm:text-4xl'>
+    <Button handleClick={handleClick} isActive={modalOpen.download}>
+      <div className="mx-auto text-3xl sm:text-4xl">
         <BiSolidDownload />
       </div>
-      <div className='text-center select-none'>
+      <div className="text-center select-none">
         {getFirebaseDataLoading ? (
-          <LoadingForButton height='20' width='20' />
+          <LoadingForButton height="20" width="20" />
         ) : (
           getDownloadSum(focusedModelsDownloadData)
         )}
       </div>
-    </div>
+    </Button>
   );
 };
 

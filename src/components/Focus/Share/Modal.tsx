@@ -49,7 +49,7 @@ const ShareModal = ({
     <>
       {modalOpen.shareThisPage && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -57,19 +57,19 @@ const ShareModal = ({
         className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] left-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.shareThisPage ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:-translate-x-full"}`}
         onClick={handleClickInside}
       >
-        <div className='flex justify-start mb-4'>
+        <div className="flex justify-start mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-xl font-bold'>
+            <button className="text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <h2 className='text-3xl font-bold'>{t("shareThisPage.title")}</h2>
+        <h2 className="text-3xl font-bold">{t("shareThisPage.title")}</h2>
         <SnsLinksForShareThisSite lang={lang} />
       </div>
     </>

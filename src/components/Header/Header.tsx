@@ -1,4 +1,5 @@
 "use client";
+
 import { Dispatch, SetStateAction } from "react";
 
 import ActionsSwitchButton from "@/src/components/Header/ActionsSwitch/Button";
@@ -47,8 +48,8 @@ const Header = ({
 }: HeaderType) => {
   return (
     <>
-      <div className='fixed top-0 left-0 w-full bg-transparent z-50'>
-        <div className='flex justify-center sm:justify-end gap-1 sm:gap-4 2xs:gap-4 mx-[0.5vw] '>
+      <div className="fixed top-0 left-0 w-full bg-transparent z-50">
+        <div className="flex justify-center sm:justify-end gap-1 sm:gap-4 2xs:gap-4 mx-[0.5vw] ">
           {isFocusedMode && focusedModelsObj.actions && (
             <ActionsSwitchButton
               setModalOpen={setModalOpen}

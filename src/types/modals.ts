@@ -9,7 +9,7 @@ export type ModalOpenTypeForHome = {
   forSponsors: boolean;
   lightAndDarkTheme: boolean;
   sponsors: boolean;
-  footer: false;
+  footer: boolean;
   shareThisPage: boolean;
   copyRight: boolean;
 };

@@ -64,7 +64,7 @@ const PrivacyPolicy = <
     <>
       {modalOpen.privacy && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -78,33 +78,33 @@ const PrivacyPolicy = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='max-h-[90%] overflow-y-auto'>
-          <h1 className='text-2xl font-bold mb-6'>{t("privacyPolicy.h1")}</h1>
+        <div className="max-h-[90%] overflow-y-auto">
+          <h1 className="text-2xl font-bold mb-6">{t("privacyPolicy.h1")}</h1>
 
-          <p className='mb-4'>{t("privacyPolicy.lastUpdated")}</p>
+          <p className="mb-4">{t("privacyPolicy.lastUpdated")}</p>
 
-          <section className='mb-6'>
-            <h2 className='text-xl font-semibold mb-2'>
+          <section className="mb-6">
+            <h2 className="text-xl font-semibold mb-2">
               1. {t("privacyPolicy.informationWeCollect.h2")}
             </h2>
             <p>{t("privacyPolicy.informationWeCollect.p-1")}</p>
             <p>{t("privacyPolicy.informationWeCollect.p-2")}</p>
           </section>
 
-          <section className='mb-6'>
-            <h2 className='text-xl font-semibold mb-2'>
+          <section className="mb-6">
+            <h2 className="text-xl font-semibold mb-2">
               2. {t("privacyPolicy.changesToThisPrivacyPolicy.h2")}
             </h2>
             <p>{t("privacyPolicy.changesToThisPrivacyPolicy.p-1")}</p>

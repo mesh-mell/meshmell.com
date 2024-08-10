@@ -1,10 +1,13 @@
 "use client";
+
 import { Dispatch, SetStateAction } from "react";
 import { FaPeopleGroup } from "react-icons/fa6";
 
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+
+import Button from "../../Button";
 
 type SponsorsButtonType = {
   lang: LanguageType;
@@ -36,17 +39,12 @@ const SponsorButton = ({ lang, setModalOpen }: SponsorsButtonType) => {
   }
 
   return (
-    <>
-      <div
-        className='cursor-pointer flex flex-col justify-center items-center w-[70px] h-12 sm:w-[70px] sm:h-14 bg-neutral-100 dark:bg-neutral-950 border-[1.5px] sm:border-[3px] border-black dark:border-white  rounded-md'
-        onClick={handleClick}
-      >
-        <div className='p-1 flex flex-col justify-center'>
-          <FaPeopleGroup className='text-3xl sm:text-4xl mx-auto' />
-          <div className={classNameForButton}>{t("sponsors.title")}</div>
-        </div>
+    <Button handleClick={handleClick}>
+      <div className="p-1 flex flex-col justify-center">
+        <FaPeopleGroup className="text-3xl sm:text-4xl mx-auto" />
+        <div className={classNameForButton}>{t("sponsors.title")}</div>
       </div>
-    </>
+    </Button>
   );
 };
 

@@ -59,7 +59,7 @@ const Who = <
     <>
       {modalOpen.who && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -73,27 +73,27 @@ const Who = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='mx-4'>
-          <section className='mb-8 flex flex-col min-h-screen w-full'>
+        <div className="mx-4">
+          <section className="mb-8 flex flex-col min-h-screen w-full">
             <h1 className={"text-2xl mb-6 font-bold"}>{t("who.developers")}</h1>
             {developersInfo.map((developer: CreatorDetailsType) => (
-              <div key={developer.slug} className='mb-4'>
-                <div className='text-xl'>
+              <div key={developer.slug} className="mb-4">
+                <div className="text-xl">
                   {developer.name[lang as LanguageType]}
                 </div>
-                <div className='text-base mb-2'>
+                <div className="text-base mb-2">
                   {developer.description[lang as LanguageType]}
                 </div>
                 <SNSLinksForYuri />

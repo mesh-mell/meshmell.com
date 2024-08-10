@@ -51,7 +51,7 @@ const ForSponsors = <
     <>
       {modalOpen.forSponsors && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -65,24 +65,24 @@ const ForSponsors = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='z-100 mx-6'>
-          <h1 className='text-2xl font-bold mb-6'>{t("forSponsors.title")}</h1>
-          <div className='flex flex-col text-base gap-2 mt-6 max-w-xl mx-auto'>
+        <div className="z-100 mx-6">
+          <h1 className="text-2xl font-bold mb-6">{t("forSponsors.title")}</h1>
+          <div className="flex flex-col text-base gap-2 mt-6 max-w-xl mx-auto">
             <p>{t("forSponsors.description")}</p>
-            <div className='bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800'>
-              <h3 className='text-2xl font-bold mb-2'>
+            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
+              <h3 className="text-2xl font-bold mb-2">
                 {t("forSponsors.donation.oneThousand.title")}
               </h3>
               <ul>
@@ -100,8 +100,8 @@ const ForSponsors = <
                 </li>
               </ul>
             </div>
-            <div className='bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800'>
-              <h3 className='text-2xl font-bold mb-2'>
+            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
+              <h3 className="text-2xl font-bold mb-2">
                 {t("forSponsors.donation.fiveHundred.title")}
               </h3>
               <ul>
@@ -119,8 +119,8 @@ const ForSponsors = <
                 </li>
               </ul>
             </div>
-            <div className='bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800'>
-              <h3 className='text-2xl font-bold mb-2'>
+            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
+              <h3 className="text-2xl font-bold mb-2">
                 {t("forSponsors.donation.oneHundred.title")}
               </h3>
               <ul>

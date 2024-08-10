@@ -1,9 +1,12 @@
 "use client";
+
 import { Dispatch, SetStateAction } from "react";
 import { RiFilter3Fill } from "react-icons/ri";
 
 import { CategoryDetailsType } from "@/src/types/categories";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+
+import Button from "../../Button";
 
 type CategoryFilterButtonType = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
@@ -47,25 +50,16 @@ const CategoryFilterButton = ({
   };
 
   return (
-    <>
-      <button
-        onClick={handleClick}
-        className={
-          "mt-[6px] sm:mt-[10px] relative rounded-full flex justify-center select-none"
-        }
-      >
-        <div
-          className={`${modalOpen.categoryFilter ? "bg-blue-500 border-blue-500" : "bg-neutral-100 dark:bg-neutral-950 border-black dark:border-white "} px-[4px] sm:px-[8px] flex justify-center items-center h-12 sm:h-14  border-[1.5px] sm:border-[3px] rounded-[18px] sm:rounded-[24px]`}
-        >
-          <RiFilter3Fill
-            className={`${modalOpen.categoryFilter ? "text-white" : "text-black dark:text-white"} text-3xl sm:text-4xl`}
-          />
-          <div className='w-[28px] sm:w-[30px] h-[28px] sm:h-[30px] text-3xl sm:text-4xl flex justify-center items-center -mt-1'>
-            {filteredCategorysObj.icon}
-          </div>
-        </div>
-      </button>
-    </>
+    <Button
+      handleClick={handleClick}
+      isActive={modalOpen.categoryFilter}
+      hasTwoIcons
+    >
+      <RiFilter3Fill className="text-3xl sm:text-4xl" />
+      <div className="w-[28px] sm:w-[30px] h-[28px] sm:h-[30px] text-3xl sm:text-4xl flex justify-center items-center -mt-1">
+        {filteredCategorysObj.icon}
+      </div>
+    </Button>
   );
 };
 

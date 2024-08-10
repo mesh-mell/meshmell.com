@@ -10,10 +10,10 @@ const LoadingForButton = ({ height, width }: LoadingForButtonType) => {
     <Oval
       height={height}
       width={width}
-      color='#4fa94d'
-      ariaLabel='tail-spin-loading'
+      color="#4fa94d"
+      ariaLabel="tail-spin-loading"
       wrapperStyle={{}}
-      wrapperClass=''
+      wrapperClass=""
       visible={true}
       strokeWidth={2}
       strokeWidthSecondary={5}

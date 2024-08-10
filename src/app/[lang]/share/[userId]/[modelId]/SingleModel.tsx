@@ -69,7 +69,7 @@ const ModelPage = ({ userId, modelId }: ModelPageType) => {
         <primitive object={GltfModel.scene} />
         <mesh ref={meshRef} position={[0, 0, 0]} visible={true}>
           <boxGeometry args={[10, 10, 10]} />
-          <meshBasicMaterial color='skyblue' />
+          <meshBasicMaterial color="skyblue" />
         </mesh>
       </mesh>
     </>

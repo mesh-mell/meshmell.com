@@ -41,37 +41,37 @@ const LoadingForCanvas = ({
       <div
         className={`fixed top-0 right-0 w-screen h-screen border flex flex-col justify-center items-center bg-gradient-to-r from-purple-600 to-orange-500 z-[1000] ${started ? "hidden" : "flex"}`}
       >
-        <h1 className='text-white text-5xl mb-4 font-bold'>
+        <h1 className="text-white text-5xl mb-4 font-bold">
           {t("loadingForCanvas.name")}
         </h1>
-        <div className='mt-4 py-2'>
+        <div className="mt-4 py-2">
           {showStartButton ? (
             <button
-              className='px-6 bg-[#ffffff] text-violet-800 font-extrabold text-3xl rounded transition duration-300 h-[100px] my-[50px]'
+              className="px-6 bg-[#ffffff] text-violet-800 font-extrabold text-3xl rounded transition duration-300 h-[100px] my-[50px]"
               onClick={handleStartClick}
             >
               {t("loadingForCanvas.start")}
             </button>
           ) : (
             <Puff
-              height='200'
-              width='200'
+              height="200"
+              width="200"
               radius={1}
-              color='white'
-              ariaLabel='puff-loading'
+              color="white"
+              ariaLabel="puff-loading"
               wrapperStyle={{}}
-              wrapperClass=''
+              wrapperClass=""
               visible={true}
             />
           )}
         </div>
-        <div className='text-white'>
+        <div className="text-white">
           {maxProgress === 100 ? (
-            <div className='text-2xl mt-2'>{t("loadingForCanvas.loaded")}</div>
+            <div className="text-2xl mt-2">{t("loadingForCanvas.loaded")}</div>
           ) : (
-            <div className='text-2xl mt-2'>{t("loadingForCanvas.loading")}</div>
+            <div className="text-2xl mt-2">{t("loadingForCanvas.loading")}</div>
           )}
-          <div className='text-center text-2xl'>
+          <div className="text-center text-2xl">
             {Math.floor(maxProgress)} %
           </div>
         </div>

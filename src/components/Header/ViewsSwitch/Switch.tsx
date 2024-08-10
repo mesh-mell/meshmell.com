@@ -74,7 +74,7 @@ const ViewsSwitchModal = ({
     <>
       {modalOpen.viewsSwitch && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -88,20 +88,20 @@ const ViewsSwitchModal = ({
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='w-[180px] flex flex-col gap-8'>
-          <h2 className='text-2xl font-bold'>{t("viewsSwitch.switchView")}</h2>
+        <div className="w-[180px] flex flex-col gap-8">
+          <h2 className="text-2xl font-bold">{t("viewsSwitch.switchView")}</h2>
           {views.map(
             ({
               slug,
@@ -125,8 +125,8 @@ const ViewsSwitchModal = ({
                   className={`group select-none p-2 rounded-md ${slug === view ? "bg-emerald-500 text-white dark:text-black fill-white dark:fill-black" : "fill-black dark:fill-white hover:text-blue-700 dark:hover:text-blue-300 hover:fill-blue-700 dark:hover:fill-blue-300"} ${slug === "horizontal" ? "hidden sm:block" : "block md:block"}`}
                   onClick={() => handleClick(slug)}
                 >
-                  <div className='flex flex-col'>
-                    <div className='text-xl font-semibold mb-[6px]'>
+                  <div className="flex flex-col">
+                    <div className="text-xl font-semibold mb-[6px]">
                       {name[lang as LanguageType]}
                     </div>
                     <div

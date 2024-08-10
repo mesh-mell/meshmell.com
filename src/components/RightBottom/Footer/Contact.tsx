@@ -52,7 +52,7 @@ const Contact = <
     <>
       {modalOpen.contact && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -66,21 +66,21 @@ const Contact = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='z-1'>
+        <div className="z-1">
           <h1 className={"text-2xl mb-4 font-bold"}>{t("contact.contact")}</h1>
-          <p className='mt-12 text-base'>{t("contact.email")}</p>
+          <p className="mt-12 text-base">{t("contact.email")}</p>
           <CopyEmail lang={lang} />
         </div>
       </div>

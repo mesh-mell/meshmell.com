@@ -59,15 +59,15 @@ const DownloadGraph = ({
   }
 
   return (
-    <div className='relative flex flex-col justify-center mx-auto w-[280px] sm:w-[330px] h-[200px]'>
-      <div className='text-center text-lg font-medium'>
+    <div className="relative flex flex-col justify-center mx-auto w-[280px] sm:w-[330px] h-[200px]">
+      <div className="text-center text-lg font-medium">
         {t("download.downloads")}
         {getDownloadSum(focusedModelsDownloadData)}
       </div>
       <ResponsiveContainer
-        width='100%'
+        width="100%"
         height={100}
-        className='flex justify-center items-center'
+        className="flex justify-center items-center"
       >
         <AreaChart
           data={formattedData}
@@ -81,25 +81,25 @@ const DownloadGraph = ({
         >
           <CartesianGrid opacity={0.1} vertical={false} />
           <defs>
-            <linearGradient id='color' x1='0' y1='0' x2='0' y2='1'>
-              <stop offset='5%' stopColor='#8884d8' stopOpacity={0.8} />
-              <stop offset='95%' stopColor='#8884d8' stopOpacity={0.05} />
+            <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8} />
+              <stop offset="95%" stopColor="#8884d8" stopOpacity={0.05} />
             </linearGradient>
           </defs>
           <XAxis
-            dataKey='date'
+            dataKey="date"
             tickFormatter={() => ""}
             tick={{ fontSize: "12px" }}
           />
           <YAxis tickFormatter={(value) => value.toFixed(0)} tickCount={3} />
           <Tooltip content={<CustomTooltip />} />
           <Area
-            type='monotone'
-            dataKey='downloadCount'
-            stroke='#8884d8'
+            type="monotone"
+            dataKey="downloadCount"
+            stroke="#8884d8"
             strokeWidth={2}
             fillOpacity={1}
-            fill='url(#color)'
+            fill="url(#color)"
           />
         </AreaChart>
       </ResponsiveContainer>
@@ -112,9 +112,9 @@ const CustomTooltip = ({ lang, active, payload, label }: any) => {
 
   if (active) {
     return (
-      <div className='bg-white p-2 rounded-md shadow-md absolute mx-[65px] w-[230px] h-[70px] left-1/2 top-1/2 transform translate-y-[130%]'>
-        <p className='text-gray-500 text-lg'>{`${moment(label).format("YYYY-MM-DD")}`}</p>
-        <p className='text-orange-400 text-base font-bold'>{`${t("download.uniqueDownloads")}${payload[0].value}`}</p>
+      <div className="bg-white p-2 rounded-md shadow-md absolute mx-[65px] w-[230px] h-[70px] left-1/2 top-1/2 transform translate-y-[130%]">
+        <p className="text-gray-500 text-lg">{`${moment(label).format("YYYY-MM-DD")}`}</p>
+        <p className="text-orange-400 text-base font-bold">{`${t("download.uniqueDownloads")}${payload[0].value}`}</p>
       </div>
     );
   }

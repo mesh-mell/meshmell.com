@@ -99,7 +99,7 @@ const RootLayout = ({
       <head>
         <GoogleAnalytics />
       </head>
-      <body className='bg-sky-100 text-black dark:bg-sky-950 dark:text-white'>
+      <body className="bg-sky-100 text-black dark:bg-sky-950 dark:text-white">
         <UserProvider>
           <ThemeProviders>{children}</ThemeProviders>
         </UserProvider>

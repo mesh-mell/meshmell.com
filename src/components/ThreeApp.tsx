@@ -1,4 +1,5 @@
 "use client";
+
 import { Canvas } from "@react-three/fiber";
 import { get, ref } from "firebase/database";
 import { useSearchParams } from "next/navigation";
@@ -266,7 +267,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
 
   return (
     <>
-      <div className='flex mx-auto'>
+      <div className="flex mx-auto">
         <div className={"w-[100vw] h-[100vh]"}>
           <Header
             lang={lang}

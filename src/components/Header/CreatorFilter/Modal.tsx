@@ -93,14 +93,14 @@ const CreatorFilterModal = ({
 
   const allButton = (
     <div className={"select-none rounded-md"} onClick={() => handleClick("")}>
-      <div className='flex gap-4'>
+      <div className="flex gap-4">
         <div
           className={`rounded-md px-2 py-1 flex ${creatorFiltersSlug === "" ? " bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300 border-2"}`}
         >
-          <div className='text-3xl'>
+          <div className="text-3xl">
             <BsFillPersonFill />
           </div>
-          <div className='text-xl'>{t("creatorFilter.searchAll")}</div>
+          <div className="text-xl">{t("creatorFilter.searchAll")}</div>
         </div>
       </div>
     </div>
@@ -110,7 +110,7 @@ const CreatorFilterModal = ({
     <>
       {modalOpen.creatorFilter && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -124,39 +124,39 @@ const CreatorFilterModal = ({
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <h2 className='text-2xl font-bold mb-4'>
+        <h2 className="text-2xl font-bold mb-4">
           {t("creatorFilter.filterByCreator")}
         </h2>
         {allButton}
-        <div className='flex items-center gap-2'>
+        <div className="flex items-center gap-2">
           <input
             onKeyDown={handleKeyPress}
-            type='text'
+            type="text"
             placeholder={t("creatorFilter.searchCreators")}
             value={searchTerm}
             onChange={handleSearchChange}
-            className='p-2 border border-gray-300 rounded w-[150px] sm:w-auto'
+            className="p-2 border border-gray-300 rounded w-[150px] sm:w-auto"
           />
           <button
             onClick={() => setSearchTerm("")}
-            className='px-2 py-1 text-white bg-blue-500 rounded'
+            className="px-2 py-1 text-white bg-blue-500 rounded"
           >
             {t("creatorFilter.clear")}
           </button>
         </div>
-        <div className='flex flex-col gap-2 sm:gap-6 max-h-[70%] overflow-y-auto'>
+        <div className="flex flex-col gap-2 sm:gap-6 max-h-[70%] overflow-y-auto">
           {filteredCreators.map(({ name, slug }) => {
             const creatorsPath = slug ? slug : "placeHolder";
 
@@ -166,10 +166,10 @@ const CreatorFilterModal = ({
                 className={`select-none rounded-md ${creatorFiltersSlug === slug ? " bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300"}`}
                 onClick={() => handleClick(slug)}
               >
-                <div className='flex gap-4 py-2 px-1'>
+                <div className="flex gap-4 py-2 px-1">
                   <div>
                     {slug === "all" ? (
-                      <div className='text-3xl'>
+                      <div className="text-3xl">
                         <BsFillPersonFill />
                       </div>
                     ) : (
@@ -178,7 +178,7 @@ const CreatorFilterModal = ({
                         width={30}
                         height={30}
                         alt={name[lang as LanguageType]}
-                        className='rounded-md'
+                        className="rounded-md"
                       />
                     )}
                   </div>

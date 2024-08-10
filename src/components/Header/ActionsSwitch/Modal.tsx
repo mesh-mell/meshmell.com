@@ -77,7 +77,7 @@ const ActionsSwitchModal = ({
     <>
       {modalOpen.actionsSwitch && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -91,21 +91,21 @@ const ActionsSwitchModal = ({
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='flex flex-col gap-8'>
-          <h2 className='text-2xl font-bold'>{t("actionsSwitch.title")}</h2>
-          <div className='max-h-[80%] overflow-y-auto flex flex-col gap-2'>
+        <div className="flex flex-col gap-8">
+          <h2 className="text-2xl font-bold">{t("actionsSwitch.title")}</h2>
+          <div className="max-h-[80%] overflow-y-auto flex flex-col gap-2">
             <div
               onClick={() => handleClick("none")}
               className={`${currentAction === "none" ? "bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300 border-2"} cursor-pointer rounded-md px-2 py-1 flex justify-between items-center`}
@@ -120,7 +120,7 @@ const ActionsSwitchModal = ({
                   className={`${currentAction === slug ? "bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300 border-2"} cursor-pointer rounded-md px-2 py-1 flex justify-between items-center`}
                 >
                   <div>{name[lang as LanguageType]}</div>
-                  <div className='mr-2 mb-2 w-20 rounded-md '>{icon}</div>
+                  <div className="mr-2 mb-2 w-20 rounded-md ">{icon}</div>
                 </div>
               ),
             )}

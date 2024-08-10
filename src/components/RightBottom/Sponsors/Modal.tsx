@@ -1,4 +1,5 @@
 "use client";
+
 import { get, ref } from "firebase/database";
 import {
   Dispatch,
@@ -82,7 +83,7 @@ const Sponsors = <
     <>
       {modalOpen.sponsors && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -96,19 +97,19 @@ const Sponsors = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white  rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold text-black dark:text-white'>
+            <button className="text-base sm:text-xl font-bold text-black dark:text-white">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='text-white'>
+        <div className="text-white">
           <h2
             className={`font-bold ${lang === "en" ? "text-3xl sm:text-4xl" : "text-2xl sm:text-3xl"} mb-8 text-center text-black dark:text-white`}
           >
@@ -116,7 +117,7 @@ const Sponsors = <
             <br />
             {t("sponsors.thankTo_2")}
           </h2>
-          <div className='flex gap-x-[12px] gap-y-0 flex-wrap justify-center'>
+          <div className="flex gap-x-[12px] gap-y-0 flex-wrap justify-center">
             {sponsors.map((sponsor: SponsorInfoType) => (
               <EachSponsor key={sponsor.id} sponsor={sponsor} lang={lang} />
             ))}

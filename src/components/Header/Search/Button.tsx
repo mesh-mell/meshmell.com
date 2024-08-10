@@ -7,6 +7,8 @@ import { LanguageType } from "@/src/types/language";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
+import Button from "../../Button";
+
 type SearchButtonType = {
   lang: LanguageType;
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
@@ -71,40 +73,39 @@ const SearchButton = ({
   };
 
   return (
-    <div
-      className={`${modalOpen.search ? "bg-blue-500 border-blue-500" : "bg-neutral-100 dark:bg-neutral-950 border-black x dark:border-white"} fixed top-[60px] sm:top-[80px] left-[10px] flex cursor-pointer justify-start items-center z-[70] rounded-[18px] sm:rounded-[24px] border-[1.5px] sm:border-[3px]`}
-    >
-      <div
-        className={` ${searchWord !== "" ? "rounded-l-full" : "rounded-full"} px-1 flex justify-center items-center ${isSearchWordEmpty ? "w-12 sm:w-14" : ""} h-12 sm:h-14 `}
-        aria-label='Open Search Page'
-        onClick={handleClick}
-      >
-        <FaSearch
-          className={`${modalOpen.search ? "text-white" : "text-black dark:text-white"} text-3xl sm:text-4xl`}
-        />
-        <div className='text-2xl sm:text-3xl -mt-[3px] sm:-mt-[5px]'>
-          {searchWord.substring(0, 5)}
-        </div>
-      </div>
-
-      {searchWord !== "" && (
+    <div className="fixed top-[60px] sm:top-[80px] left-[10px]">
+      <Button handleClick={handleClick} isActive={modalOpen.search}>
+        <FaSearch className="text-3xl sm:text-4xl" />
+      </Button>
+      <div>
         <div
-          className={
-            "pr-1 flex justify-center items-center rounded-r-full h-12 sm:h-14"
-          }
+          className={` ${searchWord !== "" ? "rounded-l-full" : "rounded-full"} px-1 flex justify-center items-center ${isSearchWordEmpty ? "w-12 sm:w-14" : ""} h-12 sm:h-14 `}
+          aria-label="Open Search Page"
         >
-          <div
-            onClick={handleReset}
-            className={
-              "ml-1 flex justify-center items-center w-8 h-8 sm:w-10 sm:h-10 border-2 border-black dark:border-white rounded-full z-60"
-            }
-          >
-            <button className='dark:text-white text-base sm:text-xl'>
-              <ImCross />
-            </button>
+          <div className="text-2xl sm:text-3xl -mt-[3px] sm:-mt-[5px]">
+            {searchWord.substring(0, 5)}
           </div>
         </div>
-      )}
+
+        {searchWord !== "" && (
+          <div
+            className={
+              "pr-1 flex justify-center items-center rounded-r-full h-12 sm:h-14"
+            }
+          >
+            <div
+              onClick={handleReset}
+              className={
+                "ml-1 flex justify-center items-center w-8 h-8 sm:w-10 sm:h-10 border-2 border-black dark:border-white rounded-full z-60"
+              }
+            >
+              <button className="dark:text-white text-base sm:text-xl">
+                <ImCross />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

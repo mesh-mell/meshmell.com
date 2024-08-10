@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { FaHouseUser } from "react-icons/fa";
 
@@ -6,7 +7,7 @@ const UserPageButton = () => {
   return (
     <>
       <Link
-        href='/en/aaa/aaa'
+        href="/en/aaa/aaa"
         className={
           "mt-[6px] sm:mt-[10px] relative rounded-full flex justify-center}"
         }

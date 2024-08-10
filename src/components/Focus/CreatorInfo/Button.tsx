@@ -8,6 +8,8 @@ import { ModelDetailsType } from "@/src/types/models";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 import { defaultModelDetails } from "@/src/utils/defaultData/models";
 
+import Button from "../../Button";
+
 type CreatorInfoButtonType = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
@@ -70,18 +72,15 @@ const CreatorInfoButton = ({
   };
 
   return (
-    <div
-      className={`${modalOpen.creatorInfo ? "bg-blue-500 border-blue-500 dark:border-blue-500 text-white" : "bg-neutral-100 dark:bg-neutral-950 text-black dark:text-white border-black dark:border-white"} cursor-pointer shadow-lg mt-2 mb-2 flex justify-center items-center rounded-full w-12 h-12 sm:w-14 select-none sm:h-14 text-3xl sm:text-4xl border-[1.5px] sm:border-[3px]`}
-      onClick={handleClick}
-    >
+    <Button handleClick={handleClick} isActive={modalOpen.creatorInfo}>
       <Image
         src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorSlug}/img.webp`}
         width={30}
         height={30}
         alt={focusedModelsSlugsCreator.name[lang as LanguageType]}
-        className='rounded-md'
+        className="rounded-md"
       />
-    </div>
+    </Button>
   );
 };
 

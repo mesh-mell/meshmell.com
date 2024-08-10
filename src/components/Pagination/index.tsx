@@ -1,4 +1,5 @@
 "use client";
+
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import {
@@ -97,20 +98,20 @@ const Pagination = ({
 
   return (
     <>
-      <div className='fixed bottom-10 left-0 w-full bg-transparent z-50 text-3xl'>
-        <div className='absolute bottom-1 -translate-x-2/4 left-2/4'>
-          <div className='flex gap-1 justify-center select-none'>
+      <div className="fixed bottom-10 left-0 w-full bg-transparent z-50 text-3xl">
+        <div className="absolute bottom-1 -translate-x-2/4 left-2/4">
+          <div className="flex gap-1 justify-center select-none">
             {currentPage > 1 ? (
               <div
-                className='cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 hover:dark:border-blue-700 px-[5px] mt-[2px]'
+                className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 hover:dark:border-blue-700 px-[5px] mt-[2px]"
                 onClick={goToPreviousPage}
               >
                 <MdOutlineKeyboardDoubleArrowLeft />
               </div>
             ) : (
-              <div className='w-[40px]'></div>
+              <div className="w-[40px]"></div>
             )}
-            <div className='flex gap-1'>
+            <div className="flex gap-1">
               {getPageRange().map((page, index) => {
                 const buttonClass =
                   page === currentPage
@@ -123,7 +124,7 @@ const Pagination = ({
 
                 if (page === "...") {
                   return (
-                    <span key={index} className='px-[10px] py-0.5 xs:py-1'>
+                    <span key={index} className="px-[10px] py-0.5 xs:py-1">
                       ...
                     </span>
                   );
@@ -142,13 +143,13 @@ const Pagination = ({
             </div>
             {currentPage < totalPages ? (
               <div
-                className='cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 hover:dark:border-blue-700 px-[5px] mt-[2px]'
+                className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 hover:dark:border-blue-700 px-[5px] mt-[2px]"
                 onClick={goToNextPage}
               >
                 <MdOutlineKeyboardDoubleArrowRight />
               </div>
             ) : (
-              <div className='w-[40px]'></div>
+              <div className="w-[40px]"></div>
             )}
           </div>
         </div>

@@ -1,4 +1,5 @@
 "use client";
+
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
 
@@ -30,8 +31,8 @@ const LanguageFlag = ({ lang, setModalOpen, text }: LanguagePopupType) => {
       href={`/${lang}/${cleanedPathname}/?${searchParams}`}
       onClick={handleClickClose}
     >
-      <div className='flex cursor-pointer'>
-        <div className='w-8 h-6 shadow-md'>
+      <div className="flex cursor-pointer">
+        <div className="w-8 h-6 shadow-md">
           <FlagComponent lang={lang} />
         </div>
         <div className={"select-none ml-2"}>{text}</div>

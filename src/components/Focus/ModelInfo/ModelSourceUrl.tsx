@@ -18,13 +18,13 @@ const ModelSourceUrl = ({ lang, sourceUrl }: ModelSourceUrlType) => {
     .split("/")[0];
 
   return (
-    <div className='text-xl cursor-pointer flex'>
-      <span className='w-8'>
-        <MdOutlineSource className='mt-[3px] pl-1 text-2xl' />
+    <div className="text-xl cursor-pointer flex">
+      <span className="w-8">
+        <MdOutlineSource className="mt-[3px] pl-1 text-2xl" />
       </span>
-      <span className='ml-1 sm:ml-2'>
+      <span className="ml-1 sm:ml-2">
         {t("modelSourceUrl.source1")}
-        <a href={sourceUrl} className='text-blue-600 dark:text-blue-400'>
+        <a href={sourceUrl} className="text-blue-600 dark:text-blue-400">
           {sourceWebsite}
         </a>
         {t("modelSourceUrl.source2")}

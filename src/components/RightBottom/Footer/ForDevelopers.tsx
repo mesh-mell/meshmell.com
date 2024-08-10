@@ -51,7 +51,7 @@ const ForDevelopers = <
     <>
       {modalOpen.forDevelopers && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -65,28 +65,28 @@ const ForDevelopers = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className='flex justify-end mb-4'>
+        <div className="flex justify-end mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-base sm:text-xl font-bold'>
+            <button className="text-base sm:text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='z-100 mx-6'>
-          <h1 className='text-2xl font-bold mb-6'>
+        <div className="z-100 mx-6">
+          <h1 className="text-2xl font-bold mb-6">
             {t("forDevelopers.title")}
           </h1>
-          <div className='flex flex-col text-base gap-2 mt-6 max-w-xl mx-auto'>
+          <div className="flex flex-col text-base gap-2 mt-6 max-w-xl mx-auto">
             <p>
               {t("forDevelopers.sourceCode")}
               <a
                 href={` ${process.env.NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY}`}
-                className='text-blue-500 hover:underline'
+                className="text-blue-500 hover:underline"
               >
                 {process.env.NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY}
               </a>

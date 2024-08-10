@@ -8,6 +8,8 @@ import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 import { viewTypes } from "@/src/types/views";
 
+import Button from "../../Button";
+
 type ViewsSwitchButtonType = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
@@ -50,28 +52,19 @@ const ViewsSwitchButton = ({
 
   return (
     <>
-      <button
-        onClick={handleClick}
-        className={
-          "mt-[6px] sm:mt-[10px] relative rounded-full flex justify-center"
-        }
-      >
+      <Button handleClick={handleClick} isActive={modalOpen.viewsSwitch}>
         <div
-          className={`${modalOpen.viewsSwitch ? "bg-blue-500 border-blue-500" : "bg-neutral-100 dark:bg-neutral-950 border-black dark:border-white"} flex justify-center items-center h-12 sm:h-14 w-12 sm:w-14 border-[1.5px] sm:border-[3px]  rounded-full`}
+          className={`fill-black dark:fill-white ${modalOpen.viewsSwitch ? "text-white" : "text-black dark:text-white"} h-[35px] sm:h-[40px]`}
         >
-          <div
-            className={`fill-black dark:fill-white ${modalOpen.viewsSwitch ? "text-white" : "text-black dark:text-white"} h-[35px] sm:h-[40px]`}
-          >
-            {view === "perspective" ? (
-              <PerspectiveViewIcon />
-            ) : view === "vertical" ? (
-              <VerticalViewIcon />
-            ) : (
-              <HorizontalViewIcon />
-            )}
-          </div>
+          {view === "perspective" ? (
+            <PerspectiveViewIcon />
+          ) : view === "vertical" ? (
+            <VerticalViewIcon />
+          ) : (
+            <HorizontalViewIcon />
+          )}
         </div>
-      </button>
+      </Button>
     </>
   );
 };

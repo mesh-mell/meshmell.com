@@ -126,7 +126,7 @@ const DownloadModal = ({
     <>
       {modalOpen.download && (
         <div
-          className='fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen'
+          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
           onClick={handleClickOutside}
         ></div>
       )}
@@ -134,26 +134,26 @@ const DownloadModal = ({
         className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] left-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.download ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:-translate-x-full"}`}
         onClick={handleClickInside}
       >
-        <div className='flex justify-start mb-4'>
+        <div className="flex justify-start mb-4">
           <div
             onClick={handleClickClose}
             className={
               "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
             }
           >
-            <button className='text-xl font-bold'>
+            <button className="text-xl font-bold">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className='flex flex-col gap-8'>
-          <h2 className='text-3xl font-bold'>{t("download.download")}</h2>
+        <div className="flex flex-col gap-8">
+          <h2 className="text-3xl font-bold">{t("download.download")}</h2>
           {focusedModelsObj.isDownloadable ? (
             <>
-              <div className='flex flex-row justify-evenly gap-1 items-center'>
+              <div className="flex flex-row justify-evenly gap-1 items-center">
                 {focusedModelsObj.resolutions &&
                   focusedModelsObj.resolutions.length > 0 && (
-                    <div className='flex flex-col items-center'>
+                    <div className="flex flex-col items-center">
                       {focusedModelsObj.resolutions.map((resolution, index) => (
                         <button
                           key={index}
@@ -172,23 +172,23 @@ const DownloadModal = ({
                     </div>
                   )}
 
-                <div className='p-2 rounded'>
+                <div className="p-2 rounded">
                   {fileFormats
                     .filter((format) =>
                       focusedModelsObj.formats.includes(format.extension),
                     )
                     .map((format, index) => (
-                      <div key={index} className='flex items-center mb-2'>
+                      <div key={index} className="flex items-center mb-2">
                         <input
-                          type='checkbox'
+                          type="checkbox"
                           id={`format-${format.extension}`}
                           checked={selectedFormats.includes(format.extension)}
                           onChange={() => handleFormatChange(format.extension)}
-                          className='mr-2'
+                          className="mr-2"
                         />
                         <label
                           htmlFor={`format-${format.extension}`}
-                          className='cursor-pointer'
+                          className="cursor-pointer"
                         >
                           {format.name} (.{format.extension})
                         </label>
@@ -202,13 +202,13 @@ const DownloadModal = ({
                   {isDownloading ? (
                     windowType === "windowWidth_tablet" ||
                     windowType === "windowWidth_pc" ? (
-                      <LoadingForButton height='56' width='56' />
+                      <LoadingForButton height="56" width="56" />
                     ) : (
-                      <LoadingForButton height='25' width='25' />
+                      <LoadingForButton height="25" width="25" />
                     )
                   ) : (
                     <BiSolidDownload
-                      className='text-3xl sm:text-4xl'
+                      className="text-3xl sm:text-4xl"
                       onClick={handleDownloadClick}
                     />
                   )}
@@ -220,12 +220,12 @@ const DownloadModal = ({
               />
             </>
           ) : (
-            <div className='text-lg text-center'>
+            <div className="text-lg text-center">
               {t("download.canDownloadFromOriginalSite")}
-              <div className='text-lg text-center mt-[15px]'>
+              <div className="text-lg text-center mt-[15px]">
                 <a
                   href={focusedModelsObj.source?.downloadSite}
-                  className='text-blue-500 dark:text-blue-400 font-bold'
+                  className="text-blue-500 dark:text-blue-400 font-bold"
                 >
                   {focusedModelsObj.source?.downloadSite}
                 </a>
