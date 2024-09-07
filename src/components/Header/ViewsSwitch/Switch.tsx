@@ -74,12 +74,12 @@ const ViewsSwitchModal = ({
     <>
       {modalOpen.viewsSwitch && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
+          className="fixed inset-0 z-[60] flex h-screen justify-end bg-black bg-opacity-0"
           onClick={handleClickOutside}
         ></div>
       )}
       <div
-        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.viewsSwitch ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
+        className={`fixed bottom-[0px] right-0 z-[100] flex h-[700px] w-full flex-col gap-4 rounded-lg bg-neutral-100 p-6 transition-transform duration-150 dark:bg-neutral-950 sm:top-[0px] sm:h-screen sm:w-[384px] ${modalOpen.viewsSwitch ? "visible translate-x-0 translate-y-0 ease-in sm:translate-x-0 sm:translate-y-0" : "invisible -translate-x-[0px] translate-y-full sm:translate-x-full sm:translate-y-[0px]"}`}
         onClick={handleClickInside}
         onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onMouseLeave={
@@ -88,19 +88,19 @@ const ViewsSwitchModal = ({
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className="flex justify-end mb-4">
+        <div className="mb-4 flex justify-end">
           <div
             onClick={handleClickClose}
             className={
-              "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
+              "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
             }
           >
-            <button className="text-base sm:text-xl font-bold">
+            <button className="text-base font-bold sm:text-xl">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className="w-[180px] flex flex-col gap-8">
+        <div className="flex w-[180px] flex-col gap-8">
           <h2 className="text-2xl font-bold">{t("viewsSwitch.switchView")}</h2>
           {views.map(
             ({
@@ -122,15 +122,15 @@ const ViewsSwitchModal = ({
               return (
                 <div
                   key={slug}
-                  className={`group select-none p-2 rounded-md ${slug === view ? "bg-emerald-500 text-white dark:text-black fill-white dark:fill-black" : "fill-black dark:fill-white hover:text-blue-700 dark:hover:text-blue-300 hover:fill-blue-700 dark:hover:fill-blue-300"} ${slug === "horizontal" ? "hidden sm:block" : "block md:block"}`}
+                  className={`group select-none rounded-md p-2 ${slug === view ? "bg-emerald-500 fill-white text-white dark:fill-black dark:text-black" : "fill-black hover:fill-blue-700 hover:text-blue-700 dark:fill-white dark:hover:fill-blue-300 dark:hover:text-blue-300"} ${slug === "horizontal" ? "hidden sm:block" : "block md:block"}`}
                   onClick={() => handleClick(slug)}
                 >
                   <div className="flex flex-col">
-                    <div className="text-xl font-semibold mb-[6px]">
+                    <div className="mb-[6px] text-xl font-semibold">
                       {name[lang as LanguageType]}
                     </div>
                     <div
-                      className={`p-[4px] w-[100px] h-[100px] relative border-[4px] ${borderColor} rounded-lg`}
+                      className={`relative h-[100px] w-[100px] border-[4px] p-[4px] ${borderColor} rounded-lg`}
                     >
                       {slug === "perspective" ? (
                         <PerspectiveViewIcon />

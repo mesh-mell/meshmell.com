@@ -65,7 +65,7 @@ const Logo = ({ lang, isInFooter, canBeClicked }: LogoType) => {
       onClick={canBeClicked ? handleResetCamera : undefined}
     >
       <div
-        className={`${logoClass} bg-clip-text text-transparent bg-gradient-to-l from-[#ffaa00] to-[#b300ff] font-bold mt-[-10px] ${!isInFooter && "select-none"} text-[3rem]`}
+        className={`${logoClass} mt-[-10px] bg-gradient-to-l from-[#ffaa00] to-[#b300ff] bg-clip-text font-bold text-transparent ${!isInFooter && "select-none"} text-[3rem]`}
       >
         {t("logo.logo")}
       </div>

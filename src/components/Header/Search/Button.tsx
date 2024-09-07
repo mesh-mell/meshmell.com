@@ -73,16 +73,16 @@ const SearchButton = ({
   };
 
   return (
-    <div className="fixed top-[60px] sm:top-[80px] left-[10px]">
+    <div className="fixed left-[10px] top-[60px] sm:top-[80px]">
       <Button handleClick={handleClick} isActive={modalOpen.search}>
         <FaSearch className="text-3xl sm:text-4xl" />
       </Button>
       <div>
         <div
-          className={` ${searchWord !== "" ? "rounded-l-full" : "rounded-full"} px-1 flex justify-center items-center ${isSearchWordEmpty ? "w-12 sm:w-14" : ""} h-12 sm:h-14 `}
+          className={` ${searchWord !== "" ? "rounded-l-full" : "rounded-full"} flex items-center justify-center px-1 ${isSearchWordEmpty ? "w-12 sm:w-14" : ""} h-12 sm:h-14`}
           aria-label="Open Search Page"
         >
-          <div className="text-2xl sm:text-3xl -mt-[3px] sm:-mt-[5px]">
+          <div className="-mt-[3px] text-2xl sm:-mt-[5px] sm:text-3xl">
             {searchWord.substring(0, 5)}
           </div>
         </div>
@@ -90,16 +90,16 @@ const SearchButton = ({
         {searchWord !== "" && (
           <div
             className={
-              "pr-1 flex justify-center items-center rounded-r-full h-12 sm:h-14"
+              "flex h-12 items-center justify-center rounded-r-full pr-1 sm:h-14"
             }
           >
             <div
               onClick={handleReset}
               className={
-                "ml-1 flex justify-center items-center w-8 h-8 sm:w-10 sm:h-10 border-2 border-black dark:border-white rounded-full z-60"
+                "z-60 ml-1 flex h-8 w-8 items-center justify-center rounded-full border-2 border-black dark:border-white sm:h-10 sm:w-10"
               }
             >
-              <button className="dark:text-white text-base sm:text-xl">
+              <button className="text-base dark:text-white sm:text-xl">
                 <ImCross />
               </button>
             </div>

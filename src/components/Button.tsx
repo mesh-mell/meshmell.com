@@ -15,7 +15,7 @@ const Button = ({
     <button
       onClick={handleClick}
       className={
-        "mt-[6px] sm:mt-[10px] relative rounded-[10px] sm:rounded-[18px] flex justify-center shadow-md"
+        "relative mt-[6px] flex justify-center rounded-[10px] shadow-md sm:mt-[10px] sm:rounded-[18px]"
       }
     >
       <div
@@ -23,8 +23,7 @@ const Button = ({
           isActive
             ? "custom-bg-gray-active-button"
             : "custom-bg-gray-inactive-button"
-        } ${hasTwoIcons ? "px-[4px] sm:px-[8px]" : "w-12 sm:w-14"}
-        flex justify-center items-center h-12 sm:h-14 rounded-[10px] sm:rounded-[18px]`}
+        } ${hasTwoIcons ? "px-[4px] sm:px-[8px]" : "w-12 sm:w-14"} flex h-12 items-center justify-center rounded-[10px] sm:h-14 sm:rounded-[18px]`}
       >
         {children}
       </div>

@@ -49,9 +49,9 @@ const LightDarkThemeSwitchButton = ({
     <>
       <Button handleClick={handleClick} isActive={modalOpen.lightAndDarkTheme}>
         {isLight ? (
-          <MdLightMode className={"text-amber-500 text-3xl sm:text-4xl"} />
+          <MdLightMode className={"text-3xl text-amber-500 sm:text-4xl"} />
         ) : (
-          <MdDarkMode className={"text-blue-600 text-3xl sm:text-4xl"} />
+          <MdDarkMode className={"text-3xl text-blue-600 sm:text-4xl"} />
         )}
       </Button>
     </>

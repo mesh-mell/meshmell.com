@@ -26,7 +26,7 @@ const CancelButton = ({ lang }: CancelButtonType) => {
 
   return (
     <button
-      className="mt-4 text-3xl bg-neutral-100 dark:bg-neutral-950 rounded-full p-6 shadow-lg cursor-pointer border-black dark:border-white border-[1.5px] sm:border-[3px]"
+      className="mt-4 cursor-pointer rounded-full border-[1.5px] border-black bg-neutral-100 p-6 text-3xl shadow-lg dark:border-white dark:bg-neutral-950 sm:border-[3px]"
       onClick={handleUnFocus}
     >
       <ImCross />

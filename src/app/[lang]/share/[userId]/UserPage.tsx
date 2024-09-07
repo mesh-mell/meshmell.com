@@ -58,12 +58,12 @@ const UserPage = ({ lang, userId }: ModalProps) => {
     <div className="p-4">
       {!isLoading && authUser && (
         <>
-          <div className="flex justify-between items-center">
+          <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">
               {lang === "en" ? "My page" : "マイページ"}
             </h1>
             <Link href="/api/auth/logout">
-              <button className="bg-red-500 text-white px-4 py-2 mt-2 rounded">
+              <button className="mt-2 rounded bg-red-500 px-4 py-2 text-white">
                 Logout
               </button>
             </Link>
@@ -71,19 +71,19 @@ const UserPage = ({ lang, userId }: ModalProps) => {
           <form onSubmit={handleSubmit(onSubmit)} className="mt-4 space-y-4">
             <input
               type="file"
-              className="border p-2 w-full"
+              className="w-full border p-2"
               {...register("file")}
             />
             <div className="flex items-center justify-between gap-4">
               <input
                 type="text"
                 placeholder="Model Name"
-                className="border p-2 w-[300px]"
+                className="w-[300px] border p-2"
                 {...register("modelName", { required: true })}
               />
               <button
                 type="submit"
-                className="bg-blue-500 text-white px-4 py-2 rounded"
+                className="rounded bg-blue-500 px-4 py-2 text-white"
               >
                 Add Model
               </button>
@@ -93,7 +93,7 @@ const UserPage = ({ lang, userId }: ModalProps) => {
       )}
       <div>
         {authUser && user ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-4">
+          <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
             {user.models.map((model, index) => (
               <div key={index} className="cursor-pointer border p-2">
                 <Link href={`/${lang}/share/${userId}/${model.model_id}`}>
@@ -102,7 +102,7 @@ const UserPage = ({ lang, userId }: ModalProps) => {
                     alt={model.model_name}
                     width={100}
                     height={100}
-                    className="w-full h-32"
+                    className="h-32 w-full"
                     priority
                   />
                   <div className="mt-2 text-center">{model.model_name}</div>
@@ -118,7 +118,7 @@ const UserPage = ({ lang, userId }: ModalProps) => {
         {!isLoading && !authUser && (
           <div className="mt-4">
             <Link href="/api/auth/login">
-              <button className="bg-green-500 text-white px-4 py-2 rounded">
+              <button className="rounded bg-green-500 px-4 py-2 text-white">
                 Login
               </button>
             </Link>

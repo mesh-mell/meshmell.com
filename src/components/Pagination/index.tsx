@@ -98,12 +98,12 @@ const Pagination = ({
 
   return (
     <>
-      <div className="fixed bottom-10 left-0 w-full bg-transparent z-50 text-3xl">
-        <div className="absolute bottom-1 -translate-x-2/4 left-2/4">
-          <div className="flex gap-1 justify-center select-none">
+      <div className="fixed bottom-10 left-0 z-50 w-full bg-transparent text-3xl">
+        <div className="absolute bottom-1 left-2/4 -translate-x-2/4">
+          <div className="flex select-none justify-center gap-1">
             {currentPage > 1 ? (
               <div
-                className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 hover:dark:border-blue-700 px-[5px] mt-[2px]"
+                className="mt-[2px] flex cursor-pointer items-center rounded-full border-[3px] border-black bg-white px-[5px] font-bold hover:border-blue-700 hover:text-blue-700 dark:border-white dark:bg-black hover:dark:border-blue-700"
                 onClick={goToPreviousPage}
               >
                 <MdOutlineKeyboardDoubleArrowLeft />
@@ -124,7 +124,7 @@ const Pagination = ({
 
                 if (page === "...") {
                   return (
-                    <span key={index} className="px-[10px] py-0.5 xs:py-1">
+                    <span key={index} className="xs:py-1 px-[10px] py-0.5">
                       ...
                     </span>
                   );
@@ -133,7 +133,7 @@ const Pagination = ({
                 return (
                   <div
                     key={index}
-                    className={`cursor-pointer font-bold rounded-full py-1 px-4 border-black dark:border-white border-[3px] ${buttonClass} hover:text-blue-700 hover:dark:text-blue-700 hover:border-blue-700 dark:hover:border-blue-700`}
+                    className={`cursor-pointer rounded-full border-[3px] border-black px-4 py-1 font-bold dark:border-white ${buttonClass} hover:border-blue-700 hover:text-blue-700 dark:hover:border-blue-700 hover:dark:text-blue-700`}
                     onClick={() => goToPage(page)}
                   >
                     {page}
@@ -143,7 +143,7 @@ const Pagination = ({
             </div>
             {currentPage < totalPages ? (
               <div
-                className="cursor-pointer flex items-center font-bold rounded-full bg-white dark:bg-black border-black dark:border-white border-[3px] hover:text-blue-700 hover:border-blue-700 hover:dark:border-blue-700 px-[5px] mt-[2px]"
+                className="mt-[2px] flex cursor-pointer items-center rounded-full border-[3px] border-black bg-white px-[5px] font-bold hover:border-blue-700 hover:text-blue-700 dark:border-white dark:bg-black hover:dark:border-blue-700"
                 onClick={goToNextPage}
               >
                 <MdOutlineKeyboardDoubleArrowRight />

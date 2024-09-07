@@ -7,7 +7,7 @@ import { RiTwitterXFill } from "react-icons/ri";
 const SnsLinksForYuri = () => {
   return (
     <>
-      <div className="flex gap-2 sm:gap-4 text-xl sm:text-2xl">
+      <div className="flex gap-2 text-xl sm:gap-4 sm:text-2xl">
         <div>
           <Link href="https://twitter.com/yurinakanishi58">
             <RiTwitterXFill />

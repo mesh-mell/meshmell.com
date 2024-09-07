@@ -109,12 +109,12 @@ const Footer = <
     <>
       {modalOpen.footer && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
+          className="fixed inset-0 z-[60] flex h-screen justify-end bg-black bg-opacity-0"
           onClick={handleClickOutside}
         ></div>
       )}
       <div
-        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[450px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.footer ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
+        className={`fixed bottom-[0px] right-0 z-[100] flex h-[700px] w-full flex-col gap-4 rounded-lg bg-neutral-100 p-6 transition-transform duration-150 dark:bg-neutral-950 sm:top-[0px] sm:h-screen sm:w-[450px] ${modalOpen.footer ? "visible translate-x-0 translate-y-0 ease-in sm:translate-x-0 sm:translate-y-0" : "invisible -translate-x-[0px] translate-y-full sm:translate-x-full sm:translate-y-[0px]"}`}
         onClick={handleClickInside}
         onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onMouseLeave={
@@ -123,38 +123,38 @@ const Footer = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className="flex justify-end mb-4">
+        <div className="mb-4 flex justify-end">
           <div
             onClick={handleClickClose}
             className={
-              "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
+              "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
             }
           >
-            <button className="text-base sm:text-xl font-bold">
+            <button className="text-base font-bold sm:text-xl">
               <ImCross />
             </button>
           </div>
         </div>
-        <div className="flex flex-col justify-around h-full">
+        <div className="flex h-full flex-col justify-around">
           <div className="flex justify-start">
             <Logo lang={lang} isInFooter canBeClicked={false} />
           </div>
           <div className="flex flex-col gap-8">
             <div className="text-base font-semibold">
               <div
-                className="hover:underline cursor-pointer bg-transparent outline-current appearance-none w-36"
+                className="w-36 cursor-pointer appearance-none bg-transparent outline-current hover:underline"
                 onClick={setAboutModalOpen}
               >
                 <div>{t("about.footer")}</div>
               </div>
               <div
-                className="hover:underline cursor-pointer bg-transparent outline-current appearance-none w-36"
+                className="w-36 cursor-pointer appearance-none bg-transparent outline-current hover:underline"
                 onClick={setContactModalOpen}
               >
                 <div>{t("contact.footer")}</div>
               </div>
               <div
-                className="hover:underline cursor-pointer bg-transparent outline-current appearance-none w-36"
+                className="w-36 cursor-pointer appearance-none bg-transparent outline-current hover:underline"
                 onClick={setWhoModalOpen}
               >
                 <div>{t("who.footer")}</div>
@@ -164,7 +164,7 @@ const Footer = <
               <li className="cursor-pointer" onClick={setTermsModalOpen}>
                 <div className="hover:underline">{t("terms.footer")}</div>
               </li>
-              <li className="cursor-pointer " onClick={setPrivacyModalOpen}>
+              <li className="cursor-pointer" onClick={setPrivacyModalOpen}>
                 <div className="hover:underline">
                   {t("privacyPolicy.footer")}
                 </div>

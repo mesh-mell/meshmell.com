@@ -18,7 +18,7 @@ const ModelSourceUrl = ({ lang, sourceUrl }: ModelSourceUrlType) => {
     .split("/")[0];
 
   return (
-    <div className="text-xl cursor-pointer flex">
+    <div className="flex cursor-pointer text-xl">
       <span className="w-8">
         <MdOutlineSource className="mt-[3px] pl-1 text-2xl" />
       </span>

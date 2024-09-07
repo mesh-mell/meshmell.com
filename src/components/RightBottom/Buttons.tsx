@@ -22,12 +22,12 @@ const RightBottomButtons = ({
   return (
     <>
       {isIn3D && (
-        <div className="fixed bottom-[10px] right-32 cursor-pointer z-[70] hidden xl:block">
+        <div className="fixed bottom-[10px] right-32 z-[70] hidden cursor-pointer xl:block">
           <Logo lang={lang} />
         </div>
       )}
-      <div className="fixed bottom-[18px] right-5 cursor-pointer z-[70]">
-        <div className="flex flex-col gap-2 items-end">
+      <div className="fixed bottom-[18px] right-5 z-[70] cursor-pointer">
+        <div className="flex flex-col items-end gap-2">
           <LanguageSwitchButton lang={lang} setModalOpen={setModalOpen} />
           <FooterButton setModalOpen={setModalOpen} />
           <SponsorButton lang={lang} setModalOpen={setModalOpen} />

@@ -66,7 +66,7 @@ const CreatorFilterButton = ({
       hasTwoIcons
     >
       <RiFilter3Fill className={"text-3xl sm:text-4xl"} />
-      <div className="w-[28px] sm:w-[30px] h-[28px] sm:h-[30px] relative">
+      <div className="relative h-[28px] w-[28px] sm:h-[30px] sm:w-[30px]">
         {filteredCreatorsObj.slug === "" ? (
           <div className="text-3xl sm:text-4xl">
             <BsFillPersonFill />

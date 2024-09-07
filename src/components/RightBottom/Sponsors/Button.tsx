@@ -40,8 +40,8 @@ const SponsorButton = ({ lang, setModalOpen }: SponsorsButtonType) => {
 
   return (
     <Button handleClick={handleClick}>
-      <div className="p-1 flex flex-col justify-center">
-        <FaPeopleGroup className="text-3xl sm:text-4xl mx-auto" />
+      <div className="flex flex-col justify-center p-1">
+        <FaPeopleGroup className="mx-auto text-3xl sm:text-4xl" />
         <div className={classNameForButton}>{t("sponsors.title")}</div>
       </div>
     </Button>

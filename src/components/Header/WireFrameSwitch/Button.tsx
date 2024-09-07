@@ -47,11 +47,11 @@ const WireFrameSwitchButton = ({
     <Button handleClick={handleClick}>
       {isWireFrame ? (
         <GiStoneSphere
-          className={"text-black dark:text-white text-3xl sm:text-4xl"}
+          className={"text-3xl text-black dark:text-white sm:text-4xl"}
         />
       ) : (
         <GiWireframeGlobe
-          className={"text-black dark:text-white text-3xl sm:text-4xl"}
+          className={"text-3xl text-black dark:text-white sm:text-4xl"}
         />
       )}
     </Button>

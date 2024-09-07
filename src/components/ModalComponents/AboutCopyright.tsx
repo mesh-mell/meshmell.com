@@ -21,7 +21,7 @@ const AboutCopyright = ({ lang, setModalOpen }: AboutCopyrightType) => {
   };
 
   return (
-    <div className="cursor-pointer flex" onClick={handleClick}>
+    <div className="flex cursor-pointer" onClick={handleClick}>
       {t("copyRight.aboutCopyRight")}
       <span className="ml-2 text-xl">
         <RiShareBoxFill />

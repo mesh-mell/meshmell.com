@@ -25,11 +25,11 @@ const SnsLinksForShareThisSite = ({ lang }: SnsLinksForShareThisSiteType) => {
 
   return (
     <>
-      <div className="flex justify-start gap-4 sm:gap-4 my-2 sm:my-6">
+      <div className="my-2 flex justify-start gap-4 sm:my-6 sm:gap-4">
         <div className="-mt-[22px]">
           <CopyToClipboard text={currentUrl}>
             <span
-              className="text-blue-600 dark:text-blue-400 ml-1"
+              className="ml-1 text-blue-600 dark:text-blue-400"
               onClick={notify}
             >
               <FiCopy size={28} />

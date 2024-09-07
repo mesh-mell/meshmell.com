@@ -39,15 +39,15 @@ const LoadingForCanvas = ({
   return (
     <>
       <div
-        className={`fixed top-0 right-0 w-screen h-screen border flex flex-col justify-center items-center bg-gradient-to-r from-purple-600 to-orange-500 z-[1000] ${started ? "hidden" : "flex"}`}
+        className={`fixed right-0 top-0 z-[1000] flex h-screen w-screen flex-col items-center justify-center border bg-gradient-to-r from-purple-600 to-orange-500 ${started ? "hidden" : "flex"}`}
       >
-        <h1 className="text-white text-5xl mb-4 font-bold">
+        <h1 className="mb-4 text-5xl font-bold text-white">
           {t("loadingForCanvas.name")}
         </h1>
         <div className="mt-4 py-2">
           {showStartButton ? (
             <button
-              className="px-6 bg-[#ffffff] text-violet-800 font-extrabold text-3xl rounded transition duration-300 h-[100px] my-[50px]"
+              className="my-[50px] h-[100px] rounded bg-[#ffffff] px-6 text-3xl font-extrabold text-violet-800 transition duration-300"
               onClick={handleStartClick}
             >
               {t("loadingForCanvas.start")}
@@ -67,9 +67,9 @@ const LoadingForCanvas = ({
         </div>
         <div className="text-white">
           {maxProgress === 100 ? (
-            <div className="text-2xl mt-2">{t("loadingForCanvas.loaded")}</div>
+            <div className="mt-2 text-2xl">{t("loadingForCanvas.loaded")}</div>
           ) : (
-            <div className="text-2xl mt-2">{t("loadingForCanvas.loading")}</div>
+            <div className="mt-2 text-2xl">{t("loadingForCanvas.loading")}</div>
           )}
           <div className="text-center text-2xl">
             {Math.floor(maxProgress)} %

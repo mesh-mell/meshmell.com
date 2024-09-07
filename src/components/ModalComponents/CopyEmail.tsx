@@ -20,11 +20,11 @@ const CopyEmail = ({ lang }: CopyEmailType) => {
     <div className="mt-4">
       <CopyToClipboard text="info@meshmell.com">
         <div
-          className="flex text-lg sm:text-xl cursor-pointer"
+          className="flex cursor-pointer text-lg sm:text-xl"
           onClick={notify}
         >
           info@meshmell.com
-          <span className="text-blue-600 dark:text-blue-400 mt-[6px] ml-1">
+          <span className="ml-1 mt-[6px] text-blue-600 dark:text-blue-400">
             <FiCopy />
           </span>
         </div>

@@ -32,10 +32,10 @@ const LanguageFlag = ({ lang, setModalOpen, text }: LanguagePopupType) => {
       onClick={handleClickClose}
     >
       <div className="flex cursor-pointer">
-        <div className="w-8 h-6 shadow-md">
+        <div className="h-6 w-8 shadow-md">
           <FlagComponent lang={lang} />
         </div>
-        <div className={"select-none ml-2"}>{text}</div>
+        <div className={"ml-2 select-none"}>{text}</div>
       </div>
     </Link>
   );

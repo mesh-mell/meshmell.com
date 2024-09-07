@@ -23,7 +23,7 @@ const CopyCredit = ({ lang, creatorsObj }: CopyCreditType) => {
       <CopyToClipboard text={creatorsObj.name[lang as LanguageType]}>
         <span
           onClick={notify}
-          className="text-2xl sm:text-3xl text-blue-600 dark:text-blue-400"
+          className="text-2xl text-blue-600 dark:text-blue-400 sm:text-3xl"
         >
           <FiCopy />
         </span>

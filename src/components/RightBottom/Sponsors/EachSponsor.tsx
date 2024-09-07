@@ -29,15 +29,13 @@ const EachSponsor = ({ sponsor, lang }: EachSponsorType) => {
     <div key={sponsor.id} className="flex gap-2">
       <a href={sponsor.url}>
         <div
-          className={`
-          ${
+          className={` ${
             sponsorsRank === "platinum"
               ? "text-black dark:text-white"
               : sponsorsRank === "gold"
                 ? "text-gray-500 dark:text-gray-600"
                 : "text-gray-600 dark:text-gray-500"
-          } 
-            font-bold text-[16px] leading-[20px] tracking-tighter`}
+          } text-[16px] font-bold leading-[20px] tracking-tighter`}
         >
           {sponsor.name[lang as LanguageType]}
         </div>

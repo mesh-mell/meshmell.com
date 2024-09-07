@@ -36,7 +36,7 @@ const Focus = ({
 }: InfoButtonType) => {
   return (
     <div
-      className={`z-[70] fixed p-1 bottom-[10px] left-[10px] rounded-xl ${isFocusedMode ? "block" : "hidden"}`}
+      className={`fixed bottom-[10px] left-[10px] z-[70] rounded-xl p-1 ${isFocusedMode ? "block" : "hidden"}`}
     >
       <ShareModalButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
       <ModelInfoButton setModalOpen={setModalOpen} modalOpen={modalOpen} />

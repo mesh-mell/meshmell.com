@@ -56,7 +56,7 @@ const CategoryFilterButton = ({
       hasTwoIcons
     >
       <RiFilter3Fill className="text-3xl sm:text-4xl" />
-      <div className="w-[28px] sm:w-[30px] h-[28px] sm:h-[30px] text-3xl sm:text-4xl flex justify-center items-center -mt-1">
+      <div className="-mt-1 flex h-[28px] w-[28px] items-center justify-center text-3xl sm:h-[30px] sm:w-[30px] sm:text-4xl">
         {filteredCategorysObj.icon}
       </div>
     </Button>

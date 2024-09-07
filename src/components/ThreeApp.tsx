@@ -267,8 +267,8 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
 
   return (
     <>
-      <div className="flex mx-auto">
-        <div className={"w-[100vw] h-[100vh]"}>
+      <div className="mx-auto flex">
+        <div className={"h-[100vh] w-[100vw]"}>
           <Header
             lang={lang}
             setModalOpen={setModalOpen}

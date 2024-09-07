@@ -56,7 +56,7 @@ const DownloadButton = ({
       <div className="mx-auto text-3xl sm:text-4xl">
         <BiSolidDownload />
       </div>
-      <div className="text-center select-none">
+      <div className="select-none text-center">
         {getFirebaseDataLoading ? (
           <LoadingForButton height="20" width="20" />
         ) : (

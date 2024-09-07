@@ -37,9 +37,9 @@ const CreatorInfo = ({ creatorsObj, lang, isFocusedMode }: CreatorInfoType) => {
   return (
     <div className="flex flex-col gap-2">
       <div className="flex">
-        <h2 className="text-3xl font-bold flex gap-2">
+        <h2 className="flex gap-2 text-3xl font-bold">
           {creatorsObj.slug !== "" && (
-            <div className="w-[30px] h-[30px]">
+            <div className="h-[30px] w-[30px]">
               <Image
                 src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorSlug}/img.webp`}
                 width={30}
@@ -59,13 +59,13 @@ const CreatorInfo = ({ creatorsObj, lang, isFocusedMode }: CreatorInfoType) => {
       <CreatorInfoSNS creatorsObj={creatorsObj} />
       {isFocusedMode && (
         <div
-          className="flex items-center gap-2 select-none mt-4 sm:mt-8"
+          className="mt-4 flex select-none items-center gap-2 sm:mt-8"
           onClick={handleGotoFilter}
         >
-          <div className="text-base cursor-pointer">
+          <div className="cursor-pointer text-base">
             {t("creatorInfo.seeMoreModels")}
           </div>
-          <RiShareBoxFill className=" text-blue-600 dark:text-blue-400 text-xl sm:text-2xl" />
+          <RiShareBoxFill className="text-xl text-blue-600 dark:text-blue-400 sm:text-2xl" />
         </div>
       )}
     </div>

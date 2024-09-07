@@ -19,7 +19,7 @@ const HomeHeader = ({
   setIsWireFrame,
 }: HomeHeaderType) => {
   return (
-    <div className="absolute top-0 left-0 w-full h-20 flex justify-between items-center px-4">
+    <div className="absolute left-0 top-0 flex h-20 w-full items-center justify-between px-4">
       <Logo lang={lang} canBeClicked={false} />
       <WireFrameSwitchButton
         lang={lang}

@@ -25,8 +25,8 @@ const ChangeLanguage = ({ lang, setModalOpen }: ChangeLanguageType) => {
 
   return (
     <Button handleClick={handleClick}>
-      <div className="h-[28px] w-[28px] sm:h-8 sm:w-8 flex justify-center items-center">
-        <div className="shadow-md w-[28px] sm:w-8">
+      <div className="flex h-[28px] w-[28px] items-center justify-center sm:h-8 sm:w-8">
+        <div className="w-[28px] shadow-md sm:w-8">
           <FlagComponent lang={lang} />
         </div>
       </div>

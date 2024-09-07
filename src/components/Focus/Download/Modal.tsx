@@ -126,19 +126,19 @@ const DownloadModal = ({
     <>
       {modalOpen.download && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
+          className="fixed inset-0 z-[60] flex h-screen justify-end bg-black bg-opacity-0"
           onClick={handleClickOutside}
         ></div>
       )}
       <div
-        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] left-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.download ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:-translate-x-full"}`}
+        className={`fixed bottom-[0px] left-0 z-[100] flex h-[700px] w-full flex-col gap-4 rounded-lg bg-neutral-100 p-6 transition-transform duration-150 dark:bg-neutral-950 sm:top-[0px] sm:h-screen sm:w-[384px] ${modalOpen.download ? "visible translate-x-0 translate-y-0 ease-in sm:translate-x-0 sm:translate-y-0" : "invisible -translate-x-[0px] translate-y-full sm:-translate-x-full sm:translate-y-[0px]"}`}
         onClick={handleClickInside}
       >
-        <div className="flex justify-start mb-4">
+        <div className="mb-4 flex justify-start">
           <div
             onClick={handleClickClose}
             className={
-              "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
+              "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
             }
           >
             <button className="text-xl font-bold">
@@ -150,7 +150,7 @@ const DownloadModal = ({
           <h2 className="text-3xl font-bold">{t("download.download")}</h2>
           {focusedModelsObj.isDownloadable ? (
             <>
-              <div className="flex flex-row justify-evenly gap-1 items-center">
+              <div className="flex flex-row items-center justify-evenly gap-1">
                 {focusedModelsObj.resolutions &&
                   focusedModelsObj.resolutions.length > 0 && (
                     <div className="flex flex-col items-center">
@@ -160,10 +160,10 @@ const DownloadModal = ({
                           onClick={() => {
                             setCurrentResolution(resolution);
                           }}
-                          className={`my-1 py-1 px-2 rounded border ${
+                          className={`my-1 rounded border px-2 py-1 ${
                             currentResolution === resolution
                               ? "bg-blue-500 text-white"
-                              : "bg-neutral-100 dark:bg-neutral-950 border-gray-300"
+                              : "border-gray-300 bg-neutral-100 dark:bg-neutral-950"
                           }`}
                         >
                           {resolution}
@@ -172,13 +172,13 @@ const DownloadModal = ({
                     </div>
                   )}
 
-                <div className="p-2 rounded">
+                <div className="rounded p-2">
                   {fileFormats
                     .filter((format) =>
                       focusedModelsObj.formats.includes(format.extension),
                     )
                     .map((format, index) => (
-                      <div key={index} className="flex items-center mb-2">
+                      <div key={index} className="mb-2 flex items-center">
                         <input
                           type="checkbox"
                           id={`format-${format.extension}`}
@@ -197,7 +197,7 @@ const DownloadModal = ({
                 </div>
                 {/* Download Button */}
                 <div
-                  className={`${!isDownloading && "border-black border-2 dark:border-white"} w-12 sm:w-14 h-12 sm:h-14 flex justify-center items-center p-1 rounded-full cursor-pointer`}
+                  className={`${!isDownloading && "border-2 border-black dark:border-white"} flex h-12 w-12 cursor-pointer items-center justify-center rounded-full p-1 sm:h-14 sm:w-14`}
                 >
                   {isDownloading ? (
                     windowType === "windowWidth_tablet" ||
@@ -220,12 +220,12 @@ const DownloadModal = ({
               />
             </>
           ) : (
-            <div className="text-lg text-center">
+            <div className="text-center text-lg">
               {t("download.canDownloadFromOriginalSite")}
-              <div className="text-lg text-center mt-[15px]">
+              <div className="mt-[15px] text-center text-lg">
                 <a
                   href={focusedModelsObj.source?.downloadSite}
-                  className="text-blue-500 dark:text-blue-400 font-bold"
+                  className="font-bold text-blue-500 dark:text-blue-400"
                 >
                   {focusedModelsObj.source?.downloadSite}
                 </a>

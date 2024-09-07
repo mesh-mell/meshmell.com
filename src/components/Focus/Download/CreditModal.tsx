@@ -36,22 +36,22 @@ const DownloadCreditModal = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black dark:bg-gray-500 bg-opacity-50 dark:bg-opacity-50 z-[110] flex justify-center items-center">
-      <div className="bg-neutral-100 dark:bg-neutral-900 p-6 w-96 rounded-lg">
+    <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black bg-opacity-50 dark:bg-gray-500 dark:bg-opacity-50">
+      <div className="w-96 rounded-lg bg-neutral-100 p-6 dark:bg-neutral-900">
         <div className="flex flex-col gap-4">
-          <div className="flex justify-start mb-4">
+          <div className="mb-4 flex justify-start">
             <div
               onClick={handleClickClose}
               className={
-                "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-2 sm:border-4 border-black dark:border-white rounded-full"
+                "flex h-12 w-12 items-center justify-center rounded-full border-2 border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-4"
               }
             >
-              <button className="text-base sm:text-xl font-bold">
+              <button className="text-base font-bold sm:text-xl">
                 <ImCross />
               </button>
             </div>
           </div>
-          <div className="text-xl sm:text-2xl font-bold">
+          <div className="text-xl font-bold sm:text-2xl">
             {t("download.thankTo")}
           </div>
           <CreatorInfo

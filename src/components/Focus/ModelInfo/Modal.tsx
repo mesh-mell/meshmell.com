@@ -68,19 +68,19 @@ const ModelInfoModal = ({
     <>
       {modalOpen.modelInfo && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
+          className="fixed inset-0 z-[60] flex h-screen justify-end bg-black bg-opacity-0"
           onClick={handleClickOutside}
         ></div>
       )}
       <div
-        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] left-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.modelInfo ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:-translate-x-full"}`}
+        className={`fixed bottom-[0px] left-0 z-[100] flex h-[700px] w-full flex-col gap-4 rounded-lg bg-neutral-100 p-6 transition-transform duration-150 dark:bg-neutral-950 sm:top-[0px] sm:h-screen sm:w-[384px] ${modalOpen.modelInfo ? "visible translate-x-0 translate-y-0 ease-in sm:translate-x-0 sm:translate-y-0" : "invisible -translate-x-[0px] translate-y-full sm:-translate-x-full sm:translate-y-[0px]"}`}
         onClick={handleClickInside}
       >
-        <div className="flex justify-start mb-4">
+        <div className="mb-4 flex justify-start">
           <div
             onClick={handleClickClose}
             className={
-              "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
+              "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
             }
           >
             <button className="text-xl font-bold">
@@ -91,9 +91,9 @@ const ModelInfoModal = ({
         <h2 className="text-3xl font-bold">
           {focusedModelsObj.name[lang as LanguageType]}
         </h2>
-        <div className="flex flex-col text-xl gap-2">
+        <div className="flex flex-col gap-2 text-xl">
           {focusedModelsObj.description[lang as LanguageType] && (
-            <div className={"italic my-2"}>
+            <div className={"my-2 italic"}>
               {focusedModelsObj.description[lang as LanguageType]}
             </div>
           )}
@@ -113,7 +113,7 @@ const ModelInfoModal = ({
               {focusedModelsCreatorsObj.name[lang as LanguageType]}
             </span>
             <span
-              className="text-blue-600 dark:text-blue-400 mt-[6px] sm:mt-[5px] ml-1 sm:ml-2"
+              className="ml-1 mt-[6px] text-blue-600 dark:text-blue-400 sm:ml-2 sm:mt-[5px]"
               onClick={openCreatorModal}
             >
               <RiShareBoxFill />

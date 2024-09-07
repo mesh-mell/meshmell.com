@@ -54,12 +54,12 @@ const CreatorInfoButtonInNotFocused = ({
     : "PlaceHolder";
 
   return (
-    <div className="fixed top-[60px] sm:top-[80px] right-[10px] flex cursor-pointer justify-start items-center z-50">
+    <div className="fixed right-[10px] top-[60px] z-50 flex cursor-pointer items-center justify-start sm:top-[80px]">
       <Button
         handleClick={handleClick}
         isActive={modalOpen.creatorInfoInNotFocused}
       >
-        <div className="w-[28px] sm:w-[30px] h-[28px] sm:h-[30px] relative">
+        <div className="relative h-[28px] w-[28px] sm:h-[30px] sm:w-[30px]">
           <Image
             src={`${process.env.NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL ?? ""}/images/creators/${creatorSlug}/img.webp`}
             fill
@@ -69,9 +69,9 @@ const CreatorInfoButtonInNotFocused = ({
             sizes="(max-width: 768px) 10vw, (max-width: 1200px) 5vw, 5vw"
           />
         </div>
-        <span className="mt-[2px] sm:mt-[2px] text-3xl sm:text-4xl">
+        <span className="mt-[2px] text-3xl sm:mt-[2px] sm:text-4xl">
           <RiShareBoxFill
-            className={`${modalOpen.creatorInfoInNotFocused ? "text-white dark-text-white" : "text-black dark:text-white"}`}
+            className={`${modalOpen.creatorInfoInNotFocused ? "dark-text-white text-white" : "text-black dark:text-white"}`}
           />
         </span>
       </Button>

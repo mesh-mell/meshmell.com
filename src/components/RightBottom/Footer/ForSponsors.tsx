@@ -51,12 +51,12 @@ const ForSponsors = <
     <>
       {modalOpen.forSponsors && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
+          className="fixed inset-0 z-[60] flex h-screen justify-end bg-black bg-opacity-0"
           onClick={handleClickOutside}
         ></div>
       )}
       <div
-        className={`overflow-y-auto transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[450px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.forSponsors ? "translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full ease-out"}`}
+        className={`fixed bottom-[0px] right-0 z-[100] flex h-[700px] w-full flex-col gap-4 overflow-y-auto rounded-lg bg-neutral-100 p-6 transition-transform duration-150 dark:bg-neutral-950 sm:top-[0px] sm:h-screen sm:w-[450px] ${modalOpen.forSponsors ? "translate-x-0 translate-y-0 ease-in sm:translate-x-0 sm:translate-y-0" : "-translate-x-[0px] translate-y-full ease-out sm:translate-x-full sm:translate-y-[0px]"}`}
         onClick={handleClickInside}
         onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onMouseLeave={
@@ -65,24 +65,24 @@ const ForSponsors = <
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className="flex justify-end mb-4">
+        <div className="mb-4 flex justify-end">
           <div
             onClick={handleClickClose}
             className={
-              "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
+              "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
             }
           >
-            <button className="text-base sm:text-xl font-bold">
+            <button className="text-base font-bold sm:text-xl">
               <ImCross />
             </button>
           </div>
         </div>
         <div className="z-100 mx-6">
-          <h1 className="text-2xl font-bold mb-6">{t("forSponsors.title")}</h1>
-          <div className="flex flex-col text-base gap-2 mt-6 max-w-xl mx-auto">
+          <h1 className="mb-6 text-2xl font-bold">{t("forSponsors.title")}</h1>
+          <div className="mx-auto mt-6 flex max-w-xl flex-col gap-2 text-base">
             <p>{t("forSponsors.description")}</p>
-            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
-              <h3 className="text-2xl font-bold mb-2">
+            <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-neutral-800">
+              <h3 className="mb-2 text-2xl font-bold">
                 {t("forSponsors.donation.oneThousand.title")}
               </h3>
               <ul>
@@ -100,8 +100,8 @@ const ForSponsors = <
                 </li>
               </ul>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
-              <h3 className="text-2xl font-bold mb-2">
+            <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-neutral-800">
+              <h3 className="mb-2 text-2xl font-bold">
                 {t("forSponsors.donation.fiveHundred.title")}
               </h3>
               <ul>
@@ -119,8 +119,8 @@ const ForSponsors = <
                 </li>
               </ul>
             </div>
-            <div className="bg-white rounded-lg shadow-lg p-6 dark:bg-neutral-800">
-              <h3 className="text-2xl font-bold mb-2">
+            <div className="rounded-lg bg-white p-6 shadow-lg dark:bg-neutral-800">
+              <h3 className="mb-2 text-2xl font-bold">
                 {t("forSponsors.donation.oneHundred.title")}
               </h3>
               <ul>

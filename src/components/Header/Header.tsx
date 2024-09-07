@@ -48,8 +48,8 @@ const Header = ({
 }: HeaderType) => {
   return (
     <>
-      <div className="fixed top-0 left-0 w-full bg-transparent z-50">
-        <div className="flex justify-center sm:justify-end gap-1 sm:gap-4 2xs:gap-4 mx-[0.5vw] ">
+      <div className="fixed left-0 top-0 z-50 w-full bg-transparent">
+        <div className="2xs:gap-4 mx-[0.5vw] flex justify-center gap-1 sm:justify-end sm:gap-4">
           {isFocusedMode && focusedModelsObj.actions && (
             <ActionsSwitchButton
               setModalOpen={setModalOpen}

@@ -66,10 +66,10 @@ const SingleModelScene = ({ lang, userId, modelId }: ModalProps) => {
   }, [searchParams.get("wireFrame")]);
 
   return (
-    <div className={"w-[100vw] h-[100vh]"}>
+    <div className={"h-[100vh] w-[100vw]"}>
       <HomeHeader lang={lang} modalOpen={modalOpen} />
 
-      <div className="z-[70] fixed p-1 bottom-[10px] left-[10px] rounded-xl">
+      <div className="fixed bottom-[10px] left-[10px] z-[70] rounded-xl p-1">
         <ShareModalButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
         <ModelInfoButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
         <CreatorInfoButton

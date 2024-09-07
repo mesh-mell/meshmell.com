@@ -12,8 +12,8 @@ type CreatorInfoSNSType = {
 const CreatorInfoSNS = ({ creatorsObj }: CreatorInfoSNSType) => {
   return (
     <>
-      <div className="flex flex-col flex-wrap justify-between mt-2">
-        <div className="flex justify-left gap-2 sm:gap-4 text-3xl">
+      <div className="mt-2 flex flex-col flex-wrap justify-between">
+        <div className="justify-left flex gap-2 text-3xl sm:gap-4">
           {creatorsObj.twitter && (
             <div className="text-blue-500 dark:text-blue-300">
               <a href={creatorsObj.twitter}>

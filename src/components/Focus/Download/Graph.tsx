@@ -59,7 +59,7 @@ const DownloadGraph = ({
   }
 
   return (
-    <div className="relative flex flex-col justify-center mx-auto w-[280px] sm:w-[330px] h-[200px]">
+    <div className="relative mx-auto flex h-[200px] w-[280px] flex-col justify-center sm:w-[330px]">
       <div className="text-center text-lg font-medium">
         {t("download.downloads")}
         {getDownloadSum(focusedModelsDownloadData)}
@@ -67,7 +67,7 @@ const DownloadGraph = ({
       <ResponsiveContainer
         width="100%"
         height={100}
-        className="flex justify-center items-center"
+        className="flex items-center justify-center"
       >
         <AreaChart
           data={formattedData}
@@ -112,9 +112,9 @@ const CustomTooltip = ({ lang, active, payload, label }: any) => {
 
   if (active) {
     return (
-      <div className="bg-white p-2 rounded-md shadow-md absolute mx-[65px] w-[230px] h-[70px] left-1/2 top-1/2 transform translate-y-[130%]">
-        <p className="text-gray-500 text-lg">{`${moment(label).format("YYYY-MM-DD")}`}</p>
-        <p className="text-orange-400 text-base font-bold">{`${t("download.uniqueDownloads")}${payload[0].value}`}</p>
+      <div className="absolute left-1/2 top-1/2 mx-[65px] h-[70px] w-[230px] translate-y-[130%] transform rounded-md bg-white p-2 shadow-md">
+        <p className="text-lg text-gray-500">{`${moment(label).format("YYYY-MM-DD")}`}</p>
+        <p className="text-base font-bold text-orange-400">{`${t("download.uniqueDownloads")}${payload[0].value}`}</p>
       </div>
     );
   }

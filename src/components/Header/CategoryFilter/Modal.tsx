@@ -106,7 +106,7 @@ const CategoryFilterModal = ({
     >
       <div className="flex">
         <div
-          className={`rounded-md px-2 py-1 flex ${categoryFiltersSlug === "all" ? " bg-emerald-500 text-white dark:text-black" : "hover:text-blue-700 dark:hover:text-blue-300 border-2"}`}
+          className={`flex rounded-md px-2 py-1 ${categoryFiltersSlug === "all" ? "bg-emerald-500 text-white dark:text-black" : "border-2 hover:text-blue-700 dark:hover:text-blue-300"}`}
         >
           <div className="text-3xl">
             {
@@ -115,7 +115,7 @@ const CategoryFilterModal = ({
               )?.icon
             }
           </div>
-          <div className="text-xl mt-[6px]">
+          <div className="mt-[6px] text-xl">
             {t("categoryFilter.searchAll")}
           </div>
         </div>
@@ -127,12 +127,12 @@ const CategoryFilterModal = ({
     <>
       {modalOpen.categoryFilter && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-0 z-[60] flex justify-end h-screen"
+          className="fixed inset-0 z-[60] flex h-screen justify-end bg-black bg-opacity-0"
           onClick={handleClickOutside}
         ></div>
       )}
       <div
-        className={`transition-transform duration-150 rounded-lg z-[100] fixed bottom-[0px] sm:top-[0px] right-0 bg-neutral-100 dark:bg-neutral-950 p-6 w-full sm:w-[384px] h-[700px] sm:h-screen flex flex-col gap-4 ${modalOpen.categoryFilter ? "visible translate-y-0 sm:translate-y-0 translate-x-0 sm:translate-x-0 ease-in" : "invisible translate-y-full sm:translate-y-[0px] -translate-x-[0px] sm:translate-x-full"}`}
+        className={`fixed bottom-[0px] right-0 z-[100] flex h-[700px] w-full flex-col gap-4 rounded-lg bg-neutral-100 p-6 transition-transform duration-150 dark:bg-neutral-950 sm:top-[0px] sm:h-screen sm:w-[384px] ${modalOpen.categoryFilter ? "visible translate-x-0 translate-y-0 ease-in sm:translate-x-0 sm:translate-y-0" : "invisible -translate-x-[0px] translate-y-full sm:translate-x-full sm:translate-y-[0px]"}`}
         onClick={handleClickInside}
         onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onMouseLeave={
@@ -141,39 +141,39 @@ const CategoryFilterModal = ({
         onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
         onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
       >
-        <div className="flex justify-end mb-4">
+        <div className="mb-4 flex justify-end">
           <div
             onClick={handleClickClose}
             className={
-              "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
+              "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
             }
           >
-            <button className="text-base sm:text-xl font-bold">
+            <button className="text-base font-bold sm:text-xl">
               <ImCross />
             </button>
           </div>
         </div>
-        <h2 className="text-2xl font-bold mb-4">
+        <h2 className="mb-4 text-2xl font-bold">
           {t("categoryFilter.filterByCategory")}
         </h2>
         {allButton}
-        <div className="flex items-center gap-2 mt-2 sm:mt-4">
+        <div className="mt-2 flex items-center gap-2 sm:mt-4">
           <input
             onKeyDown={handleKeyPress}
             type="text"
             placeholder={t("categoryFilter.searchCategories")}
             value={searchTerm}
             onChange={handleSearchChange}
-            className="p-2 border border-gray-300 rounded w-[150px] sm:w-auto"
+            className="w-[150px] rounded border border-gray-300 p-2 sm:w-auto"
           />
           <button
             onClick={() => setSearchTerm("")}
-            className="px-2 py-1 text-white bg-blue-500 rounded"
+            className="rounded bg-blue-500 px-2 py-1 text-white"
           >
             {t("categoryFilter.clear")}
           </button>
         </div>
-        <div className="grid grid-cols-2 gap-2 sm:gap-6 max-h-[60%] overflow-y-auto mt-4">
+        <div className="mt-4 grid max-h-[60%] grid-cols-2 gap-2 overflow-y-auto sm:gap-6">
           {filteredCategories.map(({ slug, color, name, icon }) => (
             <div
               key={slug}

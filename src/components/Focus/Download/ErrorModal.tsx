@@ -41,17 +41,17 @@ const DownloadErrorModal = ({
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 z-[110] flex justify-center items-center">
-      <div className="bg-neutral-100 dark:bg-neutral-950 p-6 w-[384px] h-96 rounded-lg">
+    <div className="fixed inset-0 z-[110] flex items-center justify-center bg-black bg-opacity-50">
+      <div className="h-96 w-[384px] rounded-lg bg-neutral-100 p-6 dark:bg-neutral-950">
         <div className="flex flex-col gap-2">
-          <div className="flex justify-start mb-4">
+          <div className="mb-4 flex justify-start">
             <div
               onClick={handleClickClose}
               className={
-                "flex justify-center items-center w-12 h-12 sm:w-14 sm:h-14 bg-transparent border-[2.2px] sm:border-[3px] border-black dark:border-white rounded-full"
+                "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
               }
             >
-              <button className="text-base sm:text-xl font-bold">
+              <button className="text-base font-bold sm:text-xl">
                 <ImCross />
               </button>
             </div>
@@ -62,7 +62,7 @@ const DownloadErrorModal = ({
             className="flex gap-1 text-blue-600 dark:text-blue-400"
             onClick={handleGoToContact}
           >
-            <div className="underline cursor-pointer">
+            <div className="cursor-pointer underline">
               {t("download.contactUs")}
             </div>
             <span className="mt-[6px]">
