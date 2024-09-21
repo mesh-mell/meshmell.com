@@ -1,7 +1,7 @@
 import { useRouter, useSearchParams } from "next/navigation";
-import { Dispatch, MouseEvent, SetStateAction } from "react";
-import { ImCross } from "react-icons/im";
+import { Dispatch, SetStateAction } from "react";
 
+import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { ActionDetailsType } from "@/src/types/actions";
 import { LanguageType } from "@/src/types/language";
@@ -62,72 +62,39 @@ const ActionsSwitchModal = ({
     }));
   };
 
-  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-  };
-
-  const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
-      ...prevState,
-      actionsSwitch: false,
-    }));
-  };
-
   return (
-    <>
-      {modalOpen.actionsSwitch && (
-        <div
-          className="fixed inset-0 z-[60] flex h-screen justify-end bg-black bg-opacity-0"
-          onClick={handleClickOutside}
-        ></div>
-      )}
-      <div
-        className={`fixed bottom-[0px] right-0 z-[100] flex h-[700px] w-full flex-col gap-4 rounded-lg bg-neutral-100 p-6 transition-transform duration-150 dark:bg-neutral-950 sm:top-[0px] sm:h-screen sm:w-[384px] ${modalOpen.actionsSwitch ? "visible translate-x-0 translate-y-0 ease-in sm:translate-x-0 sm:translate-y-0" : "invisible -translate-x-[0px] translate-y-full sm:translate-x-full sm:translate-y-[0px]"}`}
-        onClick={handleClickInside}
-        onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
-        onMouseLeave={
-          setHoverOnModal ? () => setHoverOnModal(false) : undefined
-        }
-        onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
-        onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
-      >
-        <div className="mb-4 flex justify-end">
+    <ModalWrapper
+      isVisible={modalOpen.actionsSwitch}
+      handleClose={handleClickClose}
+      leftRight="right"
+      widthWhenLargeDevice="384"
+      heightWhenSmallDevice="700"
+      title={t("actionsSwitch.title")}
+      setHoverOnModal={setHoverOnModal}
+    >
+      <div className="flex flex-col gap-8">
+        <div className="flex max-h-[80%] flex-col gap-2 overflow-y-auto">
           <div
-            onClick={handleClickClose}
-            className={
-              "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
-            }
+            onClick={() => handleClick("none")}
+            className={`${currentAction === "none" ? "bg-emerald-500 text-white dark:text-black" : "border-2 hover:text-blue-700 dark:hover:text-blue-300"} flex cursor-pointer items-center justify-between rounded-md px-2 py-1`}
           >
-            <button className="text-base font-bold sm:text-xl">
-              <ImCross />
-            </button>
+            {t("actionsSwitch.stopAction")}
           </div>
-        </div>
-        <div className="flex flex-col gap-8">
-          <h2 className="text-2xl font-bold">{t("actionsSwitch.title")}</h2>
-          <div className="flex max-h-[80%] flex-col gap-2 overflow-y-auto">
-            <div
-              onClick={() => handleClick("none")}
-              className={`${currentAction === "none" ? "bg-emerald-500 text-white dark:text-black" : "border-2 hover:text-blue-700 dark:hover:text-blue-300"} flex cursor-pointer items-center justify-between rounded-md px-2 py-1`}
-            >
-              {t("actionsSwitch.stopAction")}
-            </div>
-            {focusedModelsActionsList?.map(
-              ({ name, icon, slug }: ActionDetailsType) => (
-                <div
-                  onClick={() => handleClick(slug)}
-                  key={slug}
-                  className={`${currentAction === slug ? "bg-emerald-500 text-white dark:text-black" : "border-2 hover:text-blue-700 dark:hover:text-blue-300"} flex cursor-pointer items-center justify-between rounded-md px-2 py-1`}
-                >
-                  <div>{name[lang as LanguageType]}</div>
-                  <div className="mb-2 mr-2 w-20 rounded-md">{icon}</div>
-                </div>
-              ),
-            )}
-          </div>
+          {focusedModelsActionsList?.map(
+            ({ name, icon, slug }: ActionDetailsType) => (
+              <div
+                onClick={() => handleClick(slug)}
+                key={slug}
+                className={`${currentAction === slug ? "bg-emerald-500 text-white dark:text-black" : "border-2 hover:text-blue-700 dark:hover:text-blue-300"} flex cursor-pointer items-center justify-between rounded-md px-2 py-1`}
+              >
+                <div>{name[lang as LanguageType]}</div>
+                <div className="mb-2 mr-2 w-20 rounded-md">{icon}</div>
+              </div>
+            ),
+          )}
         </div>
       </div>
-    </>
+    </ModalWrapper>
   );
 };
 

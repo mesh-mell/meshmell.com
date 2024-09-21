@@ -1,6 +1,5 @@
 import "@/styles/globals.css";
 
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 import { dir } from "i18next";
 
 import { ThemeProviders } from "@/src/app/providers";
@@ -100,9 +99,7 @@ const RootLayout = ({
         <GoogleAnalytics />
       </head>
       <body className="bg-sky-100 text-black dark:bg-sky-950 dark:text-white">
-        <UserProvider>
-          <ThemeProviders>{children}</ThemeProviders>
-        </UserProvider>
+        <ThemeProviders>{children}</ThemeProviders>
       </body>
     </html>
   );

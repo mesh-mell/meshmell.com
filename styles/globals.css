@@ -28,16 +28,16 @@ body {
 
 @layer utilities {
   .custom-bg-blue-button {
-    @apply bg-blue-500 hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600 text-white;
+    @apply bg-blue-500 text-white hover:bg-blue-600 dark:bg-blue-700 dark:hover:bg-blue-600;
   }
   .custom-bg-green-button {
-    @apply bg-green-500 hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-600 text-white;
+    @apply bg-green-500 text-white hover:bg-green-600 dark:bg-green-700 dark:hover:bg-green-600;
   }
   .custom-bg-red-button {
-    @apply bg-red-500 hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-600 text-white;
+    @apply bg-red-500 text-white hover:bg-red-600 dark:bg-red-700 dark:hover:bg-red-600;
   }
   .custom-bg-yellow-button {
-    @apply bg-yellow-500 hover:bg-yellow-600 dark:bg-yellow-700 dark:hover:bg-yellow-600 text-white;
+    @apply bg-yellow-500 text-white hover:bg-yellow-600 dark:bg-yellow-700 dark:hover:bg-yellow-600;
   }
   .custom-bg-gray-foundation {
     @apply bg-gray-100 dark:bg-gray-900;
@@ -49,6 +49,6 @@ body {
     @apply bg-gray-300 hover:bg-gray-400 dark:bg-gray-600 dark:hover:bg-gray-500;
   }
   .custom-bg-gray-inactive-button {
-    @apply bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700;
+    @apply bg-gray-100 hover:bg-gray-200 dark:bg-black dark:hover:bg-gray-800;
   }
 }

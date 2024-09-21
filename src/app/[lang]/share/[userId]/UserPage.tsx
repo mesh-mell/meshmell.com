@@ -1,9 +1,9 @@
 "use client";
 
-import { useUser } from "@auth0/nextjs-auth0/client";
 import { onValue, ref } from "firebase/database";
 import Image from "next/image";
 import Link from "next/link";
+import { useSession } from "next-auth/react";
 import { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 
@@ -22,7 +22,7 @@ type FormData = {
 };
 
 const UserPage = ({ lang, userId }: ModalProps) => {
-  const { user: authUser, isLoading } = useUser();
+  const { data: session } = useSession();
   const [user, setUser] = useState<UserType | null>(null);
   const { register, handleSubmit, setValue } = useForm<FormData>();
 
@@ -56,7 +56,7 @@ const UserPage = ({ lang, userId }: ModalProps) => {
 
   return (
     <div className="p-4">
-      {!isLoading && authUser && (
+      {session && (
         <>
           <div className="flex items-center justify-between">
             <h1 className="text-2xl font-bold">
@@ -92,7 +92,7 @@ const UserPage = ({ lang, userId }: ModalProps) => {
         </>
       )}
       <div>
-        {authUser && user ? (
+        {user ? (
           <div className="mt-4 grid grid-cols-2 gap-4 md:grid-cols-3">
             {user.models.map((model, index) => (
               <div key={index} className="cursor-pointer border p-2">
@@ -110,12 +110,12 @@ const UserPage = ({ lang, userId }: ModalProps) => {
               </div>
             ))}
           </div>
-        ) : authUser && !user ? (
+        ) : !user ? (
           <p className="mt-4">No models found</p>
         ) : (
           <p className="mt-4">Please login</p>
         )}
-        {!isLoading && !authUser && (
+        {!session?.user && (
           <div className="mt-4">
             <Link href="/api/auth/login">
               <button className="rounded bg-green-500 px-4 py-2 text-white">

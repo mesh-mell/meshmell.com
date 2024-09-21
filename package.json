@@ -8,13 +8,15 @@
     "start": "next start",
     "lint": "next lint --dir src",
     "format": "prettier --write --ignore-path .gitignore --ignore-path .prettierignore './**/*.{js,jsx,ts,tsx,json}'",
-    "migrate": "npx prisma migrate dev --name init",
-    "seed": "node prisma/seed.ts"
+    "db:generate": "npx prisma generate",
+    "db:migrate": "npx prisma migrate dev --name init",
+    "db:migrate:prod": "npx prisma migrate deploy",
+    "db:seed": "node prisma/seed.ts"
   },
   "dependencies": {
-    "@auth0/nextjs-auth0": "^3.5.0",
+    "@auth/prisma-adapter": "^2.5.0",
     "@google-cloud/storage": "^7.7.0",
-    "@prisma/client": "^5.15.1",
+    "@prisma/client": "^5.19.1",
     "@react-three/drei": "^9.88.11",
     "@react-three/fiber": "^8.15.10",
     "@tanstack/react-query": "^5.45.1",
@@ -23,6 +25,7 @@
     "@types/gtag.js": "^0.0.18",
     "accept-language": "^3.0.18",
     "axios": "^1.7.2",
+    "bcryptjs": "^2.4.3",
     "firebase": "^10.6.0",
     "firebase-admin": "^12.0.0",
     "gsap": "^3.12.2",
@@ -31,7 +34,7 @@
     "jszip": "^3.10.1",
     "moment": "^2.29.4",
     "next": "^14.2.4",
-    "next-auth": "^4.24.7",
+    "next-auth": "^5.0.0-beta.19",
     "next-themes": "^0.2.1",
     "prettier-plugin-tailwindcss": "^0.6.6",
     "r3f-perf": "^7.1.2",
@@ -69,7 +72,7 @@
     "eslint-plugin-unused-imports": "^3.0.0",
     "postcss": "^8.4.38",
     "prettier": "^3.1.1",
-    "prisma": "^5.15.1",
+    "prisma": "^5.19.1",
     "tailwindcss": "^3.3.0",
     "typescript": "^5"
   }
