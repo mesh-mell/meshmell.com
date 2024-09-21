@@ -8,6 +8,8 @@ import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
 import Logo from "../Logo";
 
+import ShareButton from "./Share/Button";
+
 type RightBottomButtonsType = {
   lang: LanguageType;
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
@@ -27,10 +29,11 @@ const RightBottomButtons = ({
         </div>
       )}
       <div className="fixed bottom-[18px] right-5 z-[70] cursor-pointer">
-        <div className="flex flex-col items-end gap-2">
+        <div className="vertical-buttons-container">
+          <ShareButton setModalOpen={setModalOpen} />
           <LanguageSwitchButton lang={lang} setModalOpen={setModalOpen} />
           <FooterButton setModalOpen={setModalOpen} />
-          <SponsorButton lang={lang} setModalOpen={setModalOpen} />
+          <SponsorButton setModalOpen={setModalOpen} />
         </div>
       </div>
     </>

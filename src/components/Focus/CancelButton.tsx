@@ -1,5 +1,5 @@
 import { useRouter, useSearchParams } from "next/navigation";
-import { ImCross } from "react-icons/im";
+import { RxCross2 } from "react-icons/rx";
 
 import { LanguageType } from "@/src/types/language";
 import { newRouterPush } from "@/src/utils/newRouterPush";
@@ -26,10 +26,10 @@ const CancelButton = ({ lang }: CancelButtonType) => {
 
   return (
     <button
-      className="mt-4 cursor-pointer rounded-full border-[1.5px] border-black bg-neutral-100 p-6 text-3xl shadow-lg dark:border-white dark:bg-neutral-950 sm:border-[3px]"
+      className="custom-bg-gray-normal-button mt-4 cursor-pointer rounded-full p-3 text-3xl font-bold shadow-lg sm:p-4 sm:text-5xl"
       onClick={handleUnFocus}
     >
-      <ImCross />
+      <RxCross2 />
     </button>
   );
 };

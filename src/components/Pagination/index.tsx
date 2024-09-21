@@ -2,10 +2,6 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
-import {
-  MdOutlineKeyboardDoubleArrowLeft,
-  MdOutlineKeyboardDoubleArrowRight,
-} from "react-icons/md";
 
 import { CategoryDetailsType } from "@/src/types/categories";
 import { CreatorDetailsType } from "@/src/types/creators";
@@ -14,10 +10,12 @@ import { ModelDetailsType } from "@/src/types/models";
 import { getFilteredModels } from "@/src/utils/getFilteredModels";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
+import PaginationArrowButton from "./PaginationArrowButton";
+
 type getPageRangeType = {
   lang: LanguageType;
   currentPage: number;
-  filteredCategorysObj: CategoryDetailsType;
+  filteredCategoriesObj: CategoryDetailsType;
   filteredCreatorsObj: CreatorDetailsType;
   searchWord: string;
   models: ModelDetailsType[];
@@ -25,14 +23,14 @@ type getPageRangeType = {
 const Pagination = ({
   lang,
   currentPage,
-  filteredCategorysObj,
+  filteredCategoriesObj,
   filteredCreatorsObj,
   searchWord,
   models,
 }: getPageRangeType) => {
   const filteredModels = getFilteredModels(
     models,
-    filteredCategorysObj,
+    filteredCategoriesObj,
     filteredCreatorsObj,
     searchWord,
   );
@@ -101,23 +99,18 @@ const Pagination = ({
       <div className="fixed bottom-10 left-0 z-50 w-full bg-transparent text-3xl">
         <div className="absolute bottom-1 left-2/4 -translate-x-2/4">
           <div className="flex select-none justify-center gap-1">
-            {currentPage > 1 ? (
-              <div
-                className="mt-[2px] flex cursor-pointer items-center rounded-full border-[3px] border-black bg-white px-[5px] font-bold hover:border-blue-700 hover:text-blue-700 dark:border-white dark:bg-black hover:dark:border-blue-700"
-                onClick={goToPreviousPage}
-              >
-                <MdOutlineKeyboardDoubleArrowLeft />
-              </div>
-            ) : (
-              <div className="w-[40px]"></div>
-            )}
+            <PaginationArrowButton
+              isVisible={currentPage > 1}
+              direction="left"
+              onClick={goToPreviousPage}
+            />
             <div className="flex gap-1">
               {getPageRange().map((page, index) => {
                 const buttonClass =
                   page === currentPage
                     ? theme === "light"
                       ? "bg-blue-500 text-white"
-                      : "bg-blue-500 border-white"
+                      : "bg-blue-500"
                     : theme === "light"
                       ? "bg-white"
                       : "bg-black";
@@ -133,7 +126,7 @@ const Pagination = ({
                 return (
                   <div
                     key={index}
-                    className={`cursor-pointer rounded-full border-[3px] border-black px-4 py-1 font-bold dark:border-white ${buttonClass} hover:border-blue-700 hover:text-blue-700 dark:hover:border-blue-700 hover:dark:text-blue-700`}
+                    className={`font-bold ${buttonClass} pagination-button`}
                     onClick={() => goToPage(page)}
                   >
                     {page}
@@ -141,16 +134,11 @@ const Pagination = ({
                 );
               })}
             </div>
-            {currentPage < totalPages ? (
-              <div
-                className="mt-[2px] flex cursor-pointer items-center rounded-full border-[3px] border-black bg-white px-[5px] font-bold hover:border-blue-700 hover:text-blue-700 dark:border-white dark:bg-black hover:dark:border-blue-700"
-                onClick={goToNextPage}
-              >
-                <MdOutlineKeyboardDoubleArrowRight />
-              </div>
-            ) : (
-              <div className="w-[40px]"></div>
-            )}
+            <PaginationArrowButton
+              isVisible={currentPage < totalPages}
+              direction="right"
+              onClick={goToNextPage}
+            />
           </div>
         </div>
       </div>

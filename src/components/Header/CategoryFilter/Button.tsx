@@ -10,13 +10,13 @@ import Button from "../../Button";
 
 type CategoryFilterButtonType = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  filteredCategorysObj: CategoryDetailsType;
+  filteredCategoriesObj: CategoryDetailsType;
   modalOpen: ModalOpenTypeForExhibition;
 };
 
 const CategoryFilterButton = ({
   setModalOpen,
-  filteredCategorysObj,
+  filteredCategoriesObj,
   modalOpen,
 }: CategoryFilterButtonType) => {
   const handleClick = () => {
@@ -57,7 +57,7 @@ const CategoryFilterButton = ({
     >
       <RiFilter3Fill className="text-3xl sm:text-4xl" />
       <div className="-mt-1 flex h-[28px] w-[28px] items-center justify-center text-3xl sm:h-[30px] sm:w-[30px] sm:text-4xl">
-        {filteredCategorysObj.icon}
+        {filteredCategoriesObj.icon}
       </div>
     </Button>
   );

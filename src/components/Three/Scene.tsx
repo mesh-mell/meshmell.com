@@ -37,7 +37,7 @@ type SceneType = {
   footerOpen: boolean;
   focusedModelsObj: ModelDetailsType;
   filteredCreatorsObj: CreatorDetailsType;
-  filteredCategorysObj: CategoryDetailsType;
+  filteredCategoriesObj: CategoryDetailsType;
   lightAndDarkTheme: LightAndDarkThemeType;
   searchWord: string;
   hoverOnModal: boolean;
@@ -58,7 +58,7 @@ const Scene = ({
   lang,
   focusedModelsObj,
   filteredCreatorsObj,
-  filteredCategorysObj,
+  filteredCategoriesObj,
   lightAndDarkTheme,
   searchWord,
   hoverOnModal,
@@ -173,7 +173,7 @@ const Scene = ({
   useEffect(() => {
     const filteredModelsInUseEffect = getFilteredModels(
       models,
-      filteredCategorysObj,
+      filteredCategoriesObj,
       filteredCreatorsObj,
       searchWord,
     );
@@ -192,7 +192,7 @@ const Scene = ({
     const filteredModelsOfCurrentPage = paginatedModels[currentPage - 1] || [];
     setFilteredModels(filteredModelsOfCurrentPage);
   }, [
-    filteredCategorysObj.slug,
+    filteredCategoriesObj.slug,
     filteredCreatorsObj.slug,
     searchWord,
     currentPage,

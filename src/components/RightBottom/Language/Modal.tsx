@@ -1,6 +1,6 @@
 "use client";
 
-import { Dispatch, MouseEvent, SetStateAction } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 import ModalWrapper from "@/src/components/ModalWrapper";
 import LanguageFlag from "@/src/components/RightBottom/Language/Flag";
@@ -32,17 +32,6 @@ const LanguageSwitchModal = <
 }: LanguageSwitchModalType<T>) => {
   const { t } = useTranslation(lang, "main");
 
-  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-  };
-
-  const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
-      ...prevState,
-      language: false,
-    }));
-  };
-
   const handleClickClose = () => {
     setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
@@ -57,6 +46,8 @@ const LanguageSwitchModal = <
       leftRight="right"
       widthWhenLargeDevice="208"
       heightWhenSmallDevice="500"
+      title={t("languageSwitch.switchLanguage")}
+      setHoverOnModal={setHoverOnModal}
     >
       <div className="mb-10 mt-10 flex flex-col gap-8">
         <LanguageFlag lang="en" text="English" setModalOpen={setModalOpen} />

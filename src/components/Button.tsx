@@ -15,7 +15,7 @@ const Button = ({
     <button
       onClick={handleClick}
       className={
-        "relative mt-[6px] flex justify-center rounded-[10px] shadow-md sm:mt-[10px] sm:rounded-[18px]"
+        "relative flex justify-center rounded-[10px] shadow-md sm:rounded-[18px]"
       }
     >
       <div

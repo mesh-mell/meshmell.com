@@ -51,4 +51,10 @@ body {
   .custom-bg-gray-inactive-button {
     @apply bg-gray-100 hover:bg-gray-200 dark:bg-black dark:hover:bg-gray-800;
   }
+  .pagination-button {
+    @apply flex cursor-pointer items-center rounded-md px-1 py-0.5 hover:text-blue-700 hover:dark:text-blue-700 sm:min-w-4 sm:p-2 sm:py-1;
+  }
+  .vertical-buttons-container {
+    @apply flex flex-col gap-1 sm:gap-2;
+  }
 }

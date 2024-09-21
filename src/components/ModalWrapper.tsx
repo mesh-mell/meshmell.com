@@ -1,13 +1,13 @@
 import { Dispatch, MouseEvent, ReactNode, SetStateAction } from "react";
-import { ImCross } from "react-icons/im";
+import { RxCross2 } from "react-icons/rx";
 
 type ModalWrapperProps = {
   isVisible: boolean;
   handleClose: () => void;
   children: ReactNode;
   leftRight: "left" | "right";
-  widthWhenLargeDevice: string;
-  heightWhenSmallDevice: string;
+  widthWhenLargeDevice: "208" | "384" | "450" | "600";
+  heightWhenSmallDevice: "700" | "500";
   title?: string;
   setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
@@ -36,8 +36,36 @@ const ModalWrapper = ({
         ? "sm:translate-x-0"
         : "sm:translate-x-full";
 
-  const widthWhenLargeDeviceClass = `sm:w-[${widthWhenLargeDevice}px]`;
-  const heightWhenSmallDeviceClass = `h-[${heightWhenSmallDevice}px]`;
+  let widthWhenLargeDeviceClass = "";
+  let heightWhenSmallDeviceClass = "";
+
+  switch (widthWhenLargeDevice) {
+    case "208":
+      widthWhenLargeDeviceClass = "sm:w-[208px]";
+      break;
+    case "384":
+      widthWhenLargeDeviceClass = "sm:w-[384px]";
+      break;
+    case "450":
+      widthWhenLargeDeviceClass = "sm:w-[450px]";
+      break;
+    case "600":
+      widthWhenLargeDeviceClass = "sm:w-[600px]";
+      break;
+    default:
+      widthWhenLargeDeviceClass = ""; // Default class or handle case if needed
+  }
+
+  switch (heightWhenSmallDevice) {
+    case "700":
+      heightWhenSmallDeviceClass = "h-[700px]";
+      break;
+    case "500":
+      heightWhenSmallDeviceClass = "h-[500px]";
+      break;
+    default:
+      heightWhenSmallDeviceClass = ""; // Default class or handle case if needed
+  }
 
   const crossMarkContainerClass =
     leftRight === "left" ? "justify-start" : "justify-end";
@@ -67,10 +95,10 @@ const ModalWrapper = ({
         <div className={`mb-4 flex ${crossMarkContainerClass}`}>
           <div
             onClick={handleClickClose}
-            className="flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
+            className="flex h-12 w-12 items-center justify-center rounded-full bg-transparent sm:h-14 sm:w-14"
           >
-            <button className="text-base font-bold sm:text-xl">
-              <ImCross />
+            <button className="text-2xl font-bold sm:text-4xl">
+              <RxCross2 />
             </button>
           </div>
         </div>

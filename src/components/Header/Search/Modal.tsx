@@ -84,7 +84,7 @@ const SearchModal = ({
     <ModalWrapper
       isVisible={modalOpen.search}
       handleClose={handleClickClose}
-      leftRight="left"
+      leftRight="right"
       widthWhenLargeDevice="384"
       heightWhenSmallDevice="700"
     >

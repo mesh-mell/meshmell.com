@@ -5,7 +5,7 @@ import { languagesList } from "@/src/utils/language";
 
 export const getFilteredModels = (
   models: ModelDetailsType[],
-  filteredCategorysObj: CategoryDetailsType,
+  filteredCategoriesObj: CategoryDetailsType,
   filteredCreatorsObj: CreatorDetailsType,
   searchWord: string,
 ): ModelDetailsType[] => {
@@ -22,8 +22,8 @@ export const getFilteredModels = (
 
     try {
       const matchesCategory =
-        filteredCategorysObj.slug === "all" ||
-        modelType.categoryTags.includes(filteredCategorysObj.slug);
+        filteredCategoriesObj.slug === "all" ||
+        modelType.categoryTags.includes(filteredCategoriesObj.slug);
       const matchesCreator =
         filteredCreatorsObj.slug === "" ||
         modelType.creator === filteredCreatorsObj.slug;

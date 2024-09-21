@@ -11,15 +11,12 @@ import DownloadCreditModal from "@/src/components/Focus/Download/CreditModal";
 import DownloadErrorModal from "@/src/components/Focus/Download/ErrorModal";
 import DownloadModal from "@/src/components/Focus/Download/Modal";
 import InfoModal from "@/src/components/Focus/ModelInfo/Modal";
-import ShareModal from "@/src/components/Focus/Share/Modal";
 import CategoryFilterModal from "@/src/components/Header/CategoryFilter/Modal";
 import CreatorFilterModal from "@/src/components/Header/CreatorFilter/Modal";
 import CreatorModalInNotFocused from "@/src/components/Header/CreatorInfoInNotFocused/Modal";
 import Header from "@/src/components/Header/Header";
 import SearchModal from "@/src/components/Header/Search/Modal";
 import SwitchViewModal from "@/src/components/Header/ViewsSwitch/Switch";
-import ShareModalButtonWhenList from "@/src/components/LeftBottomWhenList/Share/Button";
-import ShareModalWhenList from "@/src/components/LeftBottomWhenList/Share/Modal";
 import Pagination from "@/src/components/Pagination";
 import RightBottomButtons from "@/src/components/RightBottom/Buttons";
 import About from "@/src/components/RightBottom/Footer/About";
@@ -31,6 +28,7 @@ import PrivacyPolicy from "@/src/components/RightBottom/Footer/PrivacyPolicy";
 import Terms from "@/src/components/RightBottom/Footer/Terms";
 import Who from "@/src/components/RightBottom/Footer/Who";
 import LanguageSwitchModal from "@/src/components/RightBottom/Language/Modal";
+import ShareModal from "@/src/components/RightBottom/Share/Modal";
 import Scene from "@/src/components/Three/Scene";
 import { CategoryTypes, CategoryDetailsType } from "@/src/types/categories";
 import { CreatorDetailsType } from "@/src/types/creators";
@@ -85,7 +83,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   const searchParams = useSearchParams();
   const [categoryFiltersSlug, setCategoryFiltersSlug] =
     useState<CategoryTypes>("all");
-  const [filteredCategorysObj, setFilteredCategorysObj] =
+  const [filteredCategoriesObj, setFilteredCategoriesObj] =
     useState<CategoryDetailsType>(defaultCategoryDetails);
   const [creatorFiltersSlug, setCreatorFiltersSlug] = useState<string>("");
   const [filteredCreatorsObj, setFilteredCreatorsObj] =
@@ -208,7 +206,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   }, [searchParams.get("category")]);
 
   useEffect(() => {
-    setFilteredCategorysObj(
+    setFilteredCategoriesObj(
       categories.find(
         (category: CategoryDetailsType) =>
           category.slug === categoryFiltersSlug,
@@ -273,10 +271,9 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             lang={lang}
             setModalOpen={setModalOpen}
             modalOpen={modalOpen}
-            filteredCategorysObj={filteredCategorysObj}
+            filteredCategoriesObj={filteredCategoriesObj}
             filteredCreatorsObj={filteredCreatorsObj}
             searchWord={searchWord}
-            setSearchWord={setSearchWord}
             focusedModelsObj={focusedModelsObj}
             isWireFrame={isWireFrame}
             setIsWireFrame={setIsWireFrame}
@@ -290,20 +287,6 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             modalOpen={modalOpen}
             isFocusedMode={isFocusedMode}
           />
-
-          <ShareModalWhenList
-            lang={lang}
-            setModalOpen={setModalOpen}
-            modalOpen={modalOpen}
-            isFocusedMode={isFocusedMode}
-          />
-
-          {!isFocusedMode && (
-            <ShareModalButtonWhenList
-              setModalOpen={setModalOpen}
-              modalOpen={modalOpen}
-            />
-          )}
 
           <RightBottomButtons
             lang={lang}
@@ -504,7 +487,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             <Pagination
               lang={lang}
               currentPage={currentPage}
-              filteredCategorysObj={filteredCategorysObj}
+              filteredCategoriesObj={filteredCategoriesObj}
               filteredCreatorsObj={filteredCreatorsObj}
               searchWord={searchWord}
               models={models}
@@ -524,7 +507,7 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
                 modalOpen={modalOpen}
                 lang={lang}
                 lightAndDarkTheme={lightAndDarkTheme}
-                filteredCategorysObj={filteredCategorysObj}
+                filteredCategoriesObj={filteredCategoriesObj}
                 filteredCreatorsObj={filteredCreatorsObj}
                 focusedModelsObj={focusedModelsObj}
                 searchWord={searchWord}

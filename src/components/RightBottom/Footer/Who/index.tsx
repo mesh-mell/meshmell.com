@@ -1,6 +1,6 @@
-import { Dispatch, MouseEvent, SetStateAction } from "react";
-import { ImCross } from "react-icons/im";
+import { Dispatch, SetStateAction } from "react";
 
+import ModalWrapper from "@/src/components/ModalWrapper";
 import SNSLinksForYuri from "@/src/components/RightBottom/Footer/Who/SnsLinks/YuriNakansihi";
 import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
@@ -33,17 +33,6 @@ const Who = <
 }: WhoType<T>) => {
   const { t } = useTranslation(lang, "main");
 
-  const handleClickInside = (event: MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
-  };
-
-  const handleClickOutside = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
-      ...prevState,
-      who: false,
-    }));
-  };
-
   const handleClickClose = () => {
     setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
@@ -56,54 +45,32 @@ const Who = <
   );
 
   return (
-    <>
-      {modalOpen.who && (
-        <div
-          className="fixed inset-0 z-[60] flex h-screen justify-end bg-black bg-opacity-0"
-          onClick={handleClickOutside}
-        ></div>
-      )}
-      <div
-        className={`fixed bottom-[0px] right-0 z-[100] flex h-[700px] w-full flex-col gap-4 rounded-lg bg-neutral-100 p-6 transition-transform duration-150 dark:bg-neutral-950 sm:top-[0px] sm:h-screen sm:w-[450px] ${modalOpen.who ? "visible translate-x-0 translate-y-0 ease-in sm:translate-x-0 sm:translate-y-0" : "invisible -translate-x-[0px] translate-y-full sm:translate-x-full sm:translate-y-[0px]"}`}
-        onClick={handleClickInside}
-        onMouseEnter={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
-        onMouseLeave={
-          setHoverOnModal ? () => setHoverOnModal(false) : undefined
-        }
-        onTouchStart={setHoverOnModal ? () => setHoverOnModal(true) : undefined}
-        onTouchEnd={setHoverOnModal ? () => setHoverOnModal(false) : undefined}
-      >
-        <div className="mb-4 flex justify-end">
-          <div
-            onClick={handleClickClose}
-            className={
-              "flex h-12 w-12 items-center justify-center rounded-full border-[2.2px] border-black bg-transparent dark:border-white sm:h-14 sm:w-14 sm:border-[3px]"
-            }
-          >
-            <button className="text-base font-bold sm:text-xl">
-              <ImCross />
-            </button>
-          </div>
-        </div>
-        <div className="mx-4">
-          <section className="mb-8 flex min-h-screen w-full flex-col">
-            <h1 className={"mb-6 text-2xl font-bold"}>{t("who.developers")}</h1>
-            {developersInfo.map((developer: CreatorDetailsType) => (
-              <div key={developer.slug} className="mb-4">
-                <div className="text-xl">
-                  {developer.name[lang as LanguageType]}
-                </div>
-                <div className="mb-2 text-base">
-                  {developer.description[lang as LanguageType]}
-                </div>
-                <SNSLinksForYuri />
+    <ModalWrapper
+      isVisible={modalOpen.who}
+      handleClose={handleClickClose}
+      leftRight="right"
+      widthWhenLargeDevice="450"
+      heightWhenSmallDevice="700"
+      setHoverOnModal={setHoverOnModal}
+    >
+      <div className="mx-4">
+        <section className="mb-8 flex min-h-screen w-full flex-col">
+          <h1 className={"mb-6 text-2xl font-bold"}>{t("who.developers")}</h1>
+          {developersInfo.map((developer: CreatorDetailsType) => (
+            <div key={developer.slug} className="mb-4">
+              <div className="text-xl">
+                {developer.name[lang as LanguageType]}
               </div>
-            ))}
-          </section>
-          <div>{t("who.contributorWanted")}</div>
-        </div>
+              <div className="mb-2 text-base">
+                {developer.description[lang as LanguageType]}
+              </div>
+              <SNSLinksForYuri />
+            </div>
+          ))}
+        </section>
+        <div>{t("who.contributorWanted")}</div>
       </div>
-    </>
+    </ModalWrapper>
   );
 };
 

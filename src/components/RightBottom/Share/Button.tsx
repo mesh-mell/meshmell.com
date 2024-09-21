@@ -1,32 +1,18 @@
 import { Dispatch, SetStateAction } from "react";
 import { FaShareSquare } from "react-icons/fa";
 
-import {
-  ModalOpenTypeForExhibition,
-  ModalOpenTypeForHome,
-  ModalOpenTypeForShare,
-} from "@/src/types/modals";
+import Button from "@/src/components/Button";
+import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
-import Button from "../../Button";
-
-type ShareModalButtonType<T> = {
+type Props = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  modalOpen: T;
 };
 
-const ShareModalButton = <
-  T extends
-    | ModalOpenTypeForHome
-    | ModalOpenTypeForShare
-    | ModalOpenTypeForExhibition,
->({
-  setModalOpen,
-  modalOpen,
-}: ShareModalButtonType<T>) => {
+const ShareButton = ({ setModalOpen }: Props) => {
   const handleClick = () => {
     setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
-      shareThisPage: !prevState.shareThisPage,
+      shareThisPageInList: !prevState.shareThisPageInList,
       download: false,
       downloadCredit: false,
       creator: false,
@@ -53,12 +39,12 @@ const ShareModalButton = <
   };
 
   return (
-    <Button handleClick={handleClick} isActive={modalOpen.shareThisPage}>
-      <div className="text-3xl sm:text-4xl">
+    <Button handleClick={handleClick}>
+      <div className="text-2xl sm:text-3xl">
         <FaShareSquare />
       </div>
     </Button>
   );
 };
 
-export default ShareModalButton;
+export default ShareButton;

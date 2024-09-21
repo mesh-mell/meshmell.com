@@ -1,28 +1,29 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
 
 import SnsLinksForShareThisSite from "@/src/components/ModalComponents/SnsLinksForShareThisSite";
-import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
-type ShareModalType = {
+import ModalWrapper from "../../ModalWrapper";
+
+type ShareModalWhenListType = {
   lang: LanguageType;
   setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
   modalOpen: ModalOpenTypeForExhibition;
   isFocusedMode: boolean;
 };
 
-const ShareModal = ({
+const ShareModalWhenList = ({
   lang,
   setModalOpen,
   modalOpen,
   isFocusedMode,
-}: ShareModalType) => {
+}: ShareModalWhenListType) => {
   const { t } = useTranslation(lang, "main");
 
   useEffect(() => {
-    if (!isFocusedMode) {
+    if (isFocusedMode) {
       handleClickClose();
     }
   }, [isFocusedMode]);
@@ -30,22 +31,22 @@ const ShareModal = ({
   const handleClickClose = () => {
     setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
       ...prevState,
-      shareThisPage: false,
+      shareThisPageInList: false,
     }));
   };
 
   return (
     <ModalWrapper
-      isVisible={modalOpen.shareThisPage}
+      isVisible={modalOpen.shareThisPageInList}
       handleClose={handleClickClose}
-      leftRight="left"
-      widthWhenLargeDevice="384"
+      leftRight="right"
+      widthWhenLargeDevice="450"
       heightWhenSmallDevice="700"
-      title={t("shareThisPage.title")}
     >
+      <h2 className="text-2xl font-bold sm:text-3xl">{t("share.title")}</h2>
       <SnsLinksForShareThisSite lang={lang} />
     </ModalWrapper>
   );
 };
 
-export default ShareModal;
+export default ShareModalWhenList;

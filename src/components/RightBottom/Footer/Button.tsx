@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react";
-import { GiHamburgerMenu } from "react-icons/gi";
+import { FiMenu } from "react-icons/fi";
 
 import { ModalOpenTypeForExhibition } from "@/src/types/modals";
 
@@ -20,7 +20,7 @@ const FooterButton = ({ setModalOpen }: FooterButtonType) => {
   return (
     <Button handleClick={handleClick}>
       <div className="text-3xl sm:text-4xl">
-        <GiHamburgerMenu />
+        <FiMenu />
       </div>
     </Button>
   );
