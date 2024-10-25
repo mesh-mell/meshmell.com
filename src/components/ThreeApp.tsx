@@ -35,7 +35,7 @@ import { CreatorDetailsType } from "@/src/types/creators";
 import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
 import { LightAndDarkThemeType } from "@/src/types/lightAndDarkTheme";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { viewTypes, WindowType } from "@/src/types/views";
 import { defaultCategoryDetails } from "@/src/utils/defaultData/categories";
@@ -52,7 +52,7 @@ import ForSponsors from "./RightBottom/Footer/ForSponsors";
 import Sponsors from "./RightBottom/Sponsors/Modal";
 
 const ThreeApp = ({ lang }: { lang: LanguageType }) => {
-  const [modalOpen, setModalOpen] = useState<ModalOpenTypeForExhibition>({
+  const [modalOpen, setModalOpen] = useState<ModalOpenType>({
     terms: false,
     privacy: false,
     contact: false,
@@ -77,7 +77,6 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
     viewsSwitch: false,
     creatorInfoInNotFocused: false,
     shareThisPage: false,
-    shareThisPageInList: false,
   });
 
   const searchParams = useSearchParams();

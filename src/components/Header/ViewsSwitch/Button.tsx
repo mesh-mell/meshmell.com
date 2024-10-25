@@ -5,14 +5,14 @@ import { Dispatch, SetStateAction } from "react";
 import HorizontalViewIcon from "@/src/components/Svg/Views/HorizontalViewIcon";
 import PerspectiveViewIcon from "@/src/components/Svg/Views/PerspectiveViewIcon";
 import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { viewTypes } from "@/src/types/views";
 
 import Button from "../../Button";
 
 type ViewsSwitchButtonType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  modalOpen: ModalOpenTypeForExhibition;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
+  modalOpen: ModalOpenType;
   view: viewTypes;
 };
 
@@ -22,7 +22,7 @@ const ViewsSwitchButton = ({
   modalOpen,
 }: ViewsSwitchButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       viewsSwitch: !prevState.viewsSwitch,
       modelInfo: false,
@@ -46,7 +46,6 @@ const ViewsSwitchButton = ({
       copyRight: false,
       categoryFilter: false,
       shareThisPage: false,
-      shareThisPageInList: false,
     }));
   };
 

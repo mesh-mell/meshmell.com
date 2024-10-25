@@ -8,14 +8,14 @@ import CC0 from "@/src/components/ModalComponents/CC0";
 import ModalWrapper from "@/src/components/ModalWrapper";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { dateFormat } from "@/src/utils/dateFormat";
 
 type ModelInfoModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: ModalOpenType;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   focusedModelsObj: ModelDetailsType;
   focusedModelsCreatorsObj: CreatorDetailsType;
   isFocusedMode: boolean;
@@ -36,14 +36,14 @@ const ModelInfoModal = ({
   }, [isFocusedMode]);
 
   const openCreatorModal = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       creatorInfo: true,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       modelInfo: false,
     }));

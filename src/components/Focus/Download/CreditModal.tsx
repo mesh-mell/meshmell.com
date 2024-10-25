@@ -5,11 +5,11 @@ import CreatorInfo from "@/src/components/Focus/CreatorInfo/Contents";
 import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 type DownloadCreditModalType = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   focusedModelsCreatorsObj: CreatorDetailsType;
   isFocusedMode: boolean;
 };
@@ -29,7 +29,7 @@ const DownloadCreditModal = ({
   }, [isFocusedMode]);
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       downloadCredit: false,
     }));

@@ -3,18 +3,18 @@ import { RiShareBoxFill } from "react-icons/ri";
 
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 type AboutCopyrightType = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
 };
 
 const AboutCopyright = ({ lang, setModalOpen }: AboutCopyrightType) => {
   const { t } = useTranslation(lang, "main");
 
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       copyRight: true,
     }));

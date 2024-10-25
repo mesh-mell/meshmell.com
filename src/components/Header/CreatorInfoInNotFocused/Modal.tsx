@@ -4,12 +4,12 @@ import CreatorInfo from "@/src/components/Focus/CreatorInfo/Contents";
 import ModalWrapper from "@/src/components/ModalWrapper";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 type CreatorInfoModalInNotFocusedType = {
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: ModalOpenType;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   filteredCreatorsObj: CreatorDetailsType;
   isFocusedMode: boolean;
@@ -24,7 +24,7 @@ const CreatorInfoModalInNotFocused = ({
   isFocusedMode,
 }: CreatorInfoModalInNotFocusedType) => {
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       creatorInfoInNotFocused: false,
     }));

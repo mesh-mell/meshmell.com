@@ -3,17 +3,17 @@
 import { Dispatch, SetStateAction } from "react";
 import { FaPeopleGroup } from "react-icons/fa6";
 
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 import Button from "../../Button";
 
 type SponsorsButtonType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
 };
 
 const SponsorButton = ({ setModalOpen }: SponsorsButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       sponsors: !prevState.sponsors,
     }));

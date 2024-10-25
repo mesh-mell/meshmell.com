@@ -6,24 +6,19 @@ import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import {
-  ModalOpenTypeForExhibition,
-  ModalOpenTypeForHome,
-  ModalOpenTypeForShare,
+  ModalOpenType,
+  ModalOpenType,
+  ModalOpenType,
 } from "@/src/types/modals";
 
 type FooterType<T> = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   modalOpen: T;
   setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
-const Footer = <
-  T extends
-    | ModalOpenTypeForHome
-    | ModalOpenTypeForShare
-    | ModalOpenTypeForExhibition,
->({
+const Footer = <T extends ModalOpenType | ModalOpenType | ModalOpenType>({
   lang,
   setModalOpen,
   modalOpen,
@@ -32,63 +27,63 @@ const Footer = <
   const { t } = useTranslation(lang, "main");
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       footer: false,
     }));
   };
 
   const setAboutModalOpen = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       about: true,
     }));
   };
 
   const setContactModalOpen = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       contact: true,
     }));
   };
 
   const setWhoModalOpen = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       who: true,
     }));
   };
 
   const setTermsModalOpen = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       terms: true,
     }));
   };
 
   const setPrivacyModalOpen = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       privacy: true,
     }));
   };
 
   const setCopyRightModalOpen = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       copyRight: true,
     }));
   };
 
   const setForDevelopersModalOpen = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       forDevelopers: true,
     }));
   };
 
   const setForSponsorsModalOpen = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       forSponsors: true,
     }));

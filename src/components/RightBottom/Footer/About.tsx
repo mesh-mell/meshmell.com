@@ -3,26 +3,21 @@ import { Dispatch, SetStateAction } from "react";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import {
-  ModalOpenTypeForExhibition,
-  ModalOpenTypeForHome,
-  ModalOpenTypeForShare,
+  ModalOpenType,
+  ModalOpenType,
+  ModalOpenType,
 } from "@/src/types/modals";
 
 import ModalWrapper from "../../ModalWrapper";
 
 type AboutType<T> = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   modalOpen: T;
   setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
-const About = <
-  T extends
-    | ModalOpenTypeForHome
-    | ModalOpenTypeForShare
-    | ModalOpenTypeForExhibition,
->({
+const About = <T extends ModalOpenType | ModalOpenType | ModalOpenType>({
   lang,
   setModalOpen,
   modalOpen,
@@ -31,7 +26,7 @@ const About = <
   const { t } = useTranslation(lang, "main");
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       about: false,
     }));

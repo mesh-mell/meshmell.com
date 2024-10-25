@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 
 import ModalWrapper from "../../ModalWrapper";
@@ -12,8 +12,8 @@ import Contents from "./Contents";
 
 type CreatorInfoModal = {
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: ModalOpenType;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   focusedModelsObj: ModelDetailsType;
   focusedModelsCreatorsObj: CreatorDetailsType;
   isFocusedMode: boolean;
@@ -30,7 +30,7 @@ const CreatorInfoModal = ({
   const { t } = useTranslation(lang, "main");
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       creatorInfo: false,
     }));

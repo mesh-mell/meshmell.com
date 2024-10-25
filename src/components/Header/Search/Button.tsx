@@ -1,13 +1,13 @@
 import { Dispatch, SetStateAction } from "react";
 import { FaSearch } from "react-icons/fa";
 
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 import Button from "../../Button";
 
 type SearchButtonType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  modalOpen: ModalOpenTypeForExhibition;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
+  modalOpen: ModalOpenType;
   searchWord?: string;
 };
 
@@ -17,7 +17,7 @@ const SearchButton = ({
   searchWord,
 }: SearchButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       search: !prevState.search,
       modelInfo: false,
@@ -42,7 +42,6 @@ const SearchButton = ({
       viewsSwitch: false,
       sponsors: false,
       shareThisPage: false,
-      shareThisPageInList: false,
     }));
   };
 

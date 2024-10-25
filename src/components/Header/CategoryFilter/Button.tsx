@@ -4,14 +4,14 @@ import { Dispatch, SetStateAction } from "react";
 import { RiFilter3Fill } from "react-icons/ri";
 
 import { CategoryDetailsType } from "@/src/types/categories";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 import Button from "../../Button";
 
 type CategoryFilterButtonType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   filteredCategoriesObj: CategoryDetailsType;
-  modalOpen: ModalOpenTypeForExhibition;
+  modalOpen: ModalOpenType;
 };
 
 const CategoryFilterButton = ({
@@ -20,7 +20,7 @@ const CategoryFilterButton = ({
   modalOpen,
 }: CategoryFilterButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       categoryFilter: !prevState.categoryFilter,
       modelInfo: false,
@@ -45,7 +45,6 @@ const CategoryFilterButton = ({
       viewsSwitch: false,
       sponsors: false,
       shareThisPage: false,
-      shareThisPageInList: false,
     }));
   };
 

@@ -7,23 +7,20 @@ import LanguageFlag from "@/src/components/RightBottom/Language/Flag";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import {
-  ModalOpenTypeForExhibition,
-  ModalOpenTypeForHome,
-  ModalOpenTypeForShare,
+  ModalOpenType,
+  ModalOpenType,
+  ModalOpenType,
 } from "@/src/types/modals";
 
 type LanguageSwitchModalType<T> = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
   modalOpen: T;
 };
 
 const LanguageSwitchModal = <
-  T extends
-    | ModalOpenTypeForHome
-    | ModalOpenTypeForShare
-    | ModalOpenTypeForExhibition,
+  T extends ModalOpenType | ModalOpenType | ModalOpenType,
 >({
   lang,
   setModalOpen,
@@ -33,7 +30,7 @@ const LanguageSwitchModal = <
   const { t } = useTranslation(lang, "main");
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       language: false,
     }));

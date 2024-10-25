@@ -6,25 +6,20 @@ import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
 import {
-  ModalOpenTypeForExhibition,
-  ModalOpenTypeForHome,
-  ModalOpenTypeForShare,
+  ModalOpenType,
+  ModalOpenType,
+  ModalOpenType,
 } from "@/src/types/modals";
 
 type WhoType<T> = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   modalOpen: T;
   setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
   creators: CreatorDetailsType[];
 };
 
-const Who = <
-  T extends
-    | ModalOpenTypeForHome
-    | ModalOpenTypeForShare
-    | ModalOpenTypeForExhibition,
->({
+const Who = <T extends ModalOpenType | ModalOpenType | ModalOpenType>({
   lang,
   setModalOpen,
   modalOpen,
@@ -34,7 +29,7 @@ const Who = <
   const { t } = useTranslation(lang, "main");
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       who: false,
     }));

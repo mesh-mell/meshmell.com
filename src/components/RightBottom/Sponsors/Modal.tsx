@@ -7,9 +7,9 @@ import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import {
-  ModalOpenTypeForExhibition,
-  ModalOpenTypeForHome,
-  ModalOpenTypeForShare,
+  ModalOpenType,
+  ModalOpenType,
+  ModalOpenType,
 } from "@/src/types/modals";
 import { SponsorInfoType } from "@/src/types/sponsors";
 import { defaultSponsorInfo } from "@/src/utils/defaultData/sponsors";
@@ -20,16 +20,11 @@ import EachSponsor from "./EachSponsor";
 type SponsorsType<T> = {
   lang: LanguageType;
   modalOpen: T;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
-const Sponsors = <
-  T extends
-    | ModalOpenTypeForHome
-    | ModalOpenTypeForShare
-    | ModalOpenTypeForExhibition,
->({
+const Sponsors = <T extends ModalOpenType | ModalOpenType | ModalOpenType>({
   lang,
   setModalOpen,
   setHoverOnModal,
@@ -56,7 +51,7 @@ const Sponsors = <
   }, []);
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       sponsors: false,
     }));

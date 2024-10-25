@@ -7,14 +7,14 @@ import ModelInfoButton from "@/src/components/Focus/ModelInfo/Button";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 
 type InfoButtonType = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   focusedModelsObj: ModelDetailsType;
-  modalOpen: ModalOpenTypeForExhibition;
+  modalOpen: ModalOpenType;
   focusedModelsDownloadData: Record<string, DateItem>;
   getFirebaseDataLoading: boolean;
   models: ModelDetailsType[];

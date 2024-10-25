@@ -1,17 +1,17 @@
 import { Dispatch, SetStateAction } from "react";
 import { FiMenu } from "react-icons/fi";
 
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 import Button from "../../Button";
 
 type FooterButtonType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
 };
 
 const FooterButton = ({ setModalOpen }: FooterButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       footer: !prevState.footer,
     }));

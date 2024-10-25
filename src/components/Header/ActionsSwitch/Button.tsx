@@ -3,13 +3,13 @@
 import { Dispatch, SetStateAction } from "react";
 import { FaWalking } from "react-icons/fa";
 
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 import Button from "../../Button";
 
 type ActionsSwitchButtonType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  modalOpen: ModalOpenTypeForExhibition;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
+  modalOpen: ModalOpenType;
 };
 
 const ActionsSwitchButton = ({
@@ -17,7 +17,7 @@ const ActionsSwitchButton = ({
   modalOpen,
 }: ActionsSwitchButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       actionsSwitch: !prevState.actionsSwitch,
       modelInfo: false,

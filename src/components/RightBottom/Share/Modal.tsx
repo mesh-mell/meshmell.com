@@ -3,14 +3,14 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import SnsLinksForShareThisSite from "@/src/components/ModalComponents/SnsLinksForShareThisSite";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 import ModalWrapper from "../../ModalWrapper";
 
 type ShareModalWhenListType = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  modalOpen: ModalOpenTypeForExhibition;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
+  modalOpen: ModalOpenType;
   isFocusedMode: boolean;
 };
 
@@ -29,15 +29,14 @@ const ShareModalWhenList = ({
   }, [isFocusedMode]);
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
-      shareThisPageInList: false,
     }));
   };
 
   return (
     <ModalWrapper
-      isVisible={modalOpen.shareThisPageInList}
+      isVisible={modalOpen.shareThisPage}
       handleClose={handleClickClose}
       leftRight="right"
       widthWhenLargeDevice="450"

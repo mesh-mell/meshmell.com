@@ -4,26 +4,21 @@ import ContactUsParagraph from "@/src/components/RightBottom/Footer/ContactUsPar
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import {
-  ModalOpenTypeForExhibition,
-  ModalOpenTypeForHome,
-  ModalOpenTypeForShare,
+  ModalOpenType,
+  ModalOpenType,
+  ModalOpenType,
 } from "@/src/types/modals";
 
 import ModalWrapper from "../../ModalWrapper";
 
 type TermsType<T> = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   modalOpen: T;
   setHoverOnModal?: Dispatch<SetStateAction<boolean>>;
 };
 
-const Terms = <
-  T extends
-    | ModalOpenTypeForHome
-    | ModalOpenTypeForShare
-    | ModalOpenTypeForExhibition,
->({
+const Terms = <T extends ModalOpenType | ModalOpenType | ModalOpenType>({
   lang,
   setModalOpen,
   modalOpen,
@@ -32,14 +27,14 @@ const Terms = <
   const { t } = useTranslation(lang, "main");
 
   const handleGoToContact = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       contact: true,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       terms: false,
     }));

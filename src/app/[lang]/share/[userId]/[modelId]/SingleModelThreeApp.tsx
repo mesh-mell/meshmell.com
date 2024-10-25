@@ -8,7 +8,7 @@ import CreatorInfoButton from "@/src/components/Focus/CreatorInfo/Button";
 import CreatorInfoModal from "@/src/components/Focus/CreatorInfo/Modal";
 import ModelInfoButton from "@/src/components/Focus/ModelInfo/Button";
 import ModelInfoModal from "@/src/components/Focus/ModelInfo/Modal";
-import ShareModalButton from "@/src/components/Focus/Share/Button";
+import Header from "@/src/components/Header/Header";
 import RightBottomButtons from "@/src/components/RightBottom/Buttons";
 import About from "@/src/components/RightBottom/Footer/About";
 import Contact from "@/src/components/RightBottom/Footer/Contact";
@@ -22,12 +22,12 @@ import Who from "@/src/components/RightBottom/Footer/Who";
 import LanguageSwitchModal from "@/src/components/RightBottom/Language/Modal";
 import Sponsors from "@/src/components/RightBottom/Sponsors/Modal";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForShare } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 
-import HomeHeader from "../../../HomeHeader";
-
 import SingleModel from "./SingleModel";
+
+import ShareModalButton from "@/src/components/Focus/Share/Button";
 
 interface ModalProps {
   lang: LanguageType;
@@ -36,7 +36,7 @@ interface ModalProps {
 }
 
 const SingleModelScene = ({ lang, userId, modelId }: ModalProps) => {
-  const [modalOpen, setModalOpen] = useState<ModalOpenTypeForShare>({
+  const [modalOpen, setModalOpen] = useState<ModalOpenType>({
     terms: false,
     privacy: false,
     contact: false,
@@ -67,7 +67,7 @@ const SingleModelScene = ({ lang, userId, modelId }: ModalProps) => {
 
   return (
     <div className={"h-[100vh] w-[100vw]"}>
-      <HomeHeader lang={lang} modalOpen={modalOpen} />
+      <Header lang={lang} modalOpen={modalOpen} />
 
       <div className="fixed bottom-[10px] left-[10px] z-[70] rounded-xl p-1">
         <ShareModalButton setModalOpen={setModalOpen} modalOpen={modalOpen} />

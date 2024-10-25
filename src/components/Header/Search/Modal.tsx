@@ -7,13 +7,13 @@ import { FaSearch } from "react-icons/fa";
 import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type SearchModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: ModalOpenType;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   searchWord: string;
   setSearchWord: Dispatch<SetStateAction<string>>;
 };
@@ -49,14 +49,14 @@ const SearchModal = ({
     } else {
       newRouterPush(lang, [], searchParams, router);
     }
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       search: false,
     }));
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       search: false,
     }));
@@ -67,7 +67,7 @@ const SearchModal = ({
 
     if (searchWord !== "") {
       setSearchWord("");
-      setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+      setModalOpen((prevState: ModalOpenType) => ({
         ...prevState,
         search: false,
       }));

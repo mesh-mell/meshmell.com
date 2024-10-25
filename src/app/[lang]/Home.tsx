@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 
+import Header from "@/src/components/Header/Header";
 import RightBottomButtons from "@/src/components/RightBottom/Buttons";
 import About from "@/src/components/RightBottom/Footer/About";
 import Contact from "@/src/components/RightBottom/Footer/Contact";
@@ -15,14 +16,17 @@ import Who from "@/src/components/RightBottom/Footer/Who";
 import LanguageSwitchModal from "@/src/components/RightBottom/Language/Modal";
 import Sponsors from "@/src/components/RightBottom/Sponsors/Modal";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForHome } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
+import { defaultModelDetails } from "@/src/utils/defaultData/models";
 
 import HomeContent from "./HomeContent";
-import HomeHeader from "./HomeHeader";
 
 const Home = ({ lang }: { lang: LanguageType }) => {
-  const [modalOpen, setModalOpen] = useState<ModalOpenTypeForHome>({
+  const [isWireFrame, setIsWireFrame] = useState<boolean>(false);
+  const focusedModelsObj = defaultModelDetails;
+
+  const [modalOpen, setModalOpen] = useState<ModalOpenType>({
     terms: false,
     privacy: false,
     contact: false,
@@ -36,13 +40,24 @@ const Home = ({ lang }: { lang: LanguageType }) => {
     sponsors: false,
     shareThisPage: false,
     copyRight: false,
+    actionsSwitch: false,
+    creatorInfo: false,
+    modelInfo: false,
   });
 
   const creators = [defaultCreatorDetails];
 
   return (
     <>
-      <HomeHeader lang={lang} modalOpen={modalOpen} />
+      <Header
+        lang={lang}
+        setModalOpen={setModalOpen}
+        modalOpen={modalOpen}
+        focusedModelsObj={focusedModelsObj}
+        isWireFrame={isWireFrame}
+        setIsWireFrame={setIsWireFrame}
+        isFocusedMode={true}
+      />
 
       <RightBottomButtons
         lang={lang}

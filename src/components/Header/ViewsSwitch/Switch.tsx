@@ -7,7 +7,7 @@ import PerspectiveViewIcon from "@/src/components/Svg/Views/PerspectiveViewIcon"
 import VerticalViewIcon from "@/src/components/Svg/Views/VerticalViewIcon";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { viewTypes } from "@/src/types/views";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 import { views } from "@/src/utils/views";
@@ -16,8 +16,8 @@ import ModalWrapper from "../../ModalWrapper";
 
 type ViewsSwitchModalType = {
   lang: string;
-  modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: ModalOpenType;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   view: viewTypes;
 };
@@ -37,7 +37,7 @@ const ViewsSwitchModal = ({
   const searchParams = useSearchParams();
   const handleClick = (paramValue: string) => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       viewsSwitch: false,
     }));
@@ -54,7 +54,7 @@ const ViewsSwitchModal = ({
 
   const handleClickClose = () => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       viewsSwitch: false,
     }));

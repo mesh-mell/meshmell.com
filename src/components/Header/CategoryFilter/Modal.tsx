@@ -5,15 +5,15 @@ import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { CategoryDetailsType } from "@/src/types/categories";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { defaultCategoryDetails } from "@/src/utils/defaultData/categories";
 import { languagesList } from "@/src/utils/language";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type CategoryFilterModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: ModalOpenType;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   categoryFiltersSlug: string;
   setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   categories: CategoryDetailsType[];
@@ -55,7 +55,7 @@ const CategoryFilterModal = ({
 
   const handleClick = (paramValue: string) => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       categoryFilter: false,
     }));
@@ -72,7 +72,7 @@ const CategoryFilterModal = ({
 
   const handleClickClose = () => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       categoryFilter: false,
     }));

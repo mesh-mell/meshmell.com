@@ -4,7 +4,7 @@ import FooterButton from "@/src/components/RightBottom/Footer/Button";
 import LanguageSwitchButton from "@/src/components/RightBottom/Language/Button";
 import SponsorButton from "@/src/components/RightBottom/Sponsors/Button";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 import Logo from "../Logo";
 
@@ -12,7 +12,7 @@ import ShareButton from "./Share/Button";
 
 type RightBottomButtonsType = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   isIn3D?: boolean;
 };
 

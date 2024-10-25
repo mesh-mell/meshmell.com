@@ -5,15 +5,15 @@ import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { ActionDetailsType } from "@/src/types/actions";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { defaultActionsDetails } from "@/src/utils/defaultData/actions";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type ActionsSwitchModalType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
+  modalOpen: ModalOpenType;
   focusedModelsObj: ModelDetailsType;
   setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   currentAction: string;
@@ -43,7 +43,7 @@ const ActionsSwitchModal = ({
   );
 
   const handleClick = (paramValue: string) => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       actionsSwitch: false,
     }));
@@ -56,7 +56,7 @@ const ActionsSwitchModal = ({
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       actionsSwitch: false,
     }));

@@ -6,7 +6,7 @@ import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { WindowType } from "@/src/types/views";
 import { handleDownloadFileFromGCS } from "@/src/utils/downloadFileFromGCS";
@@ -17,8 +17,8 @@ import DownloadGraph from "./Graph";
 
 type DownloadModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: ModalOpenType;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   focusedModelsObj: ModelDetailsType;
   setFocusedModelsDownloadData: Dispatch<
     SetStateAction<Record<string, DateItem>>
@@ -77,7 +77,7 @@ const DownloadModal = ({
 
     handleDownloadFileFromGCS(focusedModelsObj, resolution, isZipped)
       .then(() => {
-        setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+        setModalOpen((prevState: ModalOpenType) => ({
           ...prevState,
           downloadCredit: true,
         }));
@@ -90,7 +90,7 @@ const DownloadModal = ({
       })
       .catch((error) => {
         setIsDownloading(false);
-        setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+        setModalOpen((prevState: ModalOpenType) => ({
           ...prevState,
           downloadError: true,
         }));
@@ -99,7 +99,7 @@ const DownloadModal = ({
   };
 
   const handleClickClose = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       download: false,
     }));

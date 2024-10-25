@@ -7,14 +7,14 @@ import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { languagesList } from "@/src/utils/language";
 import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type CreatorFilterModalType = {
   lang: LanguageType;
-  modalOpen: ModalOpenTypeForExhibition;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
+  modalOpen: ModalOpenType;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
   creatorFiltersSlug: string;
   setHoverOnModal: Dispatch<SetStateAction<boolean>>;
   creators: CreatorDetailsType[];
@@ -47,7 +47,7 @@ const CreatorFilterModal = ({
 
   const handleClick = (paramValue: string) => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       creatorFilter: false,
     }));
@@ -64,7 +64,7 @@ const CreatorFilterModal = ({
 
   const handleClickClose = () => {
     setHoverOnModal(false);
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       creatorFilter: false,
     }));

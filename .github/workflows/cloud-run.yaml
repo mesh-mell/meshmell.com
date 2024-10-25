@@ -24,6 +24,8 @@ env:
   NEXT_PUBLIC_ENV_STATUS: "production"
   NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION: "subdomain.example.com"
   NEXT_PUBLIC_THOUGHTS_NUMBER_BY_LIST_PAGE: 10
+  DATABASE_URL: ${{ secrets.DATABASE_URL }}
+  DIRECT_URL: ${{ secrets.DIRECT_URL }}
 
 jobs:
   build-and-deploy:
@@ -58,6 +60,8 @@ jobs:
             --build-arg NEXT_PUBLIC_ENV_STATUS=$NEXT_PUBLIC_ENV_STATUS \
             --build-arg NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION=$NEXT_PUBLIC_SUBDOMAIN_FOR_PRODUCTION \
             --build-arg NEXT_PUBLIC_THOUGHTS_NUMBER_BY_LIST_PAGE=$NEXT_PUBLIC_THOUGHTS_NUMBER_BY_LIST_PAGE \
+            --build-arg DATABASE_URL=$DATABASE_URL \
+            --build-arg DIRECT_URL=$DIRECT_URL \
             .
 
       - name: Push the image to the Google Container Registry (GCR)

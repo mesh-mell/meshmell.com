@@ -1,18 +1,18 @@
 import { Dispatch, SetStateAction } from "react";
 import { BsInfoLg } from "react-icons/bs";
 
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 import Button from "../../Button";
 
 type ModelInfoButtonType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  modalOpen: ModalOpenTypeForExhibition;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
+  modalOpen: ModalOpenType;
 };
 
 const ModelInfoButton = ({ setModalOpen, modalOpen }: ModelInfoButtonType) => {
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       modelInfo: !prevState.modelInfo,
       download: false,
@@ -37,7 +37,6 @@ const ModelInfoButton = ({ setModalOpen, modalOpen }: ModelInfoButtonType) => {
       viewsSwitch: false,
       sponsors: false,
       shareThisPage: false,
-      shareThisPageInList: false,
     }));
   };
 

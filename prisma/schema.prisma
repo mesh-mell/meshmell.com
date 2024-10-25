@@ -9,32 +9,36 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Action {
   id        Int      @id @default(autoincrement())
   slug      String   @unique
-  nameEn    String   @map("name_en")
-  nameJa    String   @map("name_ja")
+  name      String
   icon      String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
   ModelAction ModelAction[]
+
+  @@map("actions")
 }
 
 model Category {
-  id           Int           @id @default(autoincrement())
-  slug         String        @unique
-  nameEn       String
-  nameJa       String
-  icon         String
-  color        String
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  name      Json
+  icon      String
+  color     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+
   threeDModels ThreeDModel[]
-  createdAt    DateTime      @default(now())
-  updatedAt    DateTime      @default(now())
+
+  @@map("categories")
 }
 
 model ThreeDModel {
@@ -47,13 +51,10 @@ model ThreeDModel {
   rotationDegreesX Int      @map("rotation_degrees_x")
   rotationDegreesY Int      @map("rotation_degrees_y")
   rotationDegreesZ Int      @map("rotation_degrees_z")
-  nameEn           String   @map("name_en")
-  nameJa           String   @map("name_ja")
-  descriptionEn    String   @map("description_en")
-  descriptionJa    String   @map("description_ja")
+  name             String
+  description      String
   userId           String   @map("user_id")
   categoryId       Int      @map("category_id")
-  category         Category @relation(fields: [categoryId], references: [id])
   categoryTags     String[] @map("category_tags")
   price            Float
   license          String
@@ -64,48 +65,57 @@ model ThreeDModel {
   updatedAt        DateTime @map("updated_at")
 
   ModelAction   ModelAction[]
-  ModelDownload ModelDownload[]
-  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  ModelDownload ThreeDModelDownload[]
+
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category Category @relation(fields: [categoryId], references: [id])
+
+  @@map("threed_models")
 }
 
-model ModelDownload {
-  id            Int         @id @default(autoincrement())
-  threeDModelId Int         @map("threed_model_id")
-  downloadId    String      @unique @map("download_id")
-  downloadAt    DateTime    @map("download_at")
-  threeDModels  ThreeDModel @relation(fields: [threeDModelId], references: [id])
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @default(now())
+model ThreeDModelDownload {
+  id            Int      @id @default(autoincrement())
+  threeDModelId Int      @map("threed_model_id")
+  downloadId    String   @unique @map("download_id")
+  downloadAt    DateTime @map("download_at")
+
+  threeDModel ThreeDModel @relation(fields: [threeDModelId], references: [id])
+
+  @@map("threed_model_downloads")
 }
 
 model ModelAction {
-  id            Int         @id @default(autoincrement())
-  threeDModelId Int         @map("threed_model_id")
-  actionId      Int         @map("action_id")
-  threeDModel   ThreeDModel @relation(fields: [threeDModelId], references: [id])
-  action        Action      @relation(fields: [actionId], references: [id])
-  createdAt     DateTime    @default(now())
-  updatedAt     DateTime    @default(now())
+  id            Int      @id @default(autoincrement())
+  threeDModelId Int      @map("threed_model_id")
+  actionId      Int      @map("action_id")
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @default(now())
+
+  threeDModel ThreeDModel @relation(fields: [threeDModelId], references: [id])
+  action      Action      @relation(fields: [actionId], references: [id])
+
+  @@map("model_actions")
 }
 
 model User {
-  id              String        @id @default(cuid())
-  email           String?       @unique
-  emailVerifiedAt DateTime?     @map("email_verified_at")
+  id              String    @id @default(cuid())
+  email           String?   @unique
+  emailVerifiedAt DateTime? @map("email_verified_at")
   password        String?
-  slug            String        @unique
-  nameEn          String        @map("name_en")
-  nameJa          String        @map("name_ja")
-  descriptionEn   String        @map("description_en")
-  descriptionJa   String        @map("description_ja")
-  twitterUrl      String?       @map("twitter_url")
-  websiteUrl      String?       @map("website_url")
-  youtubeUrl      String?       @map("youtube_url")
+  slug            String    @unique
+  name            String
+  description     String
+  twitterUrl      String?   @map("twitter_url")
+  websiteUrl      String?   @map("website_url")
+  youtubeUrl      String?   @map("youtube_url")
   roles           String[]
-  threeDModels    ThreeDModel[]
-  accounts        Account[]
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @default(now())
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @default(now())
+
+  threeDModels ThreeDModel[]
+  accounts     Account[]
+
+  @@map("users")
 }
 
 model Account {
@@ -126,5 +136,6 @@ model Account {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
+  @@map("accounts")
   @@unique([provider, providerAccountId])
 }

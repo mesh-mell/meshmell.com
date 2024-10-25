@@ -12,7 +12,7 @@ import WireFrameSwitchButton from "@/src/components/Header/WireFrameSwitch/Butto
 import { CategoryDetailsType } from "@/src/types/categories";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { viewTypes } from "@/src/types/views";
 
@@ -20,15 +20,15 @@ import SearchButton from "./Search/Button";
 
 type HeaderType = {
   lang: LanguageType;
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  filteredCreatorsObj: CreatorDetailsType;
-  filteredCategoriesObj: CategoryDetailsType;
-  modalOpen: ModalOpenTypeForExhibition;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
+  filteredCreatorsObj?: CreatorDetailsType;
+  filteredCategoriesObj?: CategoryDetailsType;
+  modalOpen: ModalOpenType;
   focusedModelsObj: ModelDetailsType;
   isWireFrame: boolean;
   setIsWireFrame: Dispatch<SetStateAction<boolean>>;
   isFocusedMode: boolean;
-  view: viewTypes;
+  view?: viewTypes;
   searchWord?: string;
 };
 
@@ -61,30 +61,38 @@ const Header = ({
             isWireFrame={isWireFrame}
           />
         )}
-        <CategoryFilterButton
-          setModalOpen={setModalOpen}
-          filteredCategoriesObj={filteredCategoriesObj}
-          modalOpen={modalOpen}
-        />
-        <CreatorFilterButton
-          lang={lang}
-          setModalOpen={setModalOpen}
-          filteredCreatorsObj={filteredCreatorsObj}
-          modalOpen={modalOpen}
-        />
-        {!isFocusedMode && filteredCreatorsObj.slug !== "" && (
-          <CreatorButtonInNotFocused
-            lang={lang}
+        {filteredCategoriesObj && (
+          <CategoryFilterButton
             setModalOpen={setModalOpen}
+            filteredCategoriesObj={filteredCategoriesObj}
             modalOpen={modalOpen}
-            filteredCreatorsObj={filteredCreatorsObj}
           />
         )}
-        <SwitchViewButton
-          view={view}
-          setModalOpen={setModalOpen}
-          modalOpen={modalOpen}
-        />
+        {filteredCreatorsObj && (
+          <>
+            <CreatorFilterButton
+              lang={lang}
+              setModalOpen={setModalOpen}
+              filteredCreatorsObj={filteredCreatorsObj}
+              modalOpen={modalOpen}
+            />
+            {!isFocusedMode && filteredCreatorsObj.slug !== "" && (
+              <CreatorButtonInNotFocused
+                lang={lang}
+                setModalOpen={setModalOpen}
+                modalOpen={modalOpen}
+                filteredCreatorsObj={filteredCreatorsObj}
+              />
+            )}
+          </>
+        )}
+        {view && (
+          <SwitchViewButton
+            view={view}
+            setModalOpen={setModalOpen}
+            modalOpen={modalOpen}
+          />
+        )}
         <SearchButton
           setModalOpen={setModalOpen}
           modalOpen={modalOpen}

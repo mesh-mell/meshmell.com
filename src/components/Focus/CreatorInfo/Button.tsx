@@ -3,7 +3,7 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { ModalOpenTypeForExhibition } from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 import { defaultModelDetails } from "@/src/utils/defaultData/models";
@@ -11,8 +11,8 @@ import { defaultModelDetails } from "@/src/utils/defaultData/models";
 import Button from "../../Button";
 
 type CreatorInfoButtonType = {
-  setModalOpen: Dispatch<SetStateAction<ModalOpenTypeForExhibition>>;
-  modalOpen: ModalOpenTypeForExhibition;
+  setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
+  modalOpen: ModalOpenType;
   focusedModelsSlug: string;
   lang: LanguageType;
   models: ModelDetailsType[];
@@ -42,7 +42,7 @@ const CreatorInfoButton = ({
   useEffect(() => {}, [focusedModelsSlug]);
 
   const handleClick = () => {
-    setModalOpen((prevState: ModalOpenTypeForExhibition) => ({
+    setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       creatorInfo: !prevState.creatorInfo,
       modelInfo: false,
@@ -67,7 +67,6 @@ const CreatorInfoButton = ({
       viewsSwitch: false,
       sponsors: false,
       shareThisPage: false,
-      shareThisPageInList: false,
     }));
   };
 
