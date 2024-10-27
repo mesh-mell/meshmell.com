@@ -31,7 +31,13 @@ type ModelType = {
   camera: THREE.Camera;
   modelSlug: string;
   handleMeshFocus: (e: any, meshRef: RefObject<THREE.Mesh>) => void;
-  setActiveMesh: Dispatch<SetStateAction<RefObject<THREE.Mesh>>>;
+  setActiveMesh: Dispatch<
+    SetStateAction<THREE.Mesh<
+      THREE.BufferGeometry<THREE.NormalBufferAttributes>,
+      THREE.Material | THREE.Material[],
+      THREE.Object3DEventMap
+    > | null>
+  >;
   currentView: viewTypes;
   windowType: WindowType;
   isWireFrame: boolean;

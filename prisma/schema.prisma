@@ -16,10 +16,6 @@ datasource db {
 
 model ThreeDModel {
   id               Int      @id @default(autoincrement())
-  slug             String   @unique
-  resolutions      String[]
-  formats          String[]
-  usedFormat       String   @map("used_format")
   scale            Float
   rotationDegreesX Int      @map("rotation_degrees_x")
   rotationDegreesY Int      @map("rotation_degrees_y")
@@ -27,8 +23,6 @@ model ThreeDModel {
   name             String
   description      String
   userId           Int      @map("user_id")
-  categoryId       Int      @map("category_id")
-  categoryTags     String[] @map("category_tags")
   price            Float
   license          String
   credit           String?
@@ -37,38 +31,54 @@ model ThreeDModel {
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @default(now()) @map("updated_at")
 
-  actions   Action[]
-  downloads Download[]
-
-  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  category   Category @relation(fields: [categoryId], references: [id])
+  actions     Action[]     @relation("ModelAction")
+  downloads   Download[]   @relation("ModelDownload")
+  categories  Category[]   @relation("ModelCategory")
+  resolutions Resolution[] @relation("ModelResolution")
+  formats     Format[]     @relation("ModelFormat")
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("threed_models")
 }
 
+model Resolution {
+  id           Int           @id @default(autoincrement())
+  name         String
+  threeDModels ThreeDModel[] @relation("ModelResolution")
+
+  @@map("resolutions")
+}
+
+model Format {
+  id           Int           @id @default(autoincrement())
+  name         String
+  threeDModels ThreeDModel[] @relation("ModelFormat")
+  isUsed       Boolean       @map("is_used")
+
+  @@map("formats")
+}
+
 model Action {
   id        Int      @id @default(autoincrement())
-  slug      String   @unique
   name      String
   icon      String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
-  models ThreeDModel[]
-  
+  threeDModels ThreeDModel[] @relation("ModelAction")
+
   @@map("actions")
 }
 
 model Category {
   id        Int      @id @default(autoincrement())
-  slug      String   @unique
   name      Json
   icon      String
   color     String
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
-  threeDModels ThreeDModel[]
+  threeDModels ThreeDModel[] @relation("ModelCategory")
 
   @@map("categories")
 }
@@ -76,10 +86,9 @@ model Category {
 model Download {
   id            Int      @id @default(autoincrement())
   threeDModelId Int      @map("threed_model_id")
-  downloadId    String   @unique @map("download_id")
   downloadAt    DateTime @map("download_at")
 
-  threeDModel ThreeDModel @relation(fields: [threeDModelId], references: [id])
+  threeDModel ThreeDModel @relation(fields: [threeDModelId], references: [id], name: "ModelDownload")
 
   @@map("downloads")
 }

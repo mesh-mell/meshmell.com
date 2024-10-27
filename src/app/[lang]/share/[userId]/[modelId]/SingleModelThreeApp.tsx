@@ -20,14 +20,15 @@ import PrivacyPolicy from "@/src/components/RightBottom/Footer/PrivacyPolicy";
 import Terms from "@/src/components/RightBottom/Footer/Terms";
 import Who from "@/src/components/RightBottom/Footer/Who";
 import LanguageSwitchModal from "@/src/components/RightBottom/Language/Modal";
+import ShareButton from "@/src/components/RightBottom/Share/Button";
 import Sponsors from "@/src/components/RightBottom/Sponsors/Modal";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
+import { ModelDetailsType } from "@/src/types/models";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
+import { defaultModelDetails } from "@/src/utils/defaultData/models";
 
 import SingleModel from "./SingleModelScene";
-
-import ShareModalButton from "@/src/components/Focus/Share/Button";
 
 interface ModalProps {
   lang: LanguageType;
@@ -58,6 +59,15 @@ const SingleModelThreeApp = ({ lang, userId, modelId }: ModalProps) => {
   const creators = [defaultCreatorDetails];
 
   const [isWireFrame, setIsWireFrame] = useState<boolean>(false);
+  const [focusedModelsObj, setFocusedModelsObj] =
+    useState<ModelDetailsType>(defaultModelDetails);
+
+  useEffect(() => {
+    const modelObj = setFocusedModelsObj({
+      ...defaultModelDetails,
+      slug: modelId,
+    });
+  }, [modelId]);
 
   const searchParams = useSearchParams();
 
@@ -70,7 +80,7 @@ const SingleModelThreeApp = ({ lang, userId, modelId }: ModalProps) => {
       <Header lang={lang} modalOpen={modalOpen} />
 
       <div className="fixed bottom-[10px] left-[10px] z-[70] rounded-xl p-1">
-        <ShareModalButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
+        <ShareButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
         <ModelInfoButton setModalOpen={setModalOpen} modalOpen={modalOpen} />
         <CreatorInfoButton
           lang={lang}
@@ -84,7 +94,14 @@ const SingleModelThreeApp = ({ lang, userId, modelId }: ModalProps) => {
 
       <ModelInfoModal lang={lang} setModalOpen={setModalOpen} />
 
-      <CreatorInfoModal lang={lang} setModalOpen={setModalOpen} />
+      <CreatorInfoModal
+        lang={lang}
+        modalOpen={modalOpen}
+        setModalOpen={setModalOpen}
+        focusedModelsObj={focusedModelsObj}
+        focusedModelsCreatorsObj={focusedModelsCreatorsObj}
+        isFocusedMode={isFocusedMode}
+      />
 
       <RightBottomButtons
         lang={lang}

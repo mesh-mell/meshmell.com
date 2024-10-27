@@ -30,7 +30,7 @@ const SingleModelSceneForHome = ({ isWireFrame, homeDefaultObj }: Props) => {
   const originalMaterials = useRef<{ [id: number]: any }>({});
 
   useEffect(() => {
-    // if (homeDefaultObj.slug !== GltfModel.userData.id) return;
+    if (homeDefaultObj.slug !== GltfModel.userData.id) return;
     scene.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
         (child as THREE.Mesh).material = isWireFrame

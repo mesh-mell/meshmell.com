@@ -1,0 +1,103 @@
+{
+  "actions": [
+    {
+      "slug": "idle",
+      "name": {
+        "en": "Idle",
+        "ja": "待つ"
+      },
+      "icon": "🧘"
+    },
+    ...
+  ],
+  "creators": [
+    {
+      "slug": "UlanCabanilla",
+      "name": {
+        "en": "Ulan Cabanilla",
+        "ja": "Ulan Cabanilla"
+      },
+      "description": {
+        "en": "",
+        "ja": ""
+      },
+      "roles": [
+        "creator"
+      ]
+    }
+    ...
+  ],
+  "sponsors": [
+    {
+      "id": "1",
+      "name": {
+        "en": "Async Corporation",
+        "ja": "株式会社Async"
+      },
+      "description": {
+        "en": "",
+        "ja": ""
+      },
+      "url": "https://example.com",
+      "published": "",
+      "updated": "",
+      "amount": 10000
+    },
+   ...
+  ],
+  "categories": [
+    {
+      "slug": "real",
+      "name": {
+        "en": "Real",
+        "ja": "リアル"
+      },
+      "icon": "🟦",
+      "color": "bg-emerald-500"
+    
+    ...
+    }
+  ],
+  "models": [
+    {
+      "slug": "animated_cube",
+      "resolutions": [
+        "1k"
+      ],
+      "formats": [
+        "glb"
+      ],
+      "usedFormat": "glb",
+      "scale": 1,
+      "rotationDegrees": {
+        "x": 0,
+        "y": 0,
+        "z": 0
+      },
+      "name": {
+        "en": "Animated Cube",
+        "ja": "アニメーション付きの立方体"
+      },
+      "description": {
+        "en": "",
+        "ja": ""
+      },
+      "creator": "YuriNakanishi",
+      "published": "2024-01-02",
+      "updated": "2024-01-02",
+      "categoryTags": [
+        "technology",
+        "real"
+      ],
+      "price": 0,
+      "license": "CC0",
+      "credit": "",
+      "actions": [
+        "rotate_horizontal",
+        "rotate_vertical"
+      ],
+      "isDownloadable": true
+    },
+    ...
+  ],
+}

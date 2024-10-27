@@ -7,7 +7,7 @@ import React, { useEffect, useState, useTransition } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
-import LoadingCover from "@/src/app/[lang]/thoughts/components/LoadingCover";
+import LoadingCover from "@/src/components/LoadingCover";
 import { SignInSchema } from "@/src/schemas/auth";
 import { login } from "@/src/utils/auth/login";
 
