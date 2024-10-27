@@ -1,6 +1,6 @@
 import { ModelDetailsType } from "@/src/types/models";
 
-const defaultData: ModelDetailsType = {
+const homeDefaultObj: ModelDetailsType = {
   resolutions: ["1k"],
   slug: "fox_01",
   formats: ["glb"],
@@ -43,4 +43,4 @@ const defaultData: ModelDetailsType = {
   isDownloadable: true,
 };
 
-export default defaultData;
+export default homeDefaultObj;

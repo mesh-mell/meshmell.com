@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 import { FaSearch } from "react-icons/fa";
 
@@ -8,7 +8,6 @@ import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type SearchModalType = {
   lang: LanguageType;
@@ -28,26 +27,22 @@ const SearchModal = ({
   const searchParams = useSearchParams();
   const router = useRouter();
   const { t } = useTranslation(lang, "main");
-
+  const newParams = new URLSearchParams(searchParams.toString());
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchWord(e.target.value);
   };
-
+  const pathname = usePathname();
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
     if (searchWord) {
-      newRouterPush(
-        lang,
-        [
-          { key: "searchWord", value: searchWord },
-          { key: "focusedMode", value: "off" },
-        ],
-        searchParams,
-        router,
-      );
+      newParams.set("searchWord", searchWord);
+      newParams.set("focusedMode", "off");
+      router.push(`${pathname}?${newParams.toString()}`);
     } else {
-      newRouterPush(lang, [], searchParams, router);
+      router.push(
+        `${pathname}${searchParams.toString() ? `?${searchParams.toString()}` : ""}`,
+      );
     }
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
@@ -71,11 +66,8 @@ const SearchModal = ({
         ...prevState,
         search: false,
       }));
-      newRouterPush(
-        lang,
-        [{ key: "searchWord", value: "" }],
-        searchParams,
-        router,
+      router.push(
+        `${pathname}${newParams.toString() ? `?${newParams.toString()}` : ""}`,
       );
     }
   };

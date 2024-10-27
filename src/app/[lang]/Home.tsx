@@ -23,11 +23,10 @@ import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 
 import HomeContent from "./HomeContent";
 import SingleModelSceneForHome from "./share/[userId]/[modelId]/SingleModelSceneForHome";
-import defaultData from "./share/[userId]/[modelId]/homeDefaultObj";
+import homeDefaultObj from "./share/[userId]/[modelId]/homeDefaultObj";
 
 const Home = ({ lang }: { lang: LanguageType }) => {
   const [isWireFrame, setIsWireFrame] = useState<boolean>(false);
-  const focusedModelsObj = defaultData;
 
   const [modalOpen, setModalOpen] = useState<ModalOpenType>({
     terms: false,
@@ -57,7 +56,7 @@ const Home = ({ lang }: { lang: LanguageType }) => {
         lang={lang}
         setModalOpen={setModalOpen}
         modalOpen={modalOpen}
-        focusedModelsObj={focusedModelsObj}
+        focusedModelsObj={homeDefaultObj}
         isWireFrame={isWireFrame}
         setIsWireFrame={setIsWireFrame}
         isFocusedMode={true}
@@ -124,7 +123,10 @@ const Home = ({ lang }: { lang: LanguageType }) => {
             <div className="mx-auto mb-8 h-[70vh] w-[90vw] overflow-hidden rounded-lg border-2 shadow-lg">
               <Canvas shadows>
                 <Suspense fallback={null}>
-                  <SingleModelSceneForHome />
+                  <SingleModelSceneForHome
+                    isWireFrame={isWireFrame}
+                    homeDefaultObj={homeDefaultObj}
+                  />
                 </Suspense>
               </Canvas>
             </div>

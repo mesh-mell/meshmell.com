@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 
 import ModalWrapper from "@/src/components/ModalWrapper";
@@ -8,7 +8,6 @@ import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { ModelDetailsType } from "@/src/types/models";
 import { defaultActionsDetails } from "@/src/utils/defaultData/actions";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type ActionsSwitchModalType = {
   setModalOpen: Dispatch<SetStateAction<ModalOpenType>>;
@@ -34,7 +33,7 @@ const ActionsSwitchModal = ({
   const searchParams = useSearchParams();
 
   const router = useRouter();
-
+  const pathname = usePathname();
   const focusedModelsActionsList = focusedModelsObj.actions?.map(
     (action: string) =>
       actions.find(
@@ -47,12 +46,10 @@ const ActionsSwitchModal = ({
       ...prevState,
       actionsSwitch: false,
     }));
-    newRouterPush(
-      lang,
-      [{ key: "action", value: paramValue }],
-      searchParams,
-      router,
-    );
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    newParams.set("action", paramValue);
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   const handleClickClose = () => {

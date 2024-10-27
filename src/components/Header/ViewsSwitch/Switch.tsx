@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { Dispatch, SetStateAction } from "react";
 
@@ -9,7 +9,6 @@ import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { viewTypes } from "@/src/types/views";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 import { views } from "@/src/utils/views";
 
 import ModalWrapper from "../../ModalWrapper";
@@ -35,21 +34,17 @@ const ViewsSwitchModal = ({
   const router = useRouter();
 
   const searchParams = useSearchParams();
+  const newParams = new URLSearchParams(searchParams.toString());
+  const pathname = usePathname();
   const handleClick = (paramValue: string) => {
     setHoverOnModal(false);
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       viewsSwitch: false,
     }));
-    newRouterPush(
-      lang,
-      [
-        { key: "view", value: paramValue },
-        { key: "focusedMode", value: "off" },
-      ],
-      searchParams,
-      router,
-    );
+    newParams.set("view", paramValue);
+    newParams.set("focusedMode", "off");
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   const handleClickClose = () => {

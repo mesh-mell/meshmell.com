@@ -1,11 +1,10 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction } from "react";
 import { GiWireframeGlobe, GiStoneSphere } from "react-icons/gi";
 
 import { LanguageType } from "@/src/types/language";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 
 import Button from "../../Button";
 
@@ -22,24 +21,17 @@ const WireFrameSwitchButton = ({
 }: WireFrameSwitchButtonType) => {
   const searchParams = useSearchParams();
   const router = useRouter();
-
+  const newParams = new URLSearchParams(searchParams.toString());
+  const pathname = usePathname();
   const handleClick = () => {
     setIsWireFrame(!isWireFrame);
 
     if (isWireFrame) {
-      newRouterPush(
-        lang,
-        [{ key: "wireFrame", value: "off" }],
-        searchParams,
-        router,
-      );
+      newParams.set("wireFrame", "off");
+      router.push(`${pathname}?${newParams.toString()}`);
     } else {
-      newRouterPush(
-        lang,
-        [{ key: "wireFrame", value: "on" }],
-        searchParams,
-        router,
-      );
+      newParams.set("wireFrame", "on");
+      router.push(`${pathname}?${newParams.toString()}`);
     }
   };
 

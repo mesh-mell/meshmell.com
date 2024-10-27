@@ -1,4 +1,4 @@
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { Dispatch, SetStateAction, useState } from "react";
 
 import ModalWrapper from "@/src/components/ModalWrapper";
@@ -8,7 +8,6 @@ import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { defaultCategoryDetails } from "@/src/utils/defaultData/categories";
 import { languagesList } from "@/src/utils/language";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type CategoryFilterModalType = {
   lang: LanguageType;
@@ -52,22 +51,18 @@ const CategoryFilterModal = ({
     ) || defaultCategoryDetails;
 
   const router = useRouter();
-
+  const pathname = usePathname();
   const handleClick = (paramValue: string) => {
     setHoverOnModal(false);
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       categoryFilter: false,
     }));
-    newRouterPush(
-      lang,
-      [
-        { key: "category", value: paramValue },
-        { key: "focusedMode", value: "off" },
-      ],
-      searchParams,
-      router,
-    );
+    const newParams = new URLSearchParams(searchParams.toString());
+
+    newParams.set("category", paramValue);
+    newParams.set("focusedMode", "off");
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   const handleClickClose = () => {

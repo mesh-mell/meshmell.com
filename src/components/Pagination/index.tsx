@@ -1,6 +1,6 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 
 import { CategoryDetailsType } from "@/src/types/categories";
@@ -8,7 +8,6 @@ import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
 import { ModelDetailsType } from "@/src/types/models";
 import { getFilteredModels } from "@/src/utils/getFilteredModels";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 
 import PaginationArrowButton from "./PaginationArrowButton";
 
@@ -66,32 +65,21 @@ const Pagination = ({
       return range;
     }
   };
-
+  const newParams = new URLSearchParams(searchParams.toString());
+  const pathname = usePathname();
   const goToPage = (page: any) => {
-    newRouterPush(
-      lang,
-      [{ key: "page", value: page.toString() }],
-      searchParams,
-      router,
-    );
+    newParams.set("page", page.toString());
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   const goToPreviousPage = () => {
-    newRouterPush(
-      lang,
-      [{ key: "page", value: (currentPage - 1).toString() }],
-      searchParams,
-      router,
-    );
+    newParams.set("page", (currentPage - 1).toString());
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   const goToNextPage = () => {
-    newRouterPush(
-      lang,
-      [{ key: "page", value: (currentPage + 1).toString() }],
-      searchParams,
-      router,
-    );
+    newParams.set("page", (currentPage + 1).toString());
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   return (

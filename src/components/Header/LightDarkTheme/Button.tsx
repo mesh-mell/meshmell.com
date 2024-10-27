@@ -1,12 +1,11 @@
 "use client";
 
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useTheme } from "next-themes";
 import { MdLightMode, MdDarkMode } from "react-icons/md";
 
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 
 import Button from "../../Button";
 
@@ -24,25 +23,19 @@ const LightDarkThemeSwitchButton = ({
   const { setTheme, resolvedTheme } = useTheme();
   const router = useRouter();
   const searchParams = useSearchParams();
-
+  const pathname = usePathname();
   const isLight = resolvedTheme === "light";
 
   const handleClick = () => {
     setTheme(isLight ? "dark" : "light");
 
     if (!isIn3D) return;
-
-    newRouterPush(
-      lang,
-      [
-        {
-          key: "lightAndDarkTheme",
-          value: resolvedTheme === "light" ? "dark" : "light",
-        },
-      ],
-      searchParams,
-      router,
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.set(
+      "lightAndDarkTheme",
+      resolvedTheme === "light" ? "dark" : "light",
     );
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   return (

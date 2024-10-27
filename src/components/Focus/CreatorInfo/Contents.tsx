@@ -1,12 +1,11 @@
 import Image from "next/image";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import { RiShareBoxFill } from "react-icons/ri";
 
 import CopyCredit from "@/src/components/ModalComponents/CopyCredit";
 import { useTranslation } from "@/src/i18n/client";
 import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 
 import CreatorInfoSNS from "./SNS";
 
@@ -21,17 +20,13 @@ const CreatorInfo = ({ creatorsObj, lang, isFocusedMode }: CreatorInfoType) => {
 
   const router = useRouter();
   const searchParams = useSearchParams();
+  const pathname = usePathname();
   const creatorSlug = creatorsObj.slug ? creatorsObj.slug : "PlaceHolder";
   const handleGotoFilter = () => {
-    newRouterPush(
-      lang,
-      [
-        { key: "creator", value: creatorsObj.slug },
-        { key: "focusedMode", value: "off" },
-      ],
-      searchParams,
-      router,
-    );
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.set("creator", creatorsObj.slug);
+    newParams.set("focusedMode", "off");
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   return (

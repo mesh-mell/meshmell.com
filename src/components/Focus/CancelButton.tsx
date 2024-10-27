@@ -1,27 +1,16 @@
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { RxCross2 } from "react-icons/rx";
 
-import { LanguageType } from "@/src/types/language";
-import { newRouterPush } from "@/src/utils/newRouterPush";
-
-type CancelButtonType = {
-  lang: LanguageType;
-};
-
-const CancelButton = ({ lang }: CancelButtonType) => {
+const CancelButton = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
+  const pathname = usePathname();
   const handleUnFocus = () => {
-    newRouterPush(
-      lang,
-      [
-        { key: "focusedMode", value: "off" },
-        { key: "action", value: "none" },
-        { key: "wireFrame", value: "off" },
-      ],
-      searchParams,
-      router,
-    );
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.set("focusedMode", "off");
+    newParams.set("action", "none");
+    newParams.set("wireFrame", "off");
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   return (

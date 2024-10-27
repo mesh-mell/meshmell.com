@@ -1,5 +1,5 @@
 import { useThree } from "@react-three/fiber";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useEffect, useState } from "react";
 import {
   Mesh,
@@ -27,7 +27,6 @@ import { ModelDetailsType } from "@/src/types/models";
 import { viewTypes, EachViewObjType, WindowType } from "@/src/types/views";
 import { focusOnMesh } from "@/src/utils/focusOnMesh";
 import { getFilteredModels } from "@/src/utils/getFilteredModels";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 import { resetCameraPosition } from "@/src/utils/resetCameraPosition";
 import { views } from "@/src/utils/views";
 
@@ -107,7 +106,7 @@ const Scene = ({
 
   const numOfModel = process.env.NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE || "5";
   const modelsPerPage = parseInt(numOfModel);
-
+  const newParams = new URLSearchParams(searchParams.toString());
   const currentViewObj: EachViewObjType =
     views.find((view) => view.slug === currentView) || views[0];
   const cameraStatus =
@@ -143,9 +142,10 @@ const Scene = ({
     return target;
   };
 
+  const pathname = usePathname();
   const handleResetCamera = () => {
     resetCameraPosition(camera, savedCameraStatus);
-    newRouterPush(lang, [], searchParams, router);
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   useEffect(() => {
@@ -208,15 +208,9 @@ const Scene = ({
     setActiveMesh(meshRef.current);
     const focusedModelsSlugValue =
       meshRef && meshRef.current ? meshRef.current.userData.id : undefined;
-    newRouterPush(
-      lang,
-      [
-        { key: "focusedModelsSlug", value: focusedModelsSlugValue },
-        { key: "focusedMode", value: "on" },
-      ],
-      searchParams,
-      router,
-    );
+    newParams.set("focusedModelsSlug", focusedModelsSlugValue);
+    newParams.set("focusedMode", "on");
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   useEffect(() => {

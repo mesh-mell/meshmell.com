@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { Dispatch, SetStateAction, useState } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 
@@ -9,7 +9,6 @@ import { CreatorDetailsType } from "@/src/types/creators";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { languagesList } from "@/src/utils/language";
-import { newRouterPush } from "@/src/utils/newRouterPush";
 
 type CreatorFilterModalType = {
   lang: LanguageType;
@@ -44,22 +43,17 @@ const CreatorFilterModal = ({
         creator.name[language].toLowerCase().includes(searchTerm.toLowerCase()),
     );
   });
-
+  const pathname = usePathname();
   const handleClick = (paramValue: string) => {
     setHoverOnModal(false);
     setModalOpen((prevState: ModalOpenType) => ({
       ...prevState,
       creatorFilter: false,
     }));
-    newRouterPush(
-      lang,
-      [
-        { key: "creator", value: paramValue },
-        { key: "focusedMode", value: "off" },
-      ],
-      searchParams,
-      router,
-    );
+    const newParams = new URLSearchParams(searchParams.toString());
+    newParams.set("creator", paramValue);
+    newParams.set("focusedMode", "off");
+    router.push(`${pathname}?${newParams.toString()}`);
   };
 
   const handleClickClose = () => {
