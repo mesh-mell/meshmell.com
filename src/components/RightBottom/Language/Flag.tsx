@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useSearchParams } from "next/navigation";
+import { Dispatch, SetStateAction } from "react";
 
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";

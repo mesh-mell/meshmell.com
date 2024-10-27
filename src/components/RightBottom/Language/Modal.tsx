@@ -6,11 +6,7 @@ import ModalWrapper from "@/src/components/ModalWrapper";
 import LanguageFlag from "@/src/components/RightBottom/Language/Flag";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import {
-  ModalOpenType,
-  ModalOpenType,
-  ModalOpenType,
-} from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 
 type LanguageSwitchModalType<T> = {
   lang: LanguageType;

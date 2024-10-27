@@ -30,6 +30,7 @@ type HeaderType = {
   isFocusedMode: boolean;
   view?: viewTypes;
   searchWord?: string;
+  inHome?: boolean;
 };
 
 const Header = ({
@@ -44,6 +45,7 @@ const Header = ({
   isFocusedMode,
   view,
   searchWord,
+  inHome,
 }: HeaderType) => {
   return (
     <div className="fixed left-0 top-0 z-50 w-full bg-transparent">
@@ -93,11 +95,13 @@ const Header = ({
             modalOpen={modalOpen}
           />
         )}
-        <SearchButton
-          setModalOpen={setModalOpen}
-          modalOpen={modalOpen}
-          searchWord={searchWord}
-        />
+        {!inHome && (
+          <SearchButton
+            setModalOpen={setModalOpen}
+            modalOpen={modalOpen}
+            searchWord={searchWord}
+          />
+        )}
         <LightDarkThemeSwitchButton
           lang={lang}
           modalOpen={modalOpen}

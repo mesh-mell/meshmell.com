@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { Canvas } from "@react-three/fiber";
+import { Suspense, useState } from "react";
 
 import Header from "@/src/components/Header/Header";
 import RightBottomButtons from "@/src/components/RightBottom/Buttons";
@@ -15,16 +16,18 @@ import Terms from "@/src/components/RightBottom/Footer/Terms";
 import Who from "@/src/components/RightBottom/Footer/Who";
 import LanguageSwitchModal from "@/src/components/RightBottom/Language/Modal";
 import Sponsors from "@/src/components/RightBottom/Sponsors/Modal";
+import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
-import { defaultModelDetails } from "@/src/utils/defaultData/models";
 
 import HomeContent from "./HomeContent";
+import SingleModelSceneForHome from "./share/[userId]/[modelId]/SingleModelSceneForHome";
+import defaultData from "./share/[userId]/[modelId]/homeDefaultObj";
 
 const Home = ({ lang }: { lang: LanguageType }) => {
   const [isWireFrame, setIsWireFrame] = useState<boolean>(false);
-  const focusedModelsObj = defaultModelDetails;
+  const focusedModelsObj = defaultData;
 
   const [modalOpen, setModalOpen] = useState<ModalOpenType>({
     terms: false,
@@ -46,6 +49,7 @@ const Home = ({ lang }: { lang: LanguageType }) => {
   });
 
   const creators = [defaultCreatorDetails];
+  const { t } = useTranslation(lang, "main");
 
   return (
     <>
@@ -57,6 +61,7 @@ const Home = ({ lang }: { lang: LanguageType }) => {
         isWireFrame={isWireFrame}
         setIsWireFrame={setIsWireFrame}
         isFocusedMode={true}
+        inHome={true}
       />
 
       <RightBottomButtons
@@ -110,7 +115,23 @@ const Home = ({ lang }: { lang: LanguageType }) => {
       />
 
       <Sponsors lang={lang} setModalOpen={setModalOpen} modalOpen={modalOpen} />
-      <HomeContent lang={lang} />
+      <div className="flex h-screen flex-col">
+        <main className="flex flex-grow items-center justify-center">
+          <div className="h-full w-full p-4 sm:p-6">
+            <h1 className="mb-4 text-center text-4xl font-bold sm:mb-6">
+              {t("home.title")}
+            </h1>
+            <div className="mx-auto mb-8 h-[70vh] w-[90vw] overflow-hidden rounded-lg border-2 shadow-lg">
+              <Canvas shadows>
+                <Suspense fallback={null}>
+                  <SingleModelSceneForHome />
+                </Suspense>
+              </Canvas>
+            </div>
+            <HomeContent lang={lang} />
+          </div>
+        </main>
+      </div>
     </>
   );
 };

@@ -191,8 +191,9 @@
     }
   },
   "share": {
-    "description": "URLを使用して独自の3Dモデルを共有する",
-    "loginRequired": "ログインが必要です",
+    "description": "あなたの3Dモデルを共有",
+    "loginRequired": "ログイン必要",
+    "noLoginRequired": "ログイン不要",
     "myPage": "マイページ",
     "chooseFile": "ファイルを選択",
     "noFileChosen": "ファイルが選択されていません",

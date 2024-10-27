@@ -192,8 +192,9 @@
     }
   },
   "share": {
-    "description": "Share your own 3D models with using URL",
+    "description": "Share your 3D models",
     "loginRequired": "Login required",
+    "noLoginRequired": "No login required",
     "myPage": "My Page",
     "chooseFile": "Choose File",
     "noFileChosen": "No file chosen",

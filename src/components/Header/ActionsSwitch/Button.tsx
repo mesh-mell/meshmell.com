@@ -43,7 +43,7 @@ const ActionsSwitchButton = ({
 
   return (
     <Button handleClick={handleClick} isActive={modalOpen.actionsSwitch}>
-      <FaWalking />
+      <FaWalking className="text-3xl sm:text-4xl" />
     </Button>
   );
 };

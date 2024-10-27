@@ -14,6 +14,38 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
+model ThreeDModel {
+  id               Int      @id @default(autoincrement())
+  slug             String   @unique
+  resolutions      String[]
+  formats          String[]
+  usedFormat       String   @map("used_format")
+  scale            Float
+  rotationDegreesX Int      @map("rotation_degrees_x")
+  rotationDegreesY Int      @map("rotation_degrees_y")
+  rotationDegreesZ Int      @map("rotation_degrees_z")
+  name             String
+  description      String
+  userId           Int      @map("user_id")
+  categoryId       Int      @map("category_id")
+  categoryTags     String[] @map("category_tags")
+  price            Float
+  license          String
+  credit           String?
+  isDownloadable   Boolean  @map("is_downloadable")
+  publishedAt      DateTime @map("published_at")
+  createdAt        DateTime @default(now()) @map("created_at")
+  updatedAt        DateTime @default(now()) @map("updated_at")
+
+  actions   Action[]
+  downloads Download[]
+
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  @@map("threed_models")
+}
+
 model Action {
   id        Int      @id @default(autoincrement())
   slug      String   @unique
@@ -22,8 +54,8 @@ model Action {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now())
 
-  ModelAction ModelAction[]
-
+  models ThreeDModel[]
+  
   @@map("actions")
 }
 
@@ -41,39 +73,7 @@ model Category {
   @@map("categories")
 }
 
-model ThreeDModel {
-  id               Int      @id @default(autoincrement())
-  slug             String   @unique
-  resolutions      String[]
-  formats          String[]
-  usedFormat       String   @map("used_format")
-  scale            Float
-  rotationDegreesX Int      @map("rotation_degrees_x")
-  rotationDegreesY Int      @map("rotation_degrees_y")
-  rotationDegreesZ Int      @map("rotation_degrees_z")
-  name             String
-  description      String
-  userId           String   @map("user_id")
-  categoryId       Int      @map("category_id")
-  categoryTags     String[] @map("category_tags")
-  price            Float
-  license          String
-  credit           String?
-  isDownloadable   Boolean  @map("is_downloadable")
-  publishedAt      DateTime @map("published_at")
-  createdAt        DateTime @map("created_at")
-  updatedAt        DateTime @map("updated_at")
-
-  ModelAction   ModelAction[]
-  ModelDownload ThreeDModelDownload[]
-
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  category Category @relation(fields: [categoryId], references: [id])
-
-  @@map("threed_models")
-}
-
-model ThreeDModelDownload {
+model Download {
   id            Int      @id @default(autoincrement())
   threeDModelId Int      @map("threed_model_id")
   downloadId    String   @unique @map("download_id")
@@ -81,24 +81,11 @@ model ThreeDModelDownload {
 
   threeDModel ThreeDModel @relation(fields: [threeDModelId], references: [id])
 
-  @@map("threed_model_downloads")
-}
-
-model ModelAction {
-  id            Int      @id @default(autoincrement())
-  threeDModelId Int      @map("threed_model_id")
-  actionId      Int      @map("action_id")
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @default(now())
-
-  threeDModel ThreeDModel @relation(fields: [threeDModelId], references: [id])
-  action      Action      @relation(fields: [actionId], references: [id])
-
-  @@map("model_actions")
+  @@map("downloads")
 }
 
 model User {
-  id              String    @id @default(cuid())
+  id              Int       @id @default(autoincrement())
   email           String?   @unique
   emailVerifiedAt DateTime? @map("email_verified_at")
   password        String?
@@ -119,8 +106,8 @@ model User {
 }
 
 model Account {
-  id                String   @id @default(cuid())
-  userId            String   @map("user_id")
+  id                Int      @id @default(autoincrement())
+  userId            Int      @map("user_id")
   type              String
   provider          String
   providerAccountId String   @map("provider_account_id")
@@ -136,6 +123,6 @@ model Account {
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
-  @@map("accounts")
   @@unique([provider, providerAccountId])
+  @@map("accounts")
 }

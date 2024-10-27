@@ -16,7 +16,7 @@ type ModelPageType = {
   modelId: string;
 };
 
-const ModelPage = ({ userId, modelId }: ModelPageType) => {
+const SingleModelScene = ({ userId, modelId }: ModelPageType) => {
   useEffect(() => {
     const usersRef = ref(database, "share/users");
 
@@ -76,4 +76,4 @@ const ModelPage = ({ userId, modelId }: ModelPageType) => {
   );
 };
 
-export default ModelPage;
+export default SingleModelScene;

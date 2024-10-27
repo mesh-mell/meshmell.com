@@ -25,7 +25,7 @@ import { LanguageType } from "@/src/types/language";
 import { ModalOpenType } from "@/src/types/modals";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 
-import SingleModel from "./SingleModel";
+import SingleModel from "./SingleModelScene";
 
 import ShareModalButton from "@/src/components/Focus/Share/Button";
 
@@ -35,7 +35,7 @@ interface ModalProps {
   modelId: string;
 }
 
-const SingleModelScene = ({ lang, userId, modelId }: ModalProps) => {
+const SingleModelThreeApp = ({ lang, userId, modelId }: ModalProps) => {
   const [modalOpen, setModalOpen] = useState<ModalOpenType>({
     terms: false,
     privacy: false,
@@ -147,4 +147,4 @@ const SingleModelScene = ({ lang, userId, modelId }: ModalProps) => {
   );
 };
 
-export default SingleModelScene;
+export default SingleModelThreeApp;
