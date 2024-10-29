@@ -11,35 +11,85 @@ async function main() {
   const formatMap = new Map<string, any>();
   const resolutionMap = new Map<string, any>();
 
+  const roles = ["admin", "creator", "user", "developer", "sponsor"];
+  //Insert Roles
+  for (const role of roles) {
+    await prisma.role.create({
+      data: {
+        name: role,
+        slug: role,
+      },
+    });
+  }
+
   // Insert Actions
   for (const actionData of seedData.actions) {
     const action = await prisma.action.create({
       data: {
-        name: actionData.name.en,
+        name: actionData.name,
+        slug: actionData.slug,
         icon: actionData.icon,
       },
     });
     actionMap.set(actionData.slug, action);
   }
 
-  // Insert Users (Creators)
+  // Insert Sponsors
+  for (const sponsorData of seedData.sponsors) {
+    await prisma.user.create({
+      data: {
+        slug: sponsorData.slug,
+        name: sponsorData.name,
+        description: sponsorData.description,
+        role: { connect: { slug: "sponsor" } },
+        password: "sponsor",
+      },
+    });
+  }
+
+  // Insert Creators
   for (const creatorData of seedData.creators) {
     const user = await prisma.user.create({
       data: {
         slug: creatorData.slug,
-        name: creatorData.name.en,
-        description: creatorData.description.en,
-        roles: creatorData.roles,
+        name: creatorData.name,
+        description: creatorData.description,
+        role: { connect: { slug: "creator" } },
+        password: "creator",
       },
     });
     userMap.set(creatorData.slug, user);
   }
 
+  // Insert Users
+  for (const userData of seedData.users) {
+    await prisma.user.create({
+      data: {
+        slug: userData.slug,
+        name: userData.name,
+        role: { connect: { slug: "user" } },
+        password: "user",
+      },
+    });
+  }
+
+  // Insert Admin
+  await prisma.user.create({
+    data: {
+      email: "mesh@ mesh.com",
+      slug: "mesh",
+      password: "mesh",
+      name: "Mesh Admin",
+      role: { connect: { slug: "admin" } },
+    },
+  });
+
   // Insert Categories
   for (const categoryData of seedData.categories) {
     const category = await prisma.category.create({
       data: {
-        name: categoryData.name, // JSON field
+        name: categoryData.name,
+        slug: categoryData.slug,
         icon: categoryData.icon,
         color: categoryData.color,
       },
@@ -99,7 +149,7 @@ async function main() {
       .map((slug: string) => categoryMap.get(slug))
       .filter(Boolean);
 
-    const actions = modelData.actions
+    const actions = (modelData.actions ?? [])
       .map((slug: string) => actionMap.get(slug))
       .filter(Boolean);
 
@@ -113,8 +163,9 @@ async function main() {
 
     await prisma.threeDModel.create({
       data: {
-        name: modelData.name.en,
-        description: modelData.description.en,
+        name: modelData.name,
+        slug: modelData.slug,
+        description: modelData.description,
         scale: modelData.scale,
         rotationDegreesX: modelData.rotationDegrees.x,
         rotationDegreesY: modelData.rotationDegrees.y,

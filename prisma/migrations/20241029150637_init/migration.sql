@@ -6,6 +6,7 @@ CREATE TABLE "threed_models" (
     "rotation_degrees_y" INTEGER NOT NULL,
     "rotation_degrees_z" INTEGER NOT NULL,
     "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "description" TEXT NOT NULL,
     "user_id" INTEGER NOT NULL,
     "price" DOUBLE PRECISION NOT NULL,
@@ -39,6 +40,7 @@ CREATE TABLE "formats" (
 -- CreateTable
 CREATE TABLE "actions" (
     "id" SERIAL NOT NULL,
+    "slug" TEXT NOT NULL,
     "name" TEXT NOT NULL,
     "icon" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -50,7 +52,8 @@ CREATE TABLE "actions" (
 -- CreateTable
 CREATE TABLE "categories" (
     "id" SERIAL NOT NULL,
-    "name" JSONB NOT NULL,
+    "name" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
     "icon" TEXT NOT NULL,
     "color" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -69,18 +72,26 @@ CREATE TABLE "downloads" (
 );
 
 -- CreateTable
+CREATE TABLE "roles" (
+    "id" SERIAL NOT NULL,
+    "slug" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+
+    CONSTRAINT "roles_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
     "email" TEXT,
     "email_verified_at" TIMESTAMP(3),
     "password" TEXT,
-    "slug" TEXT NOT NULL,
     "name" TEXT NOT NULL,
-    "description" TEXT NOT NULL,
+    "slug" TEXT NOT NULL,
+    "description" TEXT,
     "twitter_url" TEXT,
     "website_url" TEXT,
     "youtube_url" TEXT,
-    "roles" TEXT[],
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -131,6 +142,24 @@ CREATE TABLE "_ModelCategory" (
     "B" INTEGER NOT NULL
 );
 
+-- CreateTable
+CREATE TABLE "_RoleToUser" (
+    "A" INTEGER NOT NULL,
+    "B" INTEGER NOT NULL
+);
+
+-- CreateIndex
+CREATE UNIQUE INDEX "threed_models_slug_key" ON "threed_models"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "actions_slug_key" ON "actions"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "categories_slug_key" ON "categories"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "roles_slug_key" ON "roles"("slug");
+
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
 
@@ -164,6 +193,12 @@ CREATE UNIQUE INDEX "_ModelCategory_AB_unique" ON "_ModelCategory"("A", "B");
 -- CreateIndex
 CREATE INDEX "_ModelCategory_B_index" ON "_ModelCategory"("B");
 
+-- CreateIndex
+CREATE UNIQUE INDEX "_RoleToUser_AB_unique" ON "_RoleToUser"("A", "B");
+
+-- CreateIndex
+CREATE INDEX "_RoleToUser_B_index" ON "_RoleToUser"("B");
+
 -- AddForeignKey
 ALTER TABLE "threed_models" ADD CONSTRAINT "threed_models_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
@@ -196,3 +231,9 @@ ALTER TABLE "_ModelCategory" ADD CONSTRAINT "_ModelCategory_A_fkey" FOREIGN KEY 
 
 -- AddForeignKey
 ALTER TABLE "_ModelCategory" ADD CONSTRAINT "_ModelCategory_B_fkey" FOREIGN KEY ("B") REFERENCES "threed_models"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_RoleToUser" ADD CONSTRAINT "_RoleToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "roles"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "_RoleToUser" ADD CONSTRAINT "_RoleToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;

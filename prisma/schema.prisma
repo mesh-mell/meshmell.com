@@ -21,7 +21,8 @@ model ThreeDModel {
   rotationDegreesY Int      @map("rotation_degrees_y")
   rotationDegreesZ Int      @map("rotation_degrees_z")
   name             String
-  description      String
+  slug             String   @unique
+  description      String   @db.Text
   userId           Int      @map("user_id")
   price            Float
   license          String
@@ -60,6 +61,7 @@ model Format {
 
 model Action {
   id        Int      @id @default(autoincrement())
+  slug      String   @unique
   name      String
   icon      String
   createdAt DateTime @default(now())
@@ -72,7 +74,8 @@ model Action {
 
 model Category {
   id        Int      @id @default(autoincrement())
-  name      Json
+  name      String
+  slug      String   @unique
   icon      String
   color     String
   createdAt DateTime @default(now())
@@ -93,21 +96,33 @@ model Download {
   @@map("downloads")
 }
 
+// Creator, Developer, Sponsor, Admin, User
+model Role {
+  id        Int      @id @default(autoincrement())
+  slug      String   @unique
+  name      String
+
+  user User[]
+
+  @@map("roles")
+}
+
+
 model User {
   id              Int       @id @default(autoincrement())
   email           String?   @unique
   emailVerifiedAt DateTime? @map("email_verified_at")
   password        String?
-  slug            String    @unique
   name            String
-  description     String
+  slug            String    @unique
+  description     String?   @db.Text
   twitterUrl      String?   @map("twitter_url")
   websiteUrl      String?   @map("website_url")
   youtubeUrl      String?   @map("youtube_url")
-  roles           String[]
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @default(now())
 
+  role         Role[]
   threeDModels ThreeDModel[]
   accounts     Account[]
 
