@@ -2,7 +2,8 @@ import { Prisma } from "@prisma/client";
 
 import {
   ThreeDModelApiResponse,
-  ThreeDModelBasicForm,
+  ThreeDModelBasicFormForCreate,
+  ThreeDModelBasicFormForUpdate,
 } from "@/src/types/threeDModel";
 import { prisma, prismaMain } from "@/src/utils/prismaMain";
 
@@ -100,7 +101,8 @@ export class ThreeDModelService implements IThreeDModelService {
   }
 
   async createThreeDModel(
-    threeDModel: ThreeDModelBasicForm,
+    threeDModel: ThreeDModelBasicFormForCreate,
+    userIdGotFromHere: number,
   ): Promise<ThreeDModelApiResponse> {
     await prismaMain();
 
@@ -109,7 +111,7 @@ export class ThreeDModelService implements IThreeDModelService {
         name: threeDModel.name,
         slug: threeDModel.slug,
         publishedAt: threeDModel.publishedAt,
-        userId: threeDModel.userId,
+        userId: userIdGotFromHere,
         description: threeDModel.description,
         categories: {
           connect: threeDModel.categoryIds.map((id) => ({ id })),
@@ -165,7 +167,7 @@ export class ThreeDModelService implements IThreeDModelService {
 
   async updateThreeDModel(
     threeDModelId: number,
-    threeDModel: ThreeDModelBasicForm,
+    threeDModel: ThreeDModelBasicFormForUpdate,
   ): Promise<ThreeDModelApiResponse> {
     await prismaMain();
 
@@ -178,10 +180,10 @@ export class ThreeDModelService implements IThreeDModelService {
         userId: threeDModel.userId,
         description: threeDModel.description,
         categories: {
-          set: threeDModel.categoryIds.map((id) => ({ id })),
+          set: threeDModel.categoryIds?.map((id) => ({ id })),
         },
         resolutions: {
-          set: threeDModel.resolutionIds.map((id) => ({ id })),
+          set: threeDModel.resolutionIds?.map((id) => ({ id })),
         },
         actions: threeDModel.actions
           ? {

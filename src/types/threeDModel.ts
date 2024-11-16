@@ -1,63 +1,49 @@
+type RotationDegree = {
+  x: number;
+  y: number;
+  z: number;
+};
+
 export type ThreeDModelDetailsType = {
   name: string;
   description: string;
   creator: string;
   published: string;
   updated: string;
-  categoryTags: string[];
+  categoryIds: number[];
   slug: string;
   price: number;
-  resolutions: string[] | null;
+  resolutionIds: number[];
   credit: string;
   license: string;
   scale: number;
-  rotationDegree: {
-    x: number;
-    y: number;
-    z: number;
-  };
-  formats: string[];
-  usedFormat: string;
-  actions?: string[];
+  rotationDegree: RotationDegree;
+  formats: ThreeDModelFormatBasicForm[];
+  actions?: ActionBasicForm[];
   isDownloadable: boolean;
-  source?: {
-    creator: string;
-    sourceSite: string;
-    downloadSite: string;
-    sourceVideo: string;
-  };
 };
 
 export type ThreeDModelCreateAndUpdateFormType = {
   id: number;
+  slug: string;
   name: string;
   description: string;
   creator: string;
-  categoryTags: string[];
+  categoryIds: number[];
   price: number;
-  resolutions: string[] | null;
+  resolutionIds: number[] | null;
   credit: string;
   license: string;
   scale: number;
-  rotationDegree: {
-    x: number;
-    y: number;
-    z: number;
-  };
-  formats: string[];
-  usedFormat: string;
-  actions?: string[];
+  rotationDegree: RotationDegree;
+  formats: ThreeDModelFormatBasicForm[];
+  actions?: ActionBasicForm[];
   isDownloadable: boolean;
-  source?: {
-    creator: string;
-    sourceSite: string;
-    downloadSite: string;
-    sourceVideo: string;
-  };
 };
 
 export type ActionBasicForm = {
   id: number;
+  slug: string;
   name: string;
 };
 
@@ -67,7 +53,26 @@ export type ThreeDModelFormatBasicForm = {
   isUsed: boolean;
 };
 
-export type ThreeDModelBasicForm = {
+export type ThreeDModelBasicFormForUpdate = {
+  name?: string;
+  slug?: string;
+  publishedAt?: Date;
+  userId?: number;
+  description?: string;
+  creator?: string;
+  categoryIds?: number[];
+  price?: number;
+  resolutionIds?: number[];
+  credit?: string;
+  license?: string;
+  scale?: number;
+  rotationDegree?: RotationDegree;
+  formats?: ThreeDModelFormatBasicForm[];
+  actions?: ActionBasicForm[];
+  isDownloadable?: boolean;
+};
+
+export type ThreeDModelBasicFormForCreate = {
   name: string;
   slug: string;
   publishedAt: Date;
@@ -80,75 +85,45 @@ export type ThreeDModelBasicForm = {
   credit: string;
   license: string;
   scale: number;
-  rotationDegree: {
-    x: number;
-    y: number;
-    z: number;
-  };
+  rotationDegree: RotationDegree;
   formats: ThreeDModelFormatBasicForm[];
-  actions?: ActionBasicForm[];
+  actions: ActionBasicForm[];
   isDownloadable: boolean;
-  source?: {
-    creator: string;
-    sourceSite: string;
-    downloadSite: string;
-    sourceVideo: string;
-  };
 };
 
 export type ThreeDModelBasic = {
   name: string;
+  slug: string;
   description: string;
   creator: string;
-  categoryTags: string[];
+  categoryIds: number[];
   price: number;
-  resolutions: string[] | null;
+  resolutionIds: number[];
   credit: string;
   license: string;
   scale: number;
-  rotationDegree: {
-    x: number;
-    y: number;
-    z: number;
-  };
-  formats: string[];
-  usedFormat: string;
-  actions?: string[];
+  rotationDegree: RotationDegree;
+  formats: ThreeDModelFormatBasicForm[];
+  actions: ActionBasicForm[];
   isDownloadable: boolean;
-  source?: {
-    creator: string;
-    sourceSite: string;
-    downloadSite: string;
-    sourceVideo: string;
-  };
 };
 
 export type ThreeDModelBasicFormWithID = {
   id: number;
   name: string;
+  slug: string;
   description: string;
   creator: string;
-  categoryTags: string[];
+  categoryIds: number[];
   price: number;
-  resolutions: string[] | null;
+  resolutionIds: number[] | null;
   credit: string;
   license: string;
   scale: number;
-  rotationDegree: {
-    x: number;
-    y: number;
-    z: number;
-  };
-  formats: string[];
-  usedFormat: string;
-  actions?: string[];
+  rotationDegree: RotationDegree;
+  formats: ThreeDModelFormatBasicForm[];
+  actions?: ActionBasicForm[];
   isDownloadable: boolean;
-  source?: {
-    creator: string;
-    sourceSite: string;
-    downloadSite: string;
-    sourceVideo: string;
-  };
 };
 
 export type ThreeDModelAll = ThreeDModelBasic & {

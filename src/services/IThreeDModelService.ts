@@ -3,10 +3,20 @@ import {
   ThreeDModelBasicForm,
 } from "@/src/types/threeDModel";
 
+import {
+  ThreeDModelOrderKeyType,
+  VisibilityKeyType,
+} from "../literal/threeDModel";
+
 export type GetThreeDModelsQuery = {
-  name: string | null;
-  category: string | null;
-  user: string | null;
+  page: string;
+  order: ThreeDModelOrderKeyType | undefined;
+  searchWord: string | undefined;
+  visibilities: VisibilityKeyType[];
+  inSession: boolean;
+  name: string | undefined;
+  category: string | undefined;
+  user: string | undefined;
 };
 
 export interface IThreeDModelService {

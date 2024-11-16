@@ -1,16 +1,15 @@
 import { NextResponse } from "next/server";
 
 import { auth } from "@/auth";
-import { GetThreeDModelsQuery } from "@/src/services/IThreeDModelService";
-import { ThreeDModelService } from "@/src/services/ThreeDModelService";
-ThreeDModelBasic, 
-import { checkAuthorization } from "../utils/checkAuthorization";
-
 import {
   ThreeDModelOrderKeyType,
   VisibilityKeyType,
-} from "@/src/literals/threeDModel";
+} from "@/src/literal/threeDModel";
+import { GetThreeDModelsQuery } from "@/src/services/IThreeDModelService";
+import { ThreeDModelService } from "@/src/services/ThreeDModelService";
 import { ThreeDModelBasic } from "@/src/types/threeDModel";
+
+import { checkAuthorization } from "../utils/checkAuthorization";
 
 const threeDModelService = new ThreeDModelService();
 
@@ -35,17 +34,22 @@ export const GET = auth(async function GET(req) {
     (req.nextUrl.searchParams.getAll(
       "visibilities[]",
     ) as VisibilityKeyType[]) || [];
-  const isPinned: boolean =
-    req.nextUrl.searchParams.get("isPinned") === "true" || false;
+  const name: string | undefined =
+    req.nextUrl.searchParams.get("name") || undefined;
+  const category: string | undefined =
+    req.nextUrl.searchParams.get("category") || undefined;
+  const user: string | undefined =
+    req.nextUrl.searchParams.get("user") || undefined;
 
   const query: GetThreeDModelsQuery = {
     page,
     searchWord,
     order,
     visibilities,
-    isPinned,
-    tagIds,
     inSession,
+    name,
+    category,
+    user,
   };
 
   try {
@@ -78,20 +82,19 @@ export const POST = auth(async function POST(req) {
 
   const {
     name,
+    slug,
     description,
     creator,
-    categoryTags,
+    categoryIds,
     price,
-    resolutions,
+    resolutionIds,
     credit,
     license,
     scale,
     rotationDegree,
     formats,
-    usedFormat,
     actions,
     isDownloadable,
-    source,
   }: ThreeDModelBasic = await req.json();
 
   try {
@@ -100,11 +103,19 @@ export const POST = auth(async function POST(req) {
         name,
         description,
         creator,
-        categoryTags,
+        categoryIds,
         price,
-        resolutions,
+        resolutionIds,
         credit,
         license,
+        scale,
+        rotationDegree,
+        formats,
+        actions,
+        isDownloadable,
+        slug,
+        publishedAt: new Date(),
+        userId: userGotFromHere.id,
       },
       userGotFromHere.id,
     );
