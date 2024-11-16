@@ -1,12 +1,12 @@
 import axios from "axios";
 
-import { VisibilityKeyType } from "@/src/literals/threeDModel/threeDModels";
-import { PostsSortProps } from "@/src/types/post";
 import {
   ThreeDModelAll,
   ThreeDModelBasicForm,
   ThreeDModelBasicFormWithID,
-} from "@/src/types/threeDModels/threeDModel";
+} from "@/src/types/threeDModel";
+
+import { ThreeDModelOrderKeyType } from "../literal/threeDModel";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const axiosInstance = axios.create({ baseURL: BASE_URL });
@@ -19,17 +19,15 @@ export const getThreeDModelById = async ({ id }: { id: number }) => {
 export const getThreeDModels = async ({
   pageNum,
   order,
-  searchWord,
-  visibilities,
-  isPinned,
-  tagIds,
+  name,
+  category,
+  user,
 }: {
   pageNum: number | null;
-  order: PostsSortProps | null;
-  searchWord: string | null;
-  visibilities: VisibilityKeyType[];
-  isPinned: boolean;
-  tagIds: number[];
+  order: ThreeDModelOrderKeyType | null;
+  name: string | null;
+  category: string | null;
+  user: string | null;
 }) => {
   return (
     await axiosInstance.get<{
@@ -39,10 +37,9 @@ export const getThreeDModels = async ({
       params: {
         page: pageNum,
         order,
-        searchWord,
-        visibilities,
-        isPinned,
-        tagIds,
+        name,
+        category,
+        user,
       },
     })
   ).data;

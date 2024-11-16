@@ -5,7 +5,7 @@ import { LanguageType } from "@/src/types/language";
 import {
   ModelCreateAndUpdateFormType,
   ModelDetailsType,
-} from "../types/models";
+} from "../types/threeDModel";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const axiosInstance = axios.create({ baseURL: BASE_URL });

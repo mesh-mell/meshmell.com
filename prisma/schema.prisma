@@ -31,15 +31,25 @@ model ThreeDModel {
   publishedAt      DateTime @map("published_at")
   createdAt        DateTime @default(now()) @map("created_at")
   updatedAt        DateTime @default(now()) @map("updated_at")
-
   actions     Action[]     @relation("ModelAction")
   downloads   Download[]   @relation("ModelDownload")
   categories  Category[]   @relation("ModelCategory")
   resolutions Resolution[] @relation("ModelResolution")
-  formats     Format[]     @relation("ModelFormat")
+  formats     ThreeDModelFormat[]
   user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("threed_models")
+}
+
+model ThreeDModelFormat {
+  threeDModel     ThreeDModel @relation(fields: [threeDModelId], references: [id], onDelete: Cascade)
+  threeDModelId   Int         @map("threed_model_id")
+  format          Format      @relation(fields: [formatId], references: [id], onDelete: Cascade)
+  formatId        Int         @map("format_id")
+  isUsed          Boolean     @default(false)
+
+  @@id([threeDModelId, formatId])
+  @@map("threed_model_formats")
 }
 
 model Resolution {
@@ -53,9 +63,8 @@ model Resolution {
 model Format {
   id           Int           @id @default(autoincrement())
   name         String
-  threeDModels ThreeDModel[] @relation("ModelFormat")
-  isUsed       Boolean       @map("is_used")
 
+  threeDModels ThreeDModelFormat[]
   @@map("formats")
 }
 

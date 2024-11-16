@@ -21,6 +21,15 @@ CREATE TABLE "threed_models" (
 );
 
 -- CreateTable
+CREATE TABLE "threed_model_formats" (
+    "threed_model_id" INTEGER NOT NULL,
+    "format_id" INTEGER NOT NULL,
+    "isUsed" BOOLEAN NOT NULL DEFAULT false,
+
+    CONSTRAINT "threed_model_formats_pkey" PRIMARY KEY ("threed_model_id","format_id")
+);
+
+-- CreateTable
 CREATE TABLE "resolutions" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
@@ -32,7 +41,6 @@ CREATE TABLE "resolutions" (
 CREATE TABLE "formats" (
     "id" SERIAL NOT NULL,
     "name" TEXT NOT NULL,
-    "is_used" BOOLEAN NOT NULL,
 
     CONSTRAINT "formats_pkey" PRIMARY KEY ("id")
 );
@@ -125,12 +133,6 @@ CREATE TABLE "_ModelResolution" (
 );
 
 -- CreateTable
-CREATE TABLE "_ModelFormat" (
-    "A" INTEGER NOT NULL,
-    "B" INTEGER NOT NULL
-);
-
--- CreateTable
 CREATE TABLE "_ModelAction" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL
@@ -176,12 +178,6 @@ CREATE UNIQUE INDEX "_ModelResolution_AB_unique" ON "_ModelResolution"("A", "B")
 CREATE INDEX "_ModelResolution_B_index" ON "_ModelResolution"("B");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "_ModelFormat_AB_unique" ON "_ModelFormat"("A", "B");
-
--- CreateIndex
-CREATE INDEX "_ModelFormat_B_index" ON "_ModelFormat"("B");
-
--- CreateIndex
 CREATE UNIQUE INDEX "_ModelAction_AB_unique" ON "_ModelAction"("A", "B");
 
 -- CreateIndex
@@ -203,6 +199,12 @@ CREATE INDEX "_RoleToUser_B_index" ON "_RoleToUser"("B");
 ALTER TABLE "threed_models" ADD CONSTRAINT "threed_models_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
+ALTER TABLE "threed_model_formats" ADD CONSTRAINT "threed_model_formats_threed_model_id_fkey" FOREIGN KEY ("threed_model_id") REFERENCES "threed_models"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "threed_model_formats" ADD CONSTRAINT "threed_model_formats_format_id_fkey" FOREIGN KEY ("format_id") REFERENCES "formats"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+
+-- AddForeignKey
 ALTER TABLE "downloads" ADD CONSTRAINT "downloads_threed_model_id_fkey" FOREIGN KEY ("threed_model_id") REFERENCES "threed_models"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
@@ -213,12 +215,6 @@ ALTER TABLE "_ModelResolution" ADD CONSTRAINT "_ModelResolution_A_fkey" FOREIGN 
 
 -- AddForeignKey
 ALTER TABLE "_ModelResolution" ADD CONSTRAINT "_ModelResolution_B_fkey" FOREIGN KEY ("B") REFERENCES "threed_models"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "_ModelFormat" ADD CONSTRAINT "_ModelFormat_A_fkey" FOREIGN KEY ("A") REFERENCES "formats"("id") ON DELETE CASCADE ON UPDATE CASCADE;
-
--- AddForeignKey
-ALTER TABLE "_ModelFormat" ADD CONSTRAINT "_ModelFormat_B_fkey" FOREIGN KEY ("B") REFERENCES "threed_models"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "_ModelAction" ADD CONSTRAINT "_ModelAction_A_fkey" FOREIGN KEY ("A") REFERENCES "actions"("id") ON DELETE CASCADE ON UPDATE CASCADE;
