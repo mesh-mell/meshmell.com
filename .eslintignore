@@ -13,9 +13,6 @@ node_modules/
 # env files
 .env*
 
-# firebase emulator
-firebase_dev/firebase/
-
 # gcs emulator
 gcs_dev/
 

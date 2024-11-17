@@ -120,7 +120,6 @@ async function main() {
     const format = await prisma.format.create({
       data: {
         name: formatName,
-        isUsed: true,
       },
     });
     formatMap.set(formatName, format);
@@ -182,9 +181,7 @@ async function main() {
         actions: {
           connect: actions.map((action: any) => ({ id: action.id })),
         },
-        formats: {
-          connect: formats.map((format: any) => ({ id: format.id })),
-        },
+        formats: {},
         resolutions: {
           connect: resolutions.map((resolution: any) => ({
             id: resolution.id,

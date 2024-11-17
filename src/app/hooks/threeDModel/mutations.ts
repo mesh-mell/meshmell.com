@@ -1,11 +1,18 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
-import { ModelCreateAndUpdateFormType } from "@/src/types/models";
-import { createModel, deleteModel, updateModel } from "@/src/utils/api";
+import {
+  createThreeDModel,
+  deleteThreeDModel,
+  updateThreeDModel,
+} from "@/src/apiRequestFromFront/threeDModel";
+import {
+  ThreeDModelBasicForm,
+  ThreeDModelBasicFormWithID,
+} from "@/src/types/threeDModel";
 
 export const useDeleteModel = () => {
   return useMutation({
-    mutationFn: (id: number) => deleteModel(id),
+    mutationFn: (id: number) => deleteThreeDModel(id),
   });
 };
 
@@ -13,7 +20,7 @@ export const useUpdateModel = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: ModelCreateAndUpdateFormType) => updateModel(data),
+    mutationFn: (data: ThreeDModelBasicFormWithID) => updateThreeDModel(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["models"] });
     },
@@ -24,7 +31,7 @@ export const useCreateModel = () => {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationFn: (data: ModelCreateAndUpdateFormType) => createModel(data),
+    mutationFn: (data: ThreeDModelBasicForm) => createThreeDModel(data),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["models"] });
     },

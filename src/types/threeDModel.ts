@@ -108,8 +108,7 @@ export type ThreeDModelBasic = {
   isDownloadable: boolean;
 };
 
-export type ThreeDModelBasicFormWithID = {
-  id: number;
+export type ThreeDModelBasicForm = {
   name: string;
   slug: string;
   description: string;
@@ -124,6 +123,9 @@ export type ThreeDModelBasicFormWithID = {
   formats: ThreeDModelFormatBasicForm[];
   actions?: ActionBasicForm[];
   isDownloadable: boolean;
+};
+export type ThreeDModelBasicFormWithID = ThreeDModelBasicForm & {
+  id: number;
 };
 
 export type ThreeDModelAll = ThreeDModelBasic & {

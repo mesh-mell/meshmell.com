@@ -1,4 +1,4 @@
-const seedData = {
+export const seedData = {
   users: [
     {
       email: "sample@sample1.com",
@@ -101,185 +101,12 @@ const seedData = {
   ],
   creators: [
     {
-      name: "Ryan King Art",
-      slug: "RyanKingArt",
-      description:
-        "Ryan King Art is a 3D artist who creates 3D models and renders. He is also a YouTuber who shares his knowledge of 3D modeling and rendering.",
-      twitter: "https://twitter.com/RyanKingArt",
-      website: "https://www.ryankingart.com/",
-      youtube: "https://www.youtube.com/channel/UCfjswDVU0XHyBN7UFG0Mi5Q",
-      roles: ["creator"],
-    },
-    {
       name: "Yuri Nakanishi",
       slug: "YuriNakanishi",
       description: "Developer of Meshmell.",
       twitter: "https://twitter.com/yurimell6174",
       website: "https://yurimell.com/",
       roles: ["creator", "developer"],
-    },
-    {
-      name: "Rico Cilliers",
-      slug: "RicoCilliers",
-      description: "Technical Director at Polyhaven.com",
-      artStation: "https://www.artstation.com/rico_b3d",
-      roles: ["creator"],
-    },
-    {
-      name: "Oliver Harries",
-      slug: "OliverHarries",
-      description: "Freelance 3D Artist.",
-      website: "https://oliverharries.myportfolio.com/",
-      roles: ["creator"],
-    },
-    {
-      name: "Quaternius",
-      slug: "Quaternius",
-      description: "3D Artist.",
-      website: "https://quaternius.com/",
-      roles: ["creator"],
-    },
-    {
-      name: "James Ray Cock",
-      slug: "JamesRayCock",
-      description: "3D Artist for Games and Film.",
-      artStation: "https://www.artstation.com/jamesray",
-      roles: ["creator"],
-    },
-    {
-      name: "Serhii Khromov",
-      slug: "SerhiiKhromov",
-      description: "Material/Environment Artist.",
-      artStation: "https://www.artstation.com/serhiikhromov",
-      roles: ["creator"],
-    },
-    {
-      name: "Rahul Chaudhary",
-      slug: "RahulChaudhary",
-      description: "3D Environment and Prop Artist.",
-      artStation: "https://www.artstation.com/rc12",
-      roles: ["creator"],
-    },
-    {
-      name: "Kuutti Siitonen",
-      slug: "KuuttiSiitonen",
-      description: "3D Artist.",
-      artStation: "https://www.artstation.com/KuuttiSiitonen",
-      paypal: "https://www.paypal.com/paypalme/kuuttis",
-      roles: ["creator"],
-    },
-    {
-      name: "John Malcolm",
-      slug: "JohnMalcolm",
-      description: "",
-      roles: ["creator"],
-    },
-    {
-      name: "Ulan Cabanilla",
-      slug: "UlanCabanilla",
-      description: "",
-      roles: ["creator"],
-    },
-  ],
-  sponsors: [
-    {
-      name: "Async Corporation",
-      slug: "async_corporation",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 10000,
-    },
-    {
-      name: "Francisco D'Anconia",
-      slug: "francisco_danconia",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 150000,
-    },
-    {
-      name: "Kalinin and Associates",
-      slug: "kalinin_and_associates",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 1500,
-    },
-    {
-      name: "Charles Williams",
-      slug: "charles_williams",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 1500,
-    },
-    {
-      name: "Hiroki Kuroda",
-      slug: "hiroki_kuroda",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 1500,
-    },
-    {
-      name: "Isla Roberts",
-      slug: "isla_roberts",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 1500,
-    },
-    {
-      name: "Tracy Garcia",
-      slug: "tracy_garcia",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 1500000,
-    },
-    {
-      name: "Susan Smith",
-      slug: "susan_smith",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 1500,
-    },
-    {
-      name: "Gelbero.com",
-      slug: "gelbero_com",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 150000,
-    },
-    {
-      name: "Michael 3D Printing",
-      slug: "michael_3d_printing",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 15000,
-    },
-    {
-      name: "Margaret O'Brien",
-      slug: "margaret_obrien",
-      description: "",
-      url: "https://example.com",
-      published: "",
-      updated: "",
-      amount: 150,
     },
   ],
   categories: [
@@ -342,7 +169,7 @@ const seedData = {
     {
       slug: "animated_cube",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 1,
       rotationDegrees: {
@@ -365,7 +192,7 @@ const seedData = {
     {
       slug: "sci-fi_worker_robot",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 0.3,
       rotationDegrees: {
@@ -393,7 +220,7 @@ const seedData = {
     {
       slug: "potted_plant_01",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 5,
       rotationDegrees: {
@@ -415,7 +242,7 @@ const seedData = {
     {
       slug: "wooden_crate_01",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 5,
       rotationDegrees: {
@@ -437,7 +264,7 @@ const seedData = {
     {
       slug: "wooden_table_02",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 4,
       rotationDegrees: {
@@ -459,7 +286,7 @@ const seedData = {
     {
       slug: "food_apple_01",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 25,
       rotationDegrees: {
@@ -480,7 +307,7 @@ const seedData = {
     },
     {
       slug: "fox_01",
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 1,
       rotationDegrees: {
@@ -516,7 +343,7 @@ const seedData = {
     {
       slug: "wicker_basket_01",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 12,
       rotationDegrees: {
@@ -538,7 +365,7 @@ const seedData = {
     {
       slug: "wooden_handle_saber",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 4,
       rotationDegrees: {
@@ -560,7 +387,7 @@ const seedData = {
     {
       slug: "wine_barrel_01",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 5,
       rotationDegrees: {
@@ -581,7 +408,7 @@ const seedData = {
     },
     {
       slug: "wolf_01",
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 1.2,
       rotationDegrees: {
@@ -617,7 +444,7 @@ const seedData = {
     {
       slug: "book_encyclopedia_set_01",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 6,
       rotationDegrees: {
@@ -639,7 +466,7 @@ const seedData = {
     {
       slug: "round_wooden_table_01",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 3,
       rotationDegrees: {
@@ -661,7 +488,7 @@ const seedData = {
     {
       slug: "cardboard_box_01",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 8,
       rotationDegrees: {
@@ -683,7 +510,7 @@ const seedData = {
     {
       slug: "dining_chair_02",
       resolutions: ["1k"],
-      formats: ["glb"],
+      formats: [{ name: "glb", isUsed: true }],
       usedFormat: "glb",
       scale: 5,
       rotationDegrees: {

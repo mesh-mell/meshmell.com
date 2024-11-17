@@ -4,7 +4,7 @@ import {
   ApiKeyBasicForm,
   ApiKeyBasicFormWithID,
   ApiKeyBasicWithID,
-} from "@/src/types/thoughts/apiKey";
+} from "@/src/types/apiKey";
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const axiosInstance = axios.create({ baseURL: BASE_URL });

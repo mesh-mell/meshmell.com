@@ -89,6 +89,15 @@ CREATE TABLE "roles" (
 );
 
 -- CreateTable
+CREATE TABLE "sub_roles" (
+    "id" SERIAL NOT NULL,
+    "slug" TEXT NOT NULL,
+    "name" TEXT NOT NULL,
+
+    CONSTRAINT "sub_roles_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
 CREATE TABLE "users" (
     "id" SERIAL NOT NULL,
     "email" TEXT,
@@ -102,6 +111,7 @@ CREATE TABLE "users" (
     "youtube_url" TEXT,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "main_role_id" INTEGER NOT NULL,
 
     CONSTRAINT "users_pkey" PRIMARY KEY ("id")
 );
@@ -145,7 +155,7 @@ CREATE TABLE "_ModelCategory" (
 );
 
 -- CreateTable
-CREATE TABLE "_RoleToUser" (
+CREATE TABLE "_SubRoleToUser" (
     "A" INTEGER NOT NULL,
     "B" INTEGER NOT NULL
 );
@@ -161,6 +171,9 @@ CREATE UNIQUE INDEX "categories_slug_key" ON "categories"("slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "roles_slug_key" ON "roles"("slug");
+
+-- CreateIndex
+CREATE UNIQUE INDEX "sub_roles_slug_key" ON "sub_roles"("slug");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "users_email_key" ON "users"("email");
@@ -190,10 +203,10 @@ CREATE UNIQUE INDEX "_ModelCategory_AB_unique" ON "_ModelCategory"("A", "B");
 CREATE INDEX "_ModelCategory_B_index" ON "_ModelCategory"("B");
 
 -- CreateIndex
-CREATE UNIQUE INDEX "_RoleToUser_AB_unique" ON "_RoleToUser"("A", "B");
+CREATE UNIQUE INDEX "_SubRoleToUser_AB_unique" ON "_SubRoleToUser"("A", "B");
 
 -- CreateIndex
-CREATE INDEX "_RoleToUser_B_index" ON "_RoleToUser"("B");
+CREATE INDEX "_SubRoleToUser_B_index" ON "_SubRoleToUser"("B");
 
 -- AddForeignKey
 ALTER TABLE "threed_models" ADD CONSTRAINT "threed_models_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -206,6 +219,9 @@ ALTER TABLE "threed_model_formats" ADD CONSTRAINT "threed_model_formats_format_i
 
 -- AddForeignKey
 ALTER TABLE "downloads" ADD CONSTRAINT "downloads_threed_model_id_fkey" FOREIGN KEY ("threed_model_id") REFERENCES "threed_models"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "users" ADD CONSTRAINT "users_main_role_id_fkey" FOREIGN KEY ("main_role_id") REFERENCES "roles"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "accounts" ADD CONSTRAINT "accounts_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
@@ -229,7 +245,7 @@ ALTER TABLE "_ModelCategory" ADD CONSTRAINT "_ModelCategory_A_fkey" FOREIGN KEY 
 ALTER TABLE "_ModelCategory" ADD CONSTRAINT "_ModelCategory_B_fkey" FOREIGN KEY ("B") REFERENCES "threed_models"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_RoleToUser" ADD CONSTRAINT "_RoleToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "roles"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_SubRoleToUser" ADD CONSTRAINT "_SubRoleToUser_A_fkey" FOREIGN KEY ("A") REFERENCES "sub_roles"("id") ON DELETE CASCADE ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "_RoleToUser" ADD CONSTRAINT "_RoleToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE "_SubRoleToUser" ADD CONSTRAINT "_SubRoleToUser_B_fkey" FOREIGN KEY ("B") REFERENCES "users"("id") ON DELETE CASCADE ON UPDATE CASCADE;

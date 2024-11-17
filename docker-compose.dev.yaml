@@ -7,17 +7,9 @@ services:
       dockerfile: Dockerfile
       args:
         - NEXT_PUBLIC_BASE_URL=${NEXT_PUBLIC_BASE_URL}
-        - NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=${NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN}
-        - NEXT_PUBLIC_FIREBASE_APP_ID=${NEXT_PUBLIC_FIREBASE_APP_ID}
-        - NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=${NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET}
-        - NEXT_PUBLIC_FIREBASE_PROJECT_ID=${NEXT_PUBLIC_FIREBASE_PROJECT_ID}
-        - NEXT_PUBLIC_GA_MEASUREMENT_ID=${NEXT_PUBLIC_GA_MEASUREMENT_ID}
-        - NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=${NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID}
-        - NEXT_PUBLIC_FIREBASE_API_KEY=${NEXT_PUBLIC_FIREBASE_API_KEY}
         - NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL=${NEXT_PUBLIC_GCS_BUCKET_PUBLIC_URL}
         - NEXT_PUBLIC_ENV_STATUS=${NEXT_PUBLIC_ENV_STATUS}
         - NEXT_PUBLIC_USE_GCS_EMULATOR=${NEXT_PUBLIC_USE_GCS_EMULATOR}
-        - NEXT_PUBLIC_USE_FIREBASE_EMULATOR=${NEXT_PUBLIC_USE_FIREBASE_EMULATOR}
         - NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY=${NEXT_PUBLIC_MESHMELL_GITHUB_REPOSITORY}
         - NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE=${NEXT_PUBLIC_NUM_OF_MODEL_BY_PAGE}
         - DATABASE_URL=${DATABASE_URL}
@@ -32,6 +24,9 @@ services:
       - "3000:3000"
     env_file:
       - .env
+    depends_on:
+      - db
+      - gcs-emulator
   db:
     image: postgres:latest
     container_name: db_meshmell
@@ -43,5 +38,14 @@ services:
       - "5432:5432"
     volumes:
       - db-store-meshmell:/var/lib/postgresql/data
+  gcs-emulator:
+    image: "fsouza/fake-gcs-server:latest"
+    ports:
+      - "4443:4443"
+    volumes:
+      - ./gcs_dev:/data
+    command:
+      - "-scheme"
+      - "http"
 volumes:
   db-store-meshmell:

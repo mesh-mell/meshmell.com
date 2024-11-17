@@ -1,19 +1,16 @@
 "use client";
 
-import { get, ref } from "firebase/database";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useSession } from "next-auth/react";
+import { Dispatch, SetStateAction } from "react";
 
+import { useQueryUsers } from "@/src/app/hooks/user/queries";
 import ModalWrapper from "@/src/components/ModalWrapper";
 import { useTranslation } from "@/src/i18n/client";
 import { LanguageType } from "@/src/types/language";
-import {
-  ModalOpenType,
-  ModalOpenType,
-  ModalOpenType,
-} from "@/src/types/modals";
+import { ModalOpenType } from "@/src/types/modals";
 import { SponsorInfoType } from "@/src/types/sponsors";
-import { defaultSponsorInfo } from "@/src/utils/defaultData/sponsors";
-import { database } from "@/src/utils/firebase/firebase.config";
+
+import LoadingCover from "../../LoadingCover";
 
 import EachSponsor from "./EachSponsor";
 
@@ -30,25 +27,13 @@ const Sponsors = <T extends ModalOpenType | ModalOpenType | ModalOpenType>({
   setHoverOnModal,
   modalOpen,
 }: SponsorsType<T>) => {
+  const { data: session, status: sessionStatus } = useSession();
   const { t } = useTranslation(lang, "main");
-  const [sponsors, setSponsors] = useState([defaultSponsorInfo]);
-
-  useEffect(() => {
-    let sponsorsData: SponsorInfoType[] = [defaultSponsorInfo];
-    const sponsorsRef = ref(database, "exhibition/sponsors");
-    get(sponsorsRef)
-      .then((snapshot) => {
-        if (snapshot.exists()) {
-          sponsorsData = snapshot.val();
-        }
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setSponsors(sponsorsData);
-      });
-  }, []);
+  const { data: sponsors } = useQueryUsers({
+    id: Number(session?.user?.id),
+    role: "sponsor",
+    inSession: true,
+  });
 
   const handleClickClose = () => {
     setModalOpen((prevState: ModalOpenType) => ({
@@ -80,6 +65,7 @@ const Sponsors = <T extends ModalOpenType | ModalOpenType | ModalOpenType>({
           ))}
         </div>
       </div>
+      {sessionStatus === "loading" && <LoadingCover />}
     </ModalWrapper>
   );
 };

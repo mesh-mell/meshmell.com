@@ -36,20 +36,19 @@ import { DateItem } from "@/src/types/downloadCountData";
 import { LanguageType } from "@/src/types/language";
 import { LightAndDarkThemeType } from "@/src/types/lightAndDarkTheme";
 import { ModalOpenType } from "@/src/types/modals";
-import { ModelDetailsType } from "@/src/types/models";
 import { viewTypes, WindowType } from "@/src/types/views";
 import { defaultCategoryDetails } from "@/src/utils/defaultData/categories";
 import { defaultCreatorDetails } from "@/src/utils/defaultData/creators";
 import { defaultModelDetails } from "@/src/utils/defaultData/models";
-import { database } from "@/src/utils/firebase/firebase.config";
 
 import { ActionDetailsType } from "../types/actions";
-import { fetchAndSetDownloads } from "../utils/fetchAndSetDownloads";
 
 import ActionsSwitchModal from "./Header/ActionsSwitch/Modal";
 import LoadingForCanvas from "./LoadingForCanvas";
 import ForSponsors from "./RightBottom/Footer/ForSponsors";
 import Sponsors from "./RightBottom/Sponsors/Modal";
+
+import { ModelDetailsType } from "@/src/types/models";
 
 const ThreeApp = ({ lang }: { lang: LanguageType }) => {
   const [modalOpen, setModalOpen] = useState<ModalOpenType>({
@@ -102,10 +101,6 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
     useState<ModelDetailsType>(defaultModelDetails);
   const [focusedModelsCreatorsObj, setFocusedModelsCreatorsObj] =
     useState<CreatorDetailsType>(defaultCreatorDetails);
-  const [getFirebaseDataLoading, setGetFirebaseDataLoading] =
-    useState<boolean>(false);
-  const [isWireFrame, setIsWireFrame] = useState<boolean>(false);
-  const [action, setAction] = useState<string>("");
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [creators, setCreators] = useState<CreatorDetailsType[]>([]);
   const [models, setModels] = useState<ModelDetailsType[]>([]);
@@ -175,7 +170,6 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
       database,
       focusedModelsSlug,
       setFocusedModelsDownloadData,
-      setGetFirebaseDataLoading,
     );
   }, [focusedModelsSlug]);
 
@@ -320,7 +314,6 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             focusedModelsDownloadData={focusedModelsDownloadData}
             setFocusedModelsDownloadData={setFocusedModelsDownloadData}
             windowType={windowType}
-            setGetFirebaseDataLoading={setGetFirebaseDataLoading}
             isFocusedMode={isFocusedMode}
           />
 
@@ -476,7 +469,6 @@ const ThreeApp = ({ lang }: { lang: LanguageType }) => {
             modalOpen={modalOpen}
             focusedModelsObj={focusedModelsObj}
             focusedModelsDownloadData={focusedModelsDownloadData}
-            getFirebaseDataLoading={getFirebaseDataLoading}
             creators={creators}
             models={models}
             isFocusedMode={isFocusedMode}

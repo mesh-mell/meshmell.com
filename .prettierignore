@@ -16,9 +16,6 @@ node_modules/
 # log files
 *.log
 
-# firebase emulator
-firebase_dev/firebase/
-
 # gcs emulator
 gcs_dev/
 

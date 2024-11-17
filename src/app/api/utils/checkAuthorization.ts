@@ -19,6 +19,9 @@ export async function checkAuthorization(req: any) {
     where: {
       email: req.auth.user?.email,
     },
+    include: {
+      role: true,
+    },
   });
 
   // Check if the user has a valid ID

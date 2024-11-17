@@ -1,13 +1,5 @@
 {
-  "cSpell.words": [
-    "drei",
-    "firestore",
-    "GLTF",
-    "Lngs",
-    "nextjs",
-    "webp",
-    "Wireframe"
-  ],
+  "cSpell.words": ["drei", "GLTF", "Lngs", "nextjs", "webp", "Wireframe"],
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {

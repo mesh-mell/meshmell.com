@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -15,38 +9,38 @@ datasource db {
 }
 
 model ThreeDModel {
-  id               Int      @id @default(autoincrement())
+  id               Int                 @id @default(autoincrement())
   scale            Float
-  rotationDegreesX Int      @map("rotation_degrees_x")
-  rotationDegreesY Int      @map("rotation_degrees_y")
-  rotationDegreesZ Int      @map("rotation_degrees_z")
+  rotationDegreesX Int                 @map("rotation_degrees_x")
+  rotationDegreesY Int                 @map("rotation_degrees_y")
+  rotationDegreesZ Int                 @map("rotation_degrees_z")
   name             String
-  slug             String   @unique
-  description      String   @db.Text
-  userId           Int      @map("user_id")
+  slug             String              @unique
+  description      String              @db.Text
+  userId           Int                 @map("user_id")
   price            Float
   license          String
   credit           String?
-  isDownloadable   Boolean  @map("is_downloadable")
-  publishedAt      DateTime @map("published_at")
-  createdAt        DateTime @default(now()) @map("created_at")
-  updatedAt        DateTime @default(now()) @map("updated_at")
-  actions     Action[]     @relation("ModelAction")
-  downloads   Download[]   @relation("ModelDownload")
-  categories  Category[]   @relation("ModelCategory")
-  resolutions Resolution[] @relation("ModelResolution")
-  formats     ThreeDModelFormat[]
-  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  isDownloadable   Boolean             @map("is_downloadable")
+  publishedAt      DateTime            @map("published_at")
+  createdAt        DateTime            @default(now()) @map("created_at")
+  updatedAt        DateTime            @default(now()) @map("updated_at")
+  actions          Action[]            @relation("ModelAction")
+  downloads        Download[]          @relation("ModelDownload")
+  categories       Category[]          @relation("ModelCategory")
+  resolutions      Resolution[]        @relation("ModelResolution")
+  formats          ThreeDModelFormat[]
+  user             User                @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@map("threed_models")
 }
 
 model ThreeDModelFormat {
-  threeDModel     ThreeDModel @relation(fields: [threeDModelId], references: [id], onDelete: Cascade)
-  threeDModelId   Int         @map("threed_model_id")
-  format          Format      @relation(fields: [formatId], references: [id], onDelete: Cascade)
-  formatId        Int         @map("format_id")
-  isUsed          Boolean     @default(false)
+  threeDModel   ThreeDModel @relation(fields: [threeDModelId], references: [id], onDelete: Cascade)
+  threeDModelId Int         @map("threed_model_id")
+  format        Format      @relation(fields: [formatId], references: [id], onDelete: Cascade)
+  formatId      Int         @map("format_id")
+  isUsed        Boolean     @default(false)
 
   @@id([threeDModelId, formatId])
   @@map("threed_model_formats")
@@ -61,10 +55,11 @@ model Resolution {
 }
 
 model Format {
-  id           Int           @id @default(autoincrement())
-  name         String
+  id   Int    @id @default(autoincrement())
+  name String
 
   threeDModels ThreeDModelFormat[]
+
   @@map("formats")
 }
 
@@ -105,17 +100,27 @@ model Download {
   @@map("downloads")
 }
 
-// Creator, Developer, Sponsor, Admin, User
-model Role {
-  id        Int      @id @default(autoincrement())
-  slug      String   @unique
-  name      String
+// Admin, User
+model MainRole {
+  id   Int    @id @default(autoincrement())
+  slug String @unique
+  name String
 
-  user User[]
+  users User[]
 
   @@map("roles")
 }
 
+// Creator, Developer, Sponsor
+model SubRole {
+  id   Int    @id @default(autoincrement())
+  slug String @unique
+  name String
+
+  users User[]
+
+  @@map("sub_roles")
+}
 
 model User {
   id              Int       @id @default(autoincrement())
@@ -130,8 +135,10 @@ model User {
   youtubeUrl      String?   @map("youtube_url")
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @default(now())
+  mainRoleId      Int       @map("main_role_id")
 
-  role         Role[]
+  mainRole     MainRole      @relation(fields: [mainRoleId], references: [id])
+  subRoles     SubRole[]
   threeDModels ThreeDModel[]
   accounts     Account[]
 

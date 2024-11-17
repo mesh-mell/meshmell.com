@@ -11,9 +11,6 @@ node_modules/
 *.tsbuildinfo
 next-env.d.ts
 
-# firebase emulator
-firebase_dev/
-
 # gcs emulator
 gcs_dev/
 
